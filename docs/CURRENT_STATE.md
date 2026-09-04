@@ -1,5 +1,5 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-05 02:53 KST
+Last Updated: 2026-09-05 03:12 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -9,7 +9,7 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA blocked by missing Playwright Chromium binary. Visual QA script now writes a persistent BLOCKED report instead of failing silently.
+High-fidelity HTML frame set created; static QA passed; browser visual QA remains blocked by missing Playwright Chromium binary. A retry with extended Playwright download timeout still failed because the CDN returned truncated/502 responses.
 
 ## Current Gate
 - RECOVERY: PASS
@@ -53,6 +53,11 @@ Convert approved `docs/DESIGN.md` into high-fidelity mobile frames and verify re
 - Ran static high-fidelity QA: `PASS`.
 - Re-ran browser visual QA; result is `BLOCKED` and now recorded in `artifacts/high-fidelity/visual-qa-report.json`.
 - Persisted the high-fidelity frame set and QA blocker report to GitHub `main` through GitHub Git Data API commit `6a1eafb0436f0f1ec47d3dac387b9e8bceb4361a` after direct `git push` authentication failed in the local shell.
+- Latest previously verified remote checkpoint before this continuation: `66997720ae646c13d17e830b5c1f0e282da854b8`.
+- Re-attempted Chromium installation with `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium --only-shell`; result remained `BLOCKED` because the downloaded zip was truncated and the CDN returned `502 Bad Gateway`.
+- Confirmed no usable Chromium/Chrome binary under `/workspace`, the Codex primary runtime, `/usr`, or `/opt`.
+- Re-ran `node scripts/high-fidelity-qa.js`: `BLOCKED`, screenshots `0`.
+- Re-ran `node scripts/high-fidelity-static-qa.js`: `PASS`.
 
 ## Locked Decisions
 - Mobile role: `Triage Layer`.
@@ -128,9 +133,11 @@ Run `node scripts/high-fidelity-qa.js` in an environment with Playwright Chromiu
 ## Last Verification
 - `node scripts/high-fidelity-static-qa.js` returned `PASS`.
 - `node scripts/high-fidelity-qa.js` returned `BLOCKED` and wrote `artifacts/high-fidelity/visual-qa-report.json`.
-- `npx playwright install chromium` was attempted and timed out repeatedly.
+- `npx playwright install chromium --only-shell` timed out repeatedly.
+- `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium --only-shell` failed with truncated zip / `502 Bad Gateway` responses.
+- No local system Chromium/Chrome executable was found.
 - UI forbidden-copy search found no matches in `prototype/high-fidelity/index.html`; matches exist only inside QA regex patterns.
-- GitHub remote `main` was updated and verified at `6a1eafb0436f0f1ec47d3dac387b9e8bceb4361a` with the high-fidelity frame set and QA blocker artifacts.
+- GitHub remote `main` was previously updated and verified at `66997720ae646c13d17e830b5c1f0e282da854b8`; local and remote file trees matched before this continuation's new QA-blocker report refresh.
 
 ## Recovery Note
 If a new chat starts, read this file first, then `WORKLOG.md`, then `docs/DESIGN.md`, `docs/DESIGN_QA.md`, and `prototype/high-fidelity/index.html`.
