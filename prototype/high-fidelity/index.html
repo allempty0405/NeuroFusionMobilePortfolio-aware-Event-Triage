@@ -1,0 +1,962 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio-aware Event Triage High-fidelity Frames</title>
+    <link rel="stylesheet" href="../../design-system/tokens/valley-reference-tokens.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--nf-surface-dashboard-desktop);
+        color: var(--nf-text-body);
+        font-family: var(--nf-font-sans);
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .review-shell {
+        min-height: 100vh;
+        display: grid;
+        place-items: start center;
+        padding: 24px;
+      }
+
+      .phone {
+        width: min(100vw, var(--frame-width, 390px));
+        min-height: var(--frame-height, 844px);
+        background: var(--nf-surface-dashboard-mobile);
+        border: 1px solid var(--nf-border-default);
+        box-shadow: var(--nf-shadow-card);
+        overflow: hidden;
+      }
+
+      .screen {
+        position: relative;
+        min-height: var(--frame-height, 844px);
+        padding: 0 var(--nf-mobile-page-padding) 104px;
+      }
+
+      .topbar {
+        height: var(--nf-gnb-height-reference);
+        display: grid;
+        grid-template-columns: 44px 1fr 44px;
+        align-items: center;
+        gap: var(--nf-space-2);
+      }
+
+      .icon-button {
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: var(--nf-radius-lg);
+        background: transparent;
+        color: var(--nf-text-strong);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+      }
+
+      .icon-button:focus-visible,
+      .primary-cta:focus-visible,
+      .secondary-action:focus-visible,
+      .state-chip:focus-visible {
+        outline: 2px solid var(--nf-border-focus);
+        outline-offset: 2px;
+      }
+
+      .top-title {
+        margin: 0;
+        color: var(--nf-text-title);
+        font-size: var(--nf-text-sm);
+        line-height: var(--nf-leading-sm);
+        font-weight: var(--nf-weight-semibold);
+        text-align: center;
+      }
+
+      .disclosure {
+        display: flex;
+        gap: var(--nf-space-2);
+        align-items: flex-start;
+        margin-bottom: var(--nf-space-3);
+        padding: 9px 10px;
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        background: var(--nf-surface-card-muted);
+        color: var(--nf-text-muted);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-xs);
+      }
+
+      .stack {
+        display: grid;
+        gap: var(--nf-space-3);
+      }
+
+      .card {
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        background: var(--nf-surface-card);
+        padding: var(--nf-mobile-card-padding);
+        box-shadow: var(--nf-shadow-card);
+      }
+
+      .muted-card {
+        background: var(--nf-surface-card-muted);
+      }
+
+      .section-kicker {
+        margin: 0 0 var(--nf-space-2);
+        color: var(--nf-text-muted);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-xs);
+        font-weight: var(--nf-weight-medium);
+      }
+
+      .event-title {
+        margin: var(--nf-space-2) 0;
+        color: var(--nf-text-title);
+        font-size: var(--nf-text-lg);
+        line-height: var(--nf-leading-lg);
+        font-weight: var(--nf-weight-semibold);
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--nf-space-1) var(--nf-space-2);
+        color: var(--nf-text-muted);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-xs);
+        font-weight: var(--nf-weight-normal);
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--nf-space-2);
+        align-items: center;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 3px 8px;
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-sm);
+        background: var(--nf-surface-card-muted);
+        color: var(--nf-text-body);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-xs);
+        font-weight: var(--nf-weight-medium);
+      }
+
+      .badge.event {
+        background: var(--nf-semantic-info-50);
+        border-color: var(--nf-semantic-info-100);
+        color: var(--nf-text-info);
+      }
+
+      .badge.relationship {
+        background: var(--nf-semantic-secondary-50);
+        border-color: var(--nf-semantic-secondary-100);
+        color: var(--nf-semantic-secondary-500);
+      }
+
+      .badge.watchlist {
+        background: var(--nf-semantic-tertiary-50);
+        border-color: var(--nf-semantic-tertiary-100);
+        color: var(--nf-sky-600);
+      }
+
+      .badge.warning {
+        background: var(--nf-semantic-warning-50);
+        border-color: var(--nf-semantic-warning-100);
+        color: var(--nf-text-warning);
+      }
+
+      .badge.error {
+        background: var(--nf-semantic-error-50);
+        border-color: var(--nf-semantic-error-100);
+        color: var(--nf-text-error);
+      }
+
+      .asset-line {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: var(--nf-space-3);
+        align-items: start;
+      }
+
+      .asset-name {
+        margin: 0;
+        color: var(--nf-text-title);
+        font-size: var(--nf-text-base);
+        line-height: var(--nf-leading-base);
+        font-weight: var(--nf-weight-semibold);
+        overflow-wrap: anywhere;
+      }
+
+      .ticker {
+        color: var(--nf-text-muted);
+        font-family: var(--nf-font-mono);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-xs);
+        white-space: nowrap;
+      }
+
+      .body-copy {
+        margin: var(--nf-space-2) 0 0;
+        color: var(--nf-text-body);
+        font-size: var(--nf-text-sm);
+        line-height: var(--nf-leading-sm);
+        font-weight: var(--nf-weight-normal);
+        overflow-wrap: anywhere;
+      }
+
+      .context-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--nf-space-2);
+      }
+
+      .context-item {
+        display: grid;
+        gap: 3px;
+        padding-top: var(--nf-space-2);
+        border-top: 1px solid var(--nf-border-subtle);
+      }
+
+      .context-item:first-child {
+        padding-top: 0;
+        border-top: 0;
+      }
+
+      .label {
+        color: var(--nf-text-muted);
+        font-size: var(--nf-text-2xs);
+        line-height: var(--nf-leading-2xs);
+        font-weight: var(--nf-weight-normal);
+      }
+
+      .value {
+        color: var(--nf-text-strong);
+        font-size: var(--nf-text-sm);
+        line-height: var(--nf-leading-sm);
+        font-weight: var(--nf-weight-medium);
+      }
+
+      .evidence-summary {
+        display: grid;
+        gap: var(--nf-space-2);
+      }
+
+      .source-block {
+        padding-top: var(--nf-space-2);
+        border-top: 1px solid var(--nf-border-subtle);
+      }
+
+      .source-block .meta-row {
+        margin-top: 2px;
+      }
+
+      .outcome {
+        border-left: 3px solid var(--nf-outcome-check-border);
+        background: var(--nf-outcome-check-bg);
+      }
+
+      .outcome.no-check {
+        border-left-color: var(--nf-outcome-no-check-border);
+        background: var(--nf-outcome-no-check-bg);
+      }
+
+      .outcome.insufficient {
+        border-left-color: var(--nf-outcome-insufficient-border);
+        background: var(--nf-outcome-insufficient-bg);
+      }
+
+      .outcome-title {
+        margin: 0;
+        color: var(--nf-text-title);
+        font-size: var(--nf-text-xl);
+        line-height: var(--nf-leading-xl);
+        font-weight: var(--nf-weight-bold);
+      }
+
+      .reason-list {
+        margin: var(--nf-space-2) 0 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: var(--nf-space-1);
+      }
+
+      .reason-list li {
+        color: var(--nf-text-body);
+        font-size: var(--nf-text-sm);
+        line-height: var(--nf-leading-sm);
+        font-weight: var(--nf-weight-normal);
+      }
+
+      .reason-list li::before {
+        content: "•";
+        margin-right: 6px;
+        color: var(--nf-text-muted);
+      }
+
+      .sticky-area {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: var(--nf-space-3) var(--nf-mobile-page-padding) calc(var(--nf-space-3) + env(safe-area-inset-bottom));
+        background: linear-gradient(180deg, #f4f4f500, var(--nf-surface-dashboard-mobile) 24%);
+      }
+
+      .handoff-card {
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        background: var(--nf-surface-card);
+        padding: var(--nf-space-3);
+        box-shadow: var(--nf-shadow-card);
+      }
+
+      .primary-cta {
+        width: 100%;
+        min-height: var(--nf-min-touch-target);
+        border: 1px solid var(--nf-semantic-primary-600);
+        border-radius: var(--nf-radius-lg);
+        background: var(--nf-semantic-primary-600);
+        color: var(--nf-white);
+        font-size: var(--nf-text-sm);
+        line-height: var(--nf-leading-sm);
+        font-weight: var(--nf-weight-semibold);
+        cursor: pointer;
+      }
+
+      .primary-cta:disabled {
+        border-color: var(--nf-border-default);
+        background: var(--nf-semantic-basic-200);
+        color: var(--nf-text-muted);
+        cursor: not-allowed;
+      }
+
+      .secondary-action {
+        min-height: 36px;
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-md);
+        background: var(--nf-surface-card);
+        color: var(--nf-text-body);
+        padding: 0 var(--nf-space-3);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-xs);
+        font-weight: var(--nf-weight-medium);
+      }
+
+      .tabs {
+        display: flex;
+        gap: var(--nf-space-2);
+        overflow-x: auto;
+        padding: 0 0 var(--nf-space-3);
+        margin-bottom: var(--nf-space-3);
+      }
+
+      .state-chip {
+        flex: 0 0 auto;
+        min-height: 36px;
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        background: var(--nf-surface-card);
+        color: var(--nf-text-body);
+        padding: 0 var(--nf-space-3);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-xs);
+        font-weight: var(--nf-weight-medium);
+        cursor: pointer;
+      }
+
+      .state-chip[aria-pressed="true"] {
+        border-color: var(--nf-semantic-primary-500);
+        color: var(--nf-text-primary);
+      }
+
+      .frame-note {
+        margin: 0 0 var(--nf-space-3);
+        color: var(--nf-text-muted);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-xs);
+        font-weight: var(--nf-weight-normal);
+      }
+
+      body.capture .tabs,
+      body.capture [data-frame-note] {
+        display: none;
+      }
+
+      body.capture .disclosure {
+        margin-top: 0;
+      }
+
+      .skeleton {
+        height: 14px;
+        border-radius: var(--nf-radius-sm);
+        background: var(--nf-surface-skeleton);
+      }
+
+      .skeleton.wide {
+        width: 100%;
+      }
+
+      .skeleton.mid {
+        width: 72%;
+      }
+
+      .skeleton.short {
+        width: 42%;
+      }
+
+      @media (max-width: 430px) {
+        .review-shell {
+          padding: 0;
+        }
+
+        .phone {
+          width: 100vw;
+          min-height: 100vh;
+          border: 0;
+        }
+
+        .screen {
+          min-height: 100vh;
+        }
+
+        .event-title {
+          font-size: var(--nf-text-base);
+          line-height: var(--nf-leading-base);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="review-shell">
+      <main class="phone" aria-label="Portfolio-aware Event Triage high-fidelity frame">
+        <div class="screen">
+          <header class="topbar" aria-label="화면 상단">
+            <button class="icon-button" aria-label="이전 화면으로 돌아가기">‹</button>
+            <h1 class="top-title">이벤트 상세</h1>
+            <button class="icon-button" aria-label="닫기">×</button>
+          </header>
+
+          <nav class="tabs" aria-label="상태 변형 선택"></nav>
+          <p class="frame-note" data-frame-note></p>
+
+          <section class="disclosure" aria-label="데이터 상태 안내" data-disclosure></section>
+
+          <div class="stack" data-content></div>
+
+          <section class="sticky-area" aria-label="Web 분석 이동">
+            <div class="handoff-card">
+              <button class="primary-cta" data-cta type="button"></button>
+              <p class="frame-note" data-cta-note style="margin: 8px 0 0"></p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const states = {
+        normal: {
+          label: "01 Normal",
+          note: "CHECK_FURTHER / Holding / Evidence available / Concept Web Handoff",
+          disclosure: "Mock fixture · 실제 투자 데이터가 아닌 하이파이 검증용 화면입니다.",
+          eventBadge: "실적 발표",
+          eventTitle: "삼성전자 2분기 실적 발표 후 반도체 수요 전망 업데이트",
+          eventMeta: ["발생 2026.09.05 09:00", "기준 2026.09.05 09:15"],
+          relationshipBadge: "보유",
+          relationshipKind: "relationship",
+          asset: "삼성전자",
+          ticker: "005930:KR",
+          relation: "보유 종목과 직접 연결된 이벤트입니다.",
+          attention: "최근 실적 전망과 연결된 근거가 있어 추가 확인 후보입니다.",
+          dataState: "Source 확인됨",
+          evidenceTitle: "실적 전망 요약과 관련 뉴스가 함께 확인됩니다.",
+          evidenceMeta: ["Source: Valley Live News", "Timestamp: 2026.09.05 09:12", "요약: 시스템 생성"],
+          outcomeClass: "",
+          outcomeBadge: "추가 확인 필요",
+          outcomeTitle: "추가로 확인할 정보가 있습니다",
+          reasons: ["보유 종목과 직접 연결된 이벤트입니다.", "확인 가능한 Source와 기준 시점이 표시됩니다.", "자세한 분석은 Web 화면에서 이어볼 수 있습니다."],
+          cta: "Web에서 자세히 보기",
+          ctaNote: "Concept handoff · 정확한 route/payload는 Production에서 미확정입니다.",
+          disabled: false
+        },
+        watchlist: {
+          label: "02 Watchlist",
+          note: "NO_IMMEDIATE_CHECK_NEEDED / Watchlist",
+          disclosure: "Mock fixture · 관심종목은 보유로 표시하지 않습니다.",
+          eventBadge: "기업 이벤트",
+          eventTitle: "관심종목의 예정된 컨퍼런스 발표 일정 안내",
+          eventMeta: ["예정 2026.09.06 14:00", "기준 2026.09.05 09:15"],
+          relationshipBadge: "관심",
+          relationshipKind: "watchlist",
+          asset: "Rocket Lab",
+          ticker: "RKLB",
+          relation: "관심종목에 포함되어 있지만 보유 관계는 확인하지 않습니다.",
+          attention: "현재 표시 가능한 범위에서는 즉시 확인 우선성이 높지 않습니다.",
+          dataState: "관심 관계",
+          evidenceTitle: "일정 정보와 관심종목 관계만 표시됩니다.",
+          evidenceMeta: ["Source: Event Calendar", "Timestamp: 2026.09.05 09:10", "요약: 시스템 생성"],
+          outcomeClass: "no-check",
+          outcomeBadge: "즉시 확인 낮음",
+          outcomeTitle: "지금 바로 확인할 필요는 낮습니다",
+          reasons: ["관심종목 관계만 확인됩니다.", "현재 근거 범위에서 확인 우선성을 높일 신호는 제한적입니다."],
+          cta: "관련 종목 분석 보기",
+          ctaNote: "보유나 내 자산 영향으로 표현하지 않습니다.",
+          disabled: false
+        },
+        insufficient: {
+          label: "03 Insufficient",
+          note: "INSUFFICIENT_DATA",
+          disclosure: "Mock fixture · 판단에 필요한 관계 또는 근거가 부족합니다.",
+          eventBadge: "뉴스",
+          eventTitle: "공급망 관련 기사에서 복수 기업이 언급됨",
+          eventMeta: ["발행 2026.09.05 08:42", "기준 확인 필요"],
+          relationshipBadge: "관계 미확정",
+          relationshipKind: "warning",
+          asset: "관련 후보 자산",
+          ticker: "UNKNOWN",
+          relation: "개인 Portfolio 또는 Watchlist 관계를 확정할 수 없습니다.",
+          attention: "부족한 관계 데이터가 먼저 해결되어야 합니다.",
+          dataState: "정보 부족",
+          evidenceTitle: "표시 가능한 근거가 일부만 확인됩니다.",
+          evidenceMeta: ["Source: 부분 확인", "Timestamp: Unknown", "요약: 제한됨"],
+          outcomeClass: "insufficient",
+          outcomeBadge: "판단 보류",
+          outcomeTitle: "판단을 보류합니다",
+          reasons: ["개인 관계를 확인하기 위한 정보가 충분하지 않습니다.", "근거 출처 또는 기준 시점이 완전하지 않습니다."],
+          cta: "데이터 부족",
+          ctaNote: "Evidence-dependent handoff는 제한됩니다.",
+          disabled: true
+        },
+        related: {
+          label: "04 Related",
+          note: "Related-only",
+          disclosure: "Mock fixture · 관련 자산이지만 개인 보유/관심으로 확정하지 않습니다.",
+          eventBadge: "산업 뉴스",
+          eventTitle: "전기차 배터리 공급 계약 관련 업계 업데이트",
+          eventMeta: ["발행 2026.09.05 07:55", "기준 2026.09.05 09:15"],
+          relationshipBadge: "관련만",
+          relationshipKind: "warning",
+          asset: "LG에너지솔루션",
+          ticker: "373220:KR",
+          relation: "이벤트와 산업 관계는 있으나 개인 관계는 확인되지 않았습니다.",
+          attention: "개인화 판단으로 과장하지 않고 관련 맥락만 표시합니다.",
+          dataState: "개인 관계 없음",
+          evidenceTitle: "산업 뉴스의 관련 자산 후보로 연결됩니다.",
+          evidenceMeta: ["Source: Market News", "Timestamp: 2026.09.05 08:01", "요약: 시스템 생성"],
+          outcomeClass: "insufficient",
+          outcomeBadge: "판단 보류",
+          outcomeTitle: "개인 관련성 판단은 보류합니다",
+          reasons: ["보유 또는 관심 관계가 확인되지 않았습니다.", "자산 수준의 관련성만 표시합니다."],
+          cta: "관련 종목 분석 보기",
+          ctaNote: "Portfolio-aware handoff claim은 사용하지 않습니다.",
+          disabled: false
+        },
+        multiple: {
+          label: "05 Multiple",
+          note: "Multiple Related Assets",
+          disclosure: "Mock fixture · 대표 자산과 추가 관련 자산을 구분합니다.",
+          eventBadge: "실적 발표",
+          eventTitle: "AI 인프라 투자 확대가 복수 반도체 종목에 연결됨",
+          eventMeta: ["발행 2026.09.05 08:20", "기준 2026.09.05 09:15"],
+          relationshipBadge: "보유 + 추가 관련",
+          relationshipKind: "relationship",
+          asset: "SK하이닉스",
+          ticker: "000660:KR",
+          relation: "대표 자산은 보유 관계, 추가 자산은 관련 후보로 분리됩니다.",
+          attention: "대표 선정은 mock-only이며 Production 우선순위 로직은 미확정입니다.",
+          dataState: "복수 관련",
+          evidenceTitle: "동일 이벤트가 여러 자산에 연결됩니다.",
+          evidenceMeta: ["Source: Analyst Brief", "Timestamp: 2026.09.05 08:33", "추가: 삼성전자, NVIDIA"],
+          outcomeClass: "",
+          outcomeBadge: "추가 확인 필요",
+          outcomeTitle: "대표 자산 기준으로 더 볼 정보가 있습니다",
+          reasons: ["대표 자산과 추가 관련 자산이 분리되어 표시됩니다.", "Production 대표 자산 로직은 확정하지 않습니다."],
+          cta: "Web에서 자세히 보기",
+          ctaNote: "복수 자산 context는 concept summary로만 표시됩니다.",
+          disabled: false
+        },
+        unconnected: {
+          label: "06 Unconnected",
+          note: "Portfolio Unconnected",
+          disclosure: "Mock fixture · 개인 Portfolio Context를 확인할 수 없습니다.",
+          eventBadge: "뉴스",
+          eventTitle: "미국 기술주 섹터 전망 관련 업데이트",
+          eventMeta: ["발행 2026.09.05 08:10", "기준 2026.09.05 09:15"],
+          relationshipBadge: "미연결",
+          relationshipKind: "warning",
+          asset: "Technology Sector",
+          ticker: "SECTOR",
+          relation: "Portfolio 또는 Watchlist 관계를 확인할 수 없습니다.",
+          attention: "개인 관련성 대신 일반 이벤트 맥락만 표시합니다.",
+          dataState: "Portfolio 미확인",
+          evidenceTitle: "개인 관계 없이 일반 Source만 확인됩니다.",
+          evidenceMeta: ["Source: Market Brief", "Timestamp: 2026.09.05 08:18", "요약: 시스템 생성"],
+          outcomeClass: "insufficient",
+          outcomeBadge: "판단 보류",
+          outcomeTitle: "개인 관련성 판단을 보류합니다",
+          reasons: ["Portfolio Context가 연결되지 않았습니다.", "보유나 영향으로 단정하지 않습니다."],
+          cta: "Portfolio Context 필요",
+          ctaNote: "연결 flow는 이번 화면 범위 밖입니다.",
+          disabled: true
+        },
+        partial: {
+          label: "07 Partial",
+          note: "Partial",
+          disclosure: "Mock fixture · 일부 근거만 표시됩니다.",
+          eventBadge: "공시",
+          eventTitle: "해외 자회사 관련 공시 일부 항목 확인 중",
+          eventMeta: ["발행 2026.09.05 08:04", "기준 일부 확인"],
+          relationshipBadge: "부분 확인",
+          relationshipKind: "warning",
+          asset: "현대차",
+          ticker: "005380:KR",
+          relation: "Asset 관계는 있으나 Portfolio 관계 근거가 일부 누락되었습니다.",
+          attention: "확정 check-status보다 데이터 한계를 먼저 보여줍니다.",
+          dataState: "부분 데이터",
+          evidenceTitle: "일부 source만 확인되어 요약 범위가 제한됩니다.",
+          evidenceMeta: ["Source: 일부 공시", "Timestamp: 2026.09.05 08:04", "누락: 관계 근거"],
+          outcomeClass: "insufficient",
+          outcomeBadge: "판단 보류",
+          outcomeTitle: "일부 정보만으로는 판단하지 않습니다",
+          reasons: ["관계 또는 Source 입력이 완전하지 않습니다.", "부족한 정보가 먼저 표시됩니다."],
+          cta: "근거 확인 필요",
+          ctaNote: "Handoff는 disabled 또는 caveated 처리합니다.",
+          disabled: true
+        },
+        empty: {
+          label: "08 Empty",
+          note: "Empty Evidence",
+          disclosure: "Mock fixture · 표시 가능한 근거가 없습니다.",
+          eventBadge: "이벤트",
+          eventTitle: "관련 이벤트 후보가 있으나 표시 가능한 근거 없음",
+          eventMeta: ["발생 시점 Unknown", "기준 Unknown"],
+          relationshipBadge: "근거 없음",
+          relationshipKind: "warning",
+          asset: "후보 자산",
+          ticker: "UNKNOWN",
+          relation: "관계 판단에 사용할 표시 근거가 없습니다.",
+          attention: "근거 부재를 중요도 낮음으로 해석하지 않습니다.",
+          dataState: "Evidence 없음",
+          evidenceTitle: "현재 표시 가능한 Source가 없습니다.",
+          evidenceMeta: ["Source: unavailable", "Timestamp: Unknown", "요약: 제공하지 않음"],
+          outcomeClass: "insufficient",
+          outcomeBadge: "판단 보류",
+          outcomeTitle: "근거 없이 판단하지 않습니다",
+          reasons: ["표시 가능한 근거가 없습니다.", "새 근거를 생성하거나 추정하지 않습니다."],
+          cta: "근거 없음",
+          ctaNote: "Evidence-dependent destination은 사용할 수 없습니다.",
+          disabled: true
+        },
+        stale: {
+          label: "09 Stale",
+          note: "Stale",
+          disclosure: "Mock fixture · 기준 시점이 오래됐을 수 있습니다.",
+          eventBadge: "뉴스",
+          eventTitle: "반도체 업황 업데이트와 기존 관심 자산 관계",
+          eventMeta: ["발행 2026.09.04 15:20", "마지막 확인 2026.09.04 16:00"],
+          relationshipBadge: "관심",
+          relationshipKind: "watchlist",
+          asset: "ASML",
+          ticker: "ASML",
+          relation: "관심 관계는 확인되지만 기준 시점이 오래됐을 수 있습니다.",
+          attention: "최신 개인 관계처럼 단정하지 않습니다.",
+          dataState: "오래된 데이터",
+          evidenceTitle: "이전 기준 Source로만 확인됩니다.",
+          evidenceMeta: ["Source: Watchlist Update", "Timestamp: 2026.09.04 16:00", "상태: Stale"],
+          outcomeClass: "insufficient",
+          outcomeBadge: "판단 보류",
+          outcomeTitle: "최신 기준 확인이 필요합니다",
+          reasons: ["마지막 확인 시점이 함께 표시됩니다.", "임의 freshness threshold는 만들지 않습니다."],
+          cta: "최신 정보 확인 필요",
+          ctaNote: "Concept CTA만 가능하며 SLA는 미확정입니다.",
+          disabled: true
+        },
+        source: {
+          label: "10 Source",
+          note: "Source Unavailable",
+          disclosure: "Mock fixture · Source를 확인할 수 없습니다.",
+          eventBadge: "속보",
+          eventTitle: "기업 발표 관련 속보 Source 확인 실패",
+          eventMeta: ["발행 2026.09.05 08:59", "기준 Source unavailable"],
+          relationshipBadge: "Source 확인 불가",
+          relationshipKind: "warning",
+          asset: "NAVER",
+          ticker: "035420:KR",
+          relation: "자산 후보는 있으나 Source가 확인되지 않습니다.",
+          attention: "숨겨진 근거를 전제로 Outcome을 만들지 않습니다.",
+          dataState: "Source unavailable",
+          evidenceTitle: "원문 Source를 불러오지 못했습니다.",
+          evidenceMeta: ["Source: unavailable", "Timestamp: 2026.09.05 08:59", "요약: 제한됨"],
+          outcomeClass: "insufficient",
+          outcomeBadge: "판단 보류",
+          outcomeTitle: "출처 확인 전에는 판단하지 않습니다",
+          reasons: ["Source-backed outcome은 표시하지 않습니다.", "Retry 또는 닫기만 제공합니다."],
+          cta: "Source 다시 확인",
+          ctaNote: "Source-dependent Web 이동은 제한됩니다.",
+          disabled: true
+        },
+        permission: {
+          label: "11 Access",
+          note: "Permission / Access",
+          disclosure: "Mock fixture · 권한 제한은 Event 중요도와 별개입니다.",
+          eventBadge: "공시",
+          eventTitle: "권한이 필요한 원문 근거가 포함된 이벤트",
+          eventMeta: ["발행 2026.09.05 07:40", "기준 2026.09.05 09:15"],
+          relationshipBadge: "권한 제한",
+          relationshipKind: "error",
+          asset: "테슬라",
+          ticker: "TSLA",
+          relation: "일부 Source 또는 destination 접근 권한이 제한됩니다.",
+          attention: "권한 부족을 부정적 Event처럼 표현하지 않습니다.",
+          dataState: "Access 제한",
+          evidenceTitle: "일부 Source 확인에 권한이 필요합니다.",
+          evidenceMeta: ["Source: restricted", "Timestamp: 2026.09.05 07:40", "요약: 제한됨"],
+          outcomeClass: "insufficient",
+          outcomeBadge: "판단 보류",
+          outcomeTitle: "접근 제한으로 판단을 보류합니다",
+          reasons: ["숨겨진 데이터를 근거로 Outcome을 만들지 않습니다.", "권한 확인은 별도 flow입니다."],
+          cta: "권한 필요",
+          ctaNote: "접근 flow는 이번 화면 범위 밖입니다.",
+          disabled: true
+        },
+        error: {
+          label: "12 Error",
+          note: "Generic Error",
+          disclosure: "Mock fixture · 정보를 불러오지 못했습니다.",
+          eventBadge: "오류",
+          eventTitle: "이벤트 정보를 불러올 수 없음",
+          eventMeta: ["발생 시점 확인 불가", "기준 Unknown"],
+          relationshipBadge: "판단 불가",
+          relationshipKind: "error",
+          asset: "불러오기 실패",
+          ticker: "ERROR",
+          relation: "현재 화면에서 관계를 확인할 수 없습니다.",
+          attention: "오류 상태에서는 Outcome을 숨기거나 판단 불가로 처리합니다.",
+          dataState: "Error",
+          evidenceTitle: "근거 영역을 불러오지 못했습니다.",
+          evidenceMeta: ["Source: unavailable", "Timestamp: Unknown", "Recovery: Retry"],
+          outcomeClass: "insufficient",
+          outcomeBadge: "판단 불가",
+          outcomeTitle: "정보를 불러온 뒤 다시 확인하세요",
+          reasons: ["오류 상태에서 결론을 만들지 않습니다.", "다시 시도 또는 닫기를 제공합니다."],
+          cta: "다시 시도",
+          ctaNote: "Event/Asset context가 있으면 유지합니다.",
+          disabled: false
+        },
+        loading: {
+          label: "13 Loading",
+          note: "Loading",
+          loading: true,
+          disclosure: "Mock fixture · 정보를 불러오는 중입니다.",
+          cta: "불러오는 중",
+          ctaNote: "Loading 상태에서는 확정 Outcome을 표시하지 않습니다.",
+          disabled: true
+        },
+        handoffFail: {
+          label: "14 Handoff Fail",
+          note: "Handoff Failure",
+          disclosure: "Mock fixture · Web 이동 실패 후에도 현재 context를 유지합니다.",
+          eventBadge: "실적 발표",
+          eventTitle: "삼성전자 2분기 실적 발표 후 반도체 수요 전망 업데이트",
+          eventMeta: ["발생 2026.09.05 09:00", "기준 2026.09.05 09:15"],
+          relationshipBadge: "보유",
+          relationshipKind: "relationship",
+          asset: "삼성전자",
+          ticker: "005930:KR",
+          relation: "보유 종목과 직접 연결된 이벤트입니다.",
+          attention: "Web 이동 실패와 관계 판단은 분리해 표시합니다.",
+          dataState: "Handoff error",
+          evidenceTitle: "실패 후에도 근거 요약은 유지됩니다.",
+          evidenceMeta: ["Source: Valley Live News", "Timestamp: 2026.09.05 09:12", "Error: Web 이동 실패"],
+          outcomeClass: "",
+          outcomeBadge: "추가 확인 필요",
+          outcomeTitle: "현재 화면의 판단 context는 유지됩니다",
+          reasons: ["Event, Asset, Relationship, Outcome이 남아 있습니다.", "Production payload 보존은 주장하지 않습니다."],
+          cta: "다시 시도",
+          ctaNote: "Web 분석으로 이동하지 못했습니다.",
+          disabled: false
+        },
+        handoffSuccess: {
+          label: "15 Handoff OK",
+          note: "Handoff Success Simulation",
+          disclosure: "Mock fixture · 성공 화면은 concept simulation입니다.",
+          eventBadge: "실적 발표",
+          eventTitle: "삼성전자 2분기 실적 발표 후 반도체 수요 전망 업데이트",
+          eventMeta: ["발생 2026.09.05 09:00", "기준 2026.09.05 09:15"],
+          relationshipBadge: "보유",
+          relationshipKind: "relationship",
+          asset: "삼성전자",
+          ticker: "005930:KR",
+          relation: "보유 종목과 직접 연결된 이벤트입니다.",
+          attention: "Web destination category만 표시합니다.",
+          dataState: "Simulation",
+          evidenceTitle: "전달 예정 context summary를 화면에 유지합니다.",
+          evidenceMeta: ["Destination: 실적 및 전망", "Payload: blocked", "Back behavior: not tested"],
+          outcomeClass: "",
+          outcomeBadge: "추가 확인 필요",
+          outcomeTitle: "Web에서 이어볼 context가 준비되었습니다",
+          reasons: ["목적지 category와 요약만 표시합니다.", "정확한 route와 payload는 확정하지 않습니다."],
+          cta: "실적 및 전망으로 이동",
+          ctaNote: "Success simulation · production handoff는 미검증입니다.",
+          disabled: false
+        }
+      };
+
+      const stateOrder = [
+        "normal",
+        "watchlist",
+        "insufficient",
+        "related",
+        "multiple",
+        "unconnected",
+        "partial",
+        "empty",
+        "stale",
+        "source",
+        "permission",
+        "error",
+        "loading",
+        "handoffFail",
+        "handoffSuccess"
+      ];
+
+      const params = new URLSearchParams(window.location.search);
+      let current = states[params.get("state")] ? params.get("state") : "normal";
+      if (params.get("capture") === "1") {
+        document.body.classList.add("capture");
+      }
+
+      const tabs = document.querySelector(".tabs");
+      const content = document.querySelector("[data-content]");
+      const disclosure = document.querySelector("[data-disclosure]");
+      const frameNote = document.querySelector("[data-frame-note]");
+      const cta = document.querySelector("[data-cta]");
+      const ctaNote = document.querySelector("[data-cta-note]");
+
+      function card(className, inner) {
+        return `<section class="card ${className || ""}">${inner}</section>`;
+      }
+
+      function renderLoading(data) {
+        disclosure.textContent = data.disclosure;
+        frameNote.textContent = data.note;
+        content.innerHTML = [
+          card("", `<p class="section-kicker">Event Context</p><div class="skeleton short"></div><div style="height:8px"></div><div class="skeleton wide"></div><div style="height:8px"></div><div class="skeleton mid"></div>`),
+          card("", `<p class="section-kicker">Asset Relationship</p><div class="skeleton mid"></div><div style="height:8px"></div><div class="skeleton wide"></div>`),
+          card("muted-card", `<p class="section-kicker">Relationship Evidence + Trust</p><div class="skeleton wide"></div><div style="height:8px"></div><div class="skeleton short"></div>`)
+        ].join("");
+      }
+
+      function renderState(key) {
+        const data = states[key];
+        frameNote.textContent = data.note;
+        disclosure.textContent = data.disclosure;
+        cta.textContent = data.cta;
+        cta.disabled = data.disabled;
+        ctaNote.textContent = data.ctaNote;
+
+        if (data.loading) {
+          renderLoading(data);
+          return;
+        }
+
+        const eventCard = card("", `
+          <p class="section-kicker">Event Context</p>
+          <div class="badge-row"><span class="badge event">${data.eventBadge}</span></div>
+          <h2 class="event-title">${data.eventTitle}</h2>
+          <div class="meta-row">${data.eventMeta.map((item) => `<span>${item}</span>`).join("<span>·</span>")}</div>
+        `);
+
+        const assetCard = card("", `
+          <p class="section-kicker">Asset Relationship</p>
+          <div class="asset-line">
+            <div>
+              <p class="asset-name">${data.asset}</p>
+              <p class="body-copy">${data.relation}</p>
+            </div>
+            <span class="ticker">${data.ticker}</span>
+          </div>
+          <div class="badge-row" style="margin-top: 12px">
+            <span class="badge ${data.relationshipKind}">${data.relationshipBadge}</span>
+            <span class="badge">${data.dataState}</span>
+          </div>
+        `);
+
+        const contextCard = card("", `
+          <p class="section-kicker">Portfolio / Attention Context</p>
+          <div class="context-grid">
+            <div class="context-item">
+              <span class="label">관계 해석</span>
+              <span class="value">${data.relation}</span>
+            </div>
+            <div class="context-item">
+              <span class="label">Attention cue</span>
+              <span class="value">${data.attention}</span>
+            </div>
+          </div>
+        `);
+
+        const evidenceCard = card("muted-card", `
+          <p class="section-kicker">Relationship Evidence + Trust</p>
+          <div class="evidence-summary">
+            <p class="body-copy" style="margin:0">${data.evidenceTitle}</p>
+            <div class="source-block">
+              <span class="label">Source / Timestamp / Summary distinction</span>
+              <div class="meta-row">${data.evidenceMeta.map((item) => `<span>${item}</span>`).join("<span>·</span>")}</div>
+            </div>
+            <button class="secondary-action" type="button">근거 범위 보기</button>
+          </div>
+        `);
+
+        const outcomeCard = card(`outcome ${data.outcomeClass}`, `
+          <p class="section-kicker">Relevance Outcome</p>
+          <div class="badge-row"><span class="badge warning">${data.outcomeBadge}</span></div>
+          <h2 class="outcome-title">${data.outcomeTitle}</h2>
+          <ul class="reason-list">${data.reasons.map((reason) => `<li>${reason}</li>`).join("")}</ul>
+        `);
+
+        content.innerHTML = [eventCard, assetCard, contextCard, evidenceCard, outcomeCard].join("");
+      }
+
+      function renderTabs() {
+        tabs.innerHTML = stateOrder
+          .map((key) => `<button class="state-chip" type="button" data-state="${key}" aria-pressed="${key === current}">${states[key].label}</button>`)
+          .join("");
+        tabs.addEventListener("click", (event) => {
+          const button = event.target.closest("[data-state]");
+          if (!button) return;
+          current = button.dataset.state;
+          history.replaceState(null, "", `?state=${current}`);
+          document.querySelectorAll("[data-state]").forEach((chip) => {
+            chip.setAttribute("aria-pressed", String(chip.dataset.state === current));
+          });
+          renderState(current);
+        });
+      }
+
+      renderTabs();
+      renderState(current);
+    </script>
+  </body>
+</html>

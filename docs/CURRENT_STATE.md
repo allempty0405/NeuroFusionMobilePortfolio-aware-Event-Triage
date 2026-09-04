@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-04 16:35 KST
-Last Updated By: GPT-5.5 Thinking / GitHub connector
+Last Updated: 2026-09-05 02:48 KST
+Last Updated By: Codex / GPT-5
 
 ## Project
 NeuroFusion / Valley AI Mobile Product Improvement Project
@@ -9,67 +9,77 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-Recovery / Continuation — Repository + Source Recovery and Design-system Audit checkpoint.
+High-fidelity HTML frame set created; static QA passed; browser visual QA blocked by missing Playwright Chromium binary. Visual QA script now writes a persistent BLOCKED report instead of failing silently.
 
 ## Current Gate
-- RECOVERY: PARTIAL PASS WITH BLOCKER
-- DESIGN SYSTEM INVENTORY: PASS FOR REFERENCE INVENTORY
-- DESIGN SPEC: NOT STARTED / BLOCKED UNTIL CANONICAL PRODUCT SOURCES ARE RESTORED
-- READY FOR HIGH-FIDELITY DESIGN: NO
+- RECOVERY: PASS
+- CANONICAL SOURCE RESTORE: PASS
+- DESIGN SPEC: PASS
+- HIGH-FIDELITY FRAME SET: CREATED
+- HIGH-FIDELITY DESIGN: REVISE — visual QA blocked
+- DESIGN SYSTEM ALIGNMENT: PASS
+- RESPONSIVE QA: BLOCKED — browser screenshot unavailable
+- ACCESSIBILITY VISUAL QA: PARTIAL
+- MOCK PROTOTYPE: PASS FOR STATIC STRUCTURE
 - PRODUCTION: BLOCKED
 
-User-supplied recovery packet states the previous product gate as:
-
-```text
-OVERALL: CONDITIONAL PASS AFTER TARGETED REVISION
-CONCEPT / DESIGN: PASS
-MOCK DEVELOPMENT REVIEW: PASS
-PRODUCTION: BLOCKED
-FINAL_TARGETED_REVISION_QA_PASS
-FORBIDDEN_CLAIM_CHECK_PASS
-```
-
-This gate has not yet been independently re-verified against the named Canonical documents because those files are not present in the repository and were not accessible through the current file retrieval layer.
-
 ## Current Task
-Restore project continuity by creating persistent recovery files, documenting repository/source status, and preventing DESIGN.md from being drafted from memory alone.
+Convert approved `docs/DESIGN.md` into high-fidelity mobile frames and verify required states at mobile viewport level.
 
 ## Completed Since Previous Checkpoint
-- FACT: Repository `allempty0405/NeuroFusionMobilePortfolio-aware-Event-Triage` inspected on `main`.
-- FACT: Root currently contains `README.md` and `design-system/` only.
-- FACT: `docs/`, `DESIGN.md`, and `prototype/` were not found in the root tree.
-- FACT: Recent commits show initial repository setup and design-system upload on 2026-09-04.
-- FACT: `design-system/` inventory was read across foundations, tokens, components, patterns, and checklist.
-- FACT: `docs/CURRENT_STATE.md` and `docs/WORKLOG.md` were created as recovery checkpoint files.
+- Created `prototype/high-fidelity/index.html`.
+- Created `prototype/high-fidelity/README.md`.
+- Created `scripts/high-fidelity-qa.js` for Playwright screenshot QA.
+- Created `scripts/high-fidelity-static-qa.js`.
+- Created `artifacts/high-fidelity/static-qa-report.json`.
+- Created `artifacts/high-fidelity/visual-qa-report.json`.
+- Implemented 15 state variants:
+  - Normal / `CHECK_FURTHER` / Holding
+  - Watchlist / `NO_IMMEDIATE_CHECK_NEEDED`
+  - `INSUFFICIENT_DATA`
+  - Related-only
+  - Multiple Related Assets
+  - Portfolio Unconnected
+  - Partial
+  - Empty Evidence
+  - Stale
+  - Source Unavailable
+  - Permission / Access
+  - Generic Error
+  - Loading
+  - Handoff Failure
+  - Handoff Success Simulation
+- Added capture mode (`?capture=1`) so review controls are hidden in screenshot frames.
+- Ran static high-fidelity QA: `PASS`.
+- Re-ran browser visual QA; result is `BLOCKED` and now recorded in `artifacts/high-fidelity/visual-qa-report.json`.
 
 ## Locked Decisions
-The following are retained as recovery-packet decisions, pending direct verification against Canonical source files:
-
 - Mobile role: `Triage Layer`.
 - Web role: `Analysis Workspace`.
-- Approved information hierarchy for current design work:
-
-```text
-Event Context
-→ Asset Relationship
-→ Portfolio / Attention Context
-→ Relationship Evidence + Trust
-→ Relevance Outcome
-→ Web Handoff
-```
-
 - Allowed Outcomes only:
   - `CHECK_FURTHER`
   - `NO_IMMEDIATE_CHECK_NEEDED`
   - `INSUFFICIENT_DATA`
-- Portfolio, Watchlist, Related-only, and Portfolio Unconnected must remain distinct.
-- Outcome colors must not become investment-safety or risk signals.
-- Production readiness remains blocked.
+- Information hierarchy remains:
+
+```text
+Event Context
+-> Asset Relationship
+-> Portfolio / Attention Context
+-> Relationship Evidence + Trust
+-> Relevance Outcome
+-> Web Handoff
+```
+
+- Outcome is a non-advisory check-status, not risk, urgency, impact, buy/sell/hold, or investment safety.
+- Portfolio, Watchlist, Related-only, and Portfolio Unconnected remain distinct.
+- Production remains blocked.
 
 ## Active Design Hypotheses
-- Outcome preview may be explored only as `DESIGN_HYPOTHESIS`, never as a definitive judgment before evidence/trust is visible.
-- Existing design-system tokens/components should be reused before introducing new components.
-- Existing design-system pattern files may need IA adaptation because some first-viewport guidance emphasizes Relationship/Outcome before Event/Evidence.
+- Exact Outcome visual prominence must be reviewed in actual screenshots/Figma frames.
+- Long Korean/English event title wrapping must be verified in 320/360/390 viewports.
+- Sticky CTA overlap must be verified in browser screenshots.
+- Screen reader reading order remains `NOT_TESTED`.
 
 ## Production Blockers
 - Phase 5.5 Production Data Contract
@@ -83,36 +93,42 @@ Event Context
 - Production Acceptance Criteria
 
 ## Open Issues
-- BLOCKED: Named Canonical source files are not present in the repository and were not accessible in the current file retrieval layer.
-- BLOCKED: `DESIGN.md` should not be finalized until the Canonical documents are restored and re-read.
-- OPEN_DECISION: Whether to add the Canonical source documents into `docs/source/` or re-upload them for direct reading.
-- DESIGN_HYPOTHESIS: Design-system pattern application must be adapted to the latest approved IA if Canonical sources confirm the recovery packet.
+- BLOCKER: Browser visual QA could not run because Playwright Chromium binary is unavailable.
+- MAJOR: 360x800, 390x844, and 320px screenshot verification remains incomplete.
+- PARTIAL: Accessibility visual QA is static/structural only.
+- NOT_TESTED: Screen reader manual reading order.
+- NOT_TESTED: Real browser/app back navigation after Web handoff.
+- BLOCKED: Production route, payload, field, logic, and freshness contracts.
 
 ## Files Changed
 - `docs/CURRENT_STATE.md`
 - `docs/WORKLOG.md`
-- `docs/INITIAL_RECOVERY_REPORT.md`
-- `docs/DESIGN_SYSTEM_AUDIT.md`
+- `docs/DESIGN_QA.md`
+- `prototype/high-fidelity/index.html`
+- `prototype/high-fidelity/README.md`
+- `scripts/high-fidelity-qa.js`
+- `scripts/high-fidelity-static-qa.js`
+- `artifacts/high-fidelity/static-qa-report.json`
+- `artifacts/high-fidelity/visual-qa-report.json`
 
 ## Files To Read Next
-Restore and read these Canonical source files before drafting `docs/DESIGN.md`:
+Before continuing high-fidelity QA, read:
 
-1. `10_PORTFOLIO_AWARE_EVENT_TRIAGE_PRD_KO(1).md`
-2. `09_POST_PHASE_CONSISTENCY_AUDIT(1)(1).md`
-3. `04_PHASE4_PRD(1)(1).md`
-4. `05_PHASE5_UX_ARCHITECTURE(1)(1).md`
-5. `06_PHASE6_DESIGN_SPEC(1)(1).md`
-6. `07_PHASE7_PROTOTYPE_QA(3)(1).md`
-7. `FINAL_EXECUTIVE_REPORT(3)(1).md`
-8. `08_PHASE8_PORTFOLIO_CASE_STUDY(3)(1).md`
+1. `docs/CURRENT_STATE.md`
+2. `docs/WORKLOG.md`
+3. `docs/DESIGN.md`
+4. `docs/DESIGN_QA.md`
+5. `prototype/high-fidelity/index.html`
+6. `scripts/high-fidelity-qa.js`
 
 ## Next Exact Action
-Add or re-upload the named Canonical source files, then read them in priority order and update this file before drafting `docs/DESIGN.md`.
+Run `node scripts/high-fidelity-qa.js` in an environment with Playwright Chromium installed, inspect generated screenshots in `artifacts/high-fidelity/`, then fix any 360/390/320 viewport issues before final high-fidelity PASS.
 
 ## Last Verification
-- Repository metadata, root contents, recursive tree, recent commits, root README, and all current design-system files were inspected through the GitHub connector.
-- `docs/` returned 404 before this checkpoint, confirming it did not exist at recovery start.
-- Repository search did not find the named Canonical source files.
+- `node scripts/high-fidelity-static-qa.js` returned `PASS`.
+- `node scripts/high-fidelity-qa.js` returned `BLOCKED` and wrote `artifacts/high-fidelity/visual-qa-report.json`.
+- `npx playwright install chromium` was attempted and timed out repeatedly.
+- UI forbidden-copy search found no matches in `prototype/high-fidelity/index.html`; matches exist only inside QA regex patterns.
 
 ## Recovery Note
-If a new chat starts, read this file first, then `docs/WORKLOG.md`, then restore/read only the Canonical source files listed above before proceeding to `docs/DESIGN.md`.
+If a new chat starts, read this file first, then `WORKLOG.md`, then `docs/DESIGN.md`, `docs/DESIGN_QA.md`, and `prototype/high-fidelity/index.html`.

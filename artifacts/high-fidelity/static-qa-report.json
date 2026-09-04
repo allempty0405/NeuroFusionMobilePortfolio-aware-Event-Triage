@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "generatedAt": "2026-09-04T17:48:15.074Z",
+  "checks": {
+    "stateCoverage": true,
+    "tokenReuse": true,
+    "informationHierarchyLabels": true,
+    "captureMode": true,
+    "noForbiddenUiCopy": true,
+    "productionBoundaryCopy": true,
+    "accessibilityHooks": true
+  },
+  "missingStates": [],
+  "missingTokens": [],
+  "missingLabels": [],
+  "forbiddenMatches": [],
+  "browserVisualQa": "BLOCKED: Playwright browser binary unavailable in current environment",
+  "nextVisualCommand": "node scripts/high-fidelity-qa.js"
+}
