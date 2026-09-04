@@ -1,0 +1,186 @@
+:root {
+  /* Source note:
+     These tokens are a compact reference set derived from user-provided Valley AI
+     developer-tools CSS. They are for design practice, not an official Valley system. */
+
+  /* Primitive neutral */
+  --nf-white: #fff;
+  --nf-black: #000;
+  --nf-zinc-50: #fafafa;
+  --nf-zinc-100: #f4f4f5;
+  --nf-zinc-200: #e4e4e7;
+  --nf-zinc-300: #d4d4d8;
+  --nf-zinc-400: #a1a1aa;
+  --nf-zinc-500: #71717a;
+  --nf-zinc-600: #52525b;
+  --nf-zinc-700: #3f3f46;
+  --nf-zinc-800: #27272a;
+  --nf-zinc-900: #18181b;
+  --nf-zinc-950: #09090b;
+
+  /* Primitive accent */
+  --nf-green-50: #f0fdf4;
+  --nf-green-100: #dcfce7;
+  --nf-green-200: #bbf7d0;
+  --nf-green-300: #86efac;
+  --nf-green-400: #4ade80;
+  --nf-green-500: #22c55e;
+  --nf-green-600: #16a34a;
+  --nf-green-700: #15803d;
+  --nf-green-800: #166534;
+  --nf-green-900: #14532d;
+  --nf-teal-50: #f0fdfa;
+  --nf-teal-100: #ccfbf1;
+  --nf-teal-200: #99f6e4;
+  --nf-teal-500: #14b8a6;
+  --nf-teal-600: #0d9488;
+  --nf-sky-50: #f0f9ff;
+  --nf-sky-100: #e0f2fe;
+  --nf-sky-200: #bae6fd;
+  --nf-sky-500: #0ea5e9;
+  --nf-sky-600: #0284c7;
+  --nf-blue-50: #eff6ff;
+  --nf-blue-100: #dbeafe;
+  --nf-blue-500: #3b82f6;
+  --nf-blue-600: #2563eb;
+  --nf-orange-50: #fff7ed;
+  --nf-orange-100: #ffedd5;
+  --nf-orange-200: #fed7aa;
+  --nf-orange-500: #f97316;
+  --nf-orange-600: #ea580c;
+  --nf-red-50: #fef2f2;
+  --nf-red-100: #fee2e2;
+  --nf-red-200: #fecaca;
+  --nf-red-500: #ef4444;
+  --nf-red-600: #dc2626;
+
+  /* Semantic */
+  --nf-semantic-basic-50: var(--nf-zinc-50);
+  --nf-semantic-basic-100: var(--nf-zinc-100);
+  --nf-semantic-basic-200: var(--nf-zinc-200);
+  --nf-semantic-basic-300: var(--nf-zinc-300);
+  --nf-semantic-basic-400: var(--nf-zinc-400);
+  --nf-semantic-basic-500: var(--nf-zinc-500);
+  --nf-semantic-basic-600: var(--nf-zinc-600);
+  --nf-semantic-basic-700: var(--nf-zinc-700);
+  --nf-semantic-basic-800: var(--nf-zinc-800);
+  --nf-semantic-basic-900: var(--nf-zinc-900);
+  --nf-semantic-primary-50: var(--nf-green-50);
+  --nf-semantic-primary-100: var(--nf-green-100);
+  --nf-semantic-primary-500: var(--nf-green-500);
+  --nf-semantic-primary-600: var(--nf-green-600);
+  --nf-semantic-primary-700: var(--nf-green-700);
+  --nf-semantic-secondary-50: var(--nf-teal-50);
+  --nf-semantic-secondary-100: var(--nf-teal-100);
+  --nf-semantic-secondary-500: var(--nf-teal-500);
+  --nf-semantic-tertiary-50: var(--nf-sky-50);
+  --nf-semantic-tertiary-100: var(--nf-sky-100);
+  --nf-semantic-tertiary-500: var(--nf-sky-500);
+  --nf-semantic-info-50: var(--nf-blue-50);
+  --nf-semantic-info-100: var(--nf-blue-100);
+  --nf-semantic-info-500: var(--nf-blue-500);
+  --nf-semantic-warning-50: var(--nf-orange-50);
+  --nf-semantic-warning-100: var(--nf-orange-100);
+  --nf-semantic-warning-500: var(--nf-orange-500);
+  --nf-semantic-error-50: var(--nf-red-50);
+  --nf-semantic-error-100: var(--nf-red-100);
+  --nf-semantic-error-500: var(--nf-red-500);
+
+  /* Surfaces */
+  --nf-surface-dashboard-mobile: var(--nf-semantic-basic-100);
+  --nf-surface-dashboard-desktop: var(--nf-semantic-basic-50);
+  --nf-surface-card: var(--nf-white);
+  --nf-surface-card-muted: var(--nf-semantic-basic-50);
+  --nf-surface-card-header: var(--nf-semantic-basic-100);
+  --nf-surface-dropdown: var(--nf-white);
+  --nf-surface-skeleton: var(--nf-semantic-basic-200);
+  --nf-surface-toast: var(--nf-white);
+
+  /* Text */
+  --nf-text-title: var(--nf-semantic-basic-900);
+  --nf-text-strong: var(--nf-semantic-basic-800);
+  --nf-text-body: var(--nf-semantic-basic-700);
+  --nf-text-muted: var(--nf-semantic-basic-500);
+  --nf-text-disabled: var(--nf-semantic-basic-400);
+  --nf-text-primary: var(--nf-semantic-primary-700);
+  --nf-text-info: var(--nf-blue-600);
+  --nf-text-warning: var(--nf-orange-600);
+  --nf-text-error: var(--nf-red-600);
+
+  /* Border */
+  --nf-border-subtle: var(--nf-semantic-basic-100);
+  --nf-border-default: var(--nf-semantic-basic-200);
+  --nf-border-strong: var(--nf-semantic-basic-300);
+  --nf-border-focus: var(--nf-semantic-primary-500);
+  --nf-border-warning: var(--nf-semantic-warning-500);
+  --nf-border-error: var(--nf-semantic-error-500);
+
+  /* Typography */
+  --nf-font-sans: "Pretendard Variable", Pretendard, ui-sans-serif, system-ui, sans-serif;
+  --nf-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --nf-text-2xs: 0.625rem;
+  --nf-text-xs: 0.75rem;
+  --nf-text-sm: 0.875rem;
+  --nf-text-base: 1rem;
+  --nf-text-lg: 1.125rem;
+  --nf-text-xl: 1.25rem;
+  --nf-text-2xl: 1.5rem;
+  --nf-leading-2xs: 1rem;
+  --nf-leading-xs: 1rem;
+  --nf-leading-sm: 1.25rem;
+  --nf-leading-base: 1.5rem;
+  --nf-leading-lg: 1.75rem;
+  --nf-leading-xl: 1.75rem;
+  --nf-leading-2xl: 2rem;
+  --nf-weight-normal: 400;
+  --nf-weight-medium: 500;
+  --nf-weight-semibold: 600;
+  --nf-weight-bold: 700;
+
+  /* Spacing */
+  --nf-space-1: 0.25rem;
+  --nf-space-2: 0.5rem;
+  --nf-space-3: 0.75rem;
+  --nf-space-4: 1rem;
+  --nf-space-5: 1.25rem;
+  --nf-space-6: 1.5rem;
+  --nf-space-8: 2rem;
+
+  /* Radius and shadow */
+  --nf-radius-xs: 0.125rem;
+  --nf-radius-base: 0.188rem;
+  --nf-radius-sm: 0.25rem;
+  --nf-radius-md: 0.375rem;
+  --nf-radius-lg: 0.5rem;
+  --nf-radius-xl: 0.75rem;
+  --nf-radius-2xl: 1rem;
+  --nf-shadow-card: 0 3px 5px #0000000a;
+
+  /* Layout */
+  --nf-mobile-page-padding: 1rem;
+  --nf-mobile-card-padding: 1rem;
+  --nf-min-touch-target: 44px;
+  --nf-gnb-height-reference: 54px;
+
+  /* Outcome surfaces */
+  --nf-outcome-check-bg: var(--nf-semantic-warning-50);
+  --nf-outcome-check-border: var(--nf-semantic-warning-500);
+  --nf-outcome-check-text: var(--nf-text-warning);
+  --nf-outcome-no-check-bg: var(--nf-semantic-basic-50);
+  --nf-outcome-no-check-border: var(--nf-semantic-basic-200);
+  --nf-outcome-no-check-text: var(--nf-text-body);
+  --nf-outcome-insufficient-bg: var(--nf-semantic-warning-50);
+  --nf-outcome-insufficient-border: var(--nf-semantic-warning-500);
+  --nf-outcome-insufficient-text: var(--nf-text-warning);
+}
+
+@media (prefers-reduced-motion: reduce), (update: slow) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
