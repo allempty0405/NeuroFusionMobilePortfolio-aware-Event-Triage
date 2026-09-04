@@ -1,5 +1,5 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-05 03:12 KST
+Last Updated: 2026-09-05 03:27 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -9,7 +9,7 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA remains blocked by missing Playwright Chromium binary. A retry with extended Playwright download timeout still failed because the CDN returned truncated/502 responses.
+High-fidelity HTML frame set created; static QA passed; browser visual QA remains blocked by missing Playwright Chromium binary. Additional retries confirmed that both Playwright headless-shell and full Chromium downloads return truncated CDN responses, and apt-based system Chromium install is unavailable in this environment.
 
 ## Current Gate
 - RECOVERY: PASS
@@ -58,6 +58,9 @@ Convert approved `docs/DESIGN.md` into high-fidelity mobile frames and verify re
 - Confirmed no usable Chromium/Chrome binary under `/workspace`, the Codex primary runtime, `/usr`, or `/opt`.
 - Re-ran `node scripts/high-fidelity-qa.js`: `BLOCKED`, screenshots `0`.
 - Re-ran `node scripts/high-fidelity-static-qa.js`: `PASS`.
+- Re-attempted `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium`; result remained `BLOCKED` because the full Chromium zip downloaded as `0 MiB` / truncated.
+- Attempted `apt-get update` to evaluate system Chromium installation; result `BLOCKED` by apt method permission errors in the current container.
+- Re-ran final QA scripts after the additional install attempts: visual QA `BLOCKED` with screenshots `0`; static QA `PASS`.
 
 ## Locked Decisions
 - Mobile role: `Triage Layer`.
@@ -135,6 +138,8 @@ Run `node scripts/high-fidelity-qa.js` in an environment with Playwright Chromiu
 - `node scripts/high-fidelity-qa.js` returned `BLOCKED` and wrote `artifacts/high-fidelity/visual-qa-report.json`.
 - `npx playwright install chromium --only-shell` timed out repeatedly.
 - `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium --only-shell` failed with truncated zip / `502 Bad Gateway` responses.
+- `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium` also failed with truncated zip responses.
+- `apt-get update` failed due container apt method permission errors; system Chromium could not be installed through apt.
 - No local system Chromium/Chrome executable was found.
 - UI forbidden-copy search found no matches in `prototype/high-fidelity/index.html`; matches exist only inside QA regex patterns.
 - GitHub remote `main` was previously updated and verified at `66997720ae646c13d17e830b5c1f0e282da854b8`; local and remote file trees matched before this continuation's new QA-blocker report refresh.

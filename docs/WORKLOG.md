@@ -550,3 +550,80 @@ HIGH-FIDELITY FRAME SET remains `CREATED`; STATIC QA remains `PASS`; RESPONSIVE 
 
 ### Next Action
 Run the same QA in an environment where Playwright Chromium can be installed or a compatible system browser is available, then inspect generated screenshots before changing the high-fidelity HTML or updating the final gate.
+
+---
+
+## 2026-09-05 03:27 KST — Visual QA Continuation: Full Chromium and Apt Route Check
+
+### Goal
+Continue the browser visual QA blocker resolution by trying the non-shell Playwright Chromium install path and checking whether system Chromium can be installed through apt, then rerun the QA scripts and update recovery files with factual results.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/WORKLOG.md`
+- FACT: `docs/DESIGN.md`
+- FACT: `docs/DESIGN_QA.md`
+- FACT: `prototype/high-fidelity/index.html`
+- FACT: `scripts/high-fidelity-qa.js`
+- FACT: `scripts/high-fidelity-static-qa.js`
+- FACT: `artifacts/high-fidelity/static-qa-report.json`
+- FACT: `artifacts/high-fidelity/visual-qa-report.json`
+
+### Commands Run
+- FACT: `git fetch origin`
+- FACT: `git status --short --branch`
+- FACT: `git rev-list --left-right --count origin/main...HEAD`
+- FACT: `git diff HEAD origin/main -- .`
+- FACT: `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium`
+- FACT: `apt-get update`
+- FACT: `node scripts/high-fidelity-qa.js`
+- FACT: `node scripts/high-fidelity-static-qa.js`
+
+### Screenshots Generated
+- FACT: `0`
+- BLOCKED: Playwright Chromium binary remained unavailable.
+
+### Observations
+- FACT: Local branch reported `main...origin/main [ahead 7, behind 5]`.
+- FACT: `git diff HEAD origin/main -- .` returned no file diff, so local and remote file contents were aligned before this continuation.
+- FACT: `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium` attempted the full Chromium zip but received `0 MiB` / truncated zip responses.
+- FACT: `apt-get update` failed with apt method permission errors in the current container.
+- FACT: No rendered PNG screenshots were created.
+- FACT: `node scripts/high-fidelity-qa.js` returned `BLOCKED` and exited with code `2`.
+- FACT: `node scripts/high-fidelity-static-qa.js` returned `PASS` and exited with code `0`.
+
+### Issues
+- BLOCKER: Chromium cannot be downloaded through Playwright CDN in this environment.
+- BLOCKER: System Chromium cannot be prepared through apt in this environment.
+- MAJOR: 320/360/390 viewport screenshot verification remains incomplete.
+
+### Decisions
+- DECISION: Keep `RESPONSIVE / VISUAL QA: BLOCKED`.
+- DECISION: Keep `ACCESSIBILITY VISUAL QA: PARTIAL`.
+- DECISION: Do not change `prototype/high-fidelity/index.html` without screenshot evidence.
+- DECISION: Keep Production `BLOCKED`.
+
+### Changes Made
+- Updated `artifacts/high-fidelity/visual-qa-report.json`.
+- Updated `artifacts/high-fidelity/static-qa-report.json`.
+- Updated `docs/CURRENT_STATE.md`.
+- Updated `docs/DESIGN_QA.md`.
+- Appended this worklog entry.
+
+### QA Performed
+- FACT: Browser visual QA: `BLOCKED`.
+- FACT: Static QA: `PASS`.
+- FACT: Screenshot count: `0`.
+
+### Result
+The blocker is confirmed as an environment/browser-availability blocker, not an observed UI defect. High-fidelity frame set remains created, but browser visual QA cannot be completed in this container.
+
+### Remaining Issues
+- BLOCKER: Need a Chromium-capable environment.
+- MAJOR: Actual screenshot review for 320x800, 360x800, and 390x844 remains incomplete.
+- NOT_TESTED: Screen reader manual test.
+- NOT_TESTED: Real App/Web back navigation.
+- BLOCKED: Production data, field, logic, freshness, handoff, API integration, validation, and acceptance criteria.
+
+### Next Action
+Run `node scripts/high-fidelity-qa.js` in an environment with an installed Playwright Chromium binary or compatible system Chromium, then visually inspect generated PNGs before any HTML changes or final gate upgrade.

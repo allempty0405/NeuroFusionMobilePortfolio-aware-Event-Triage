@@ -243,7 +243,7 @@ PRODUCTION: BLOCKED
 
 ## High-fidelity Visual QA Continuation
 
-Date: 2026-09-05 03:12 KST
+Date: 2026-09-05 03:27 KST
 Target: `prototype/high-fidelity/index.html`
 
 ### Browser Environment
@@ -255,6 +255,8 @@ Target: `prototype/high-fidelity/index.html`
 | System Chromium / Chrome | NOT_FOUND | No executable found under `/workspace`, Codex primary runtime, `/usr`, or `/opt`. |
 | Browser install attempt | BLOCKED | `npx playwright install chromium --only-shell` timed out repeatedly. |
 | Extended-timeout install attempt | BLOCKED | `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium --only-shell` received truncated zip / `502 Bad Gateway` responses. |
+| Full Chromium install attempt | BLOCKED | `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium` received `0 MiB` / truncated zip responses. |
+| System package route | BLOCKED | `apt-get update` failed due container apt method permission errors before Chromium package install could be evaluated. |
 
 ### Screenshot Count
 
@@ -302,6 +304,13 @@ Screenshots: 0
 
 node scripts/high-fidelity-static-qa.js
 Result: PASS
+```
+
+Latest execution:
+
+```text
+visual_exit=2
+static_exit=0
 ```
 
 ### Issues
