@@ -398,3 +398,70 @@ STATIC QA: PASS. BROWSER VISUAL QA: BLOCKED. PRODUCTION: BLOCKED.
 
 ### Next Action
 Run `npx playwright install chromium --only-shell` in a network-enabled environment, then run `node scripts/high-fidelity-qa.js`, inspect generated screenshots, update QA docs, commit, and push.
+
+---
+
+## 2026-09-05 02:53 KST — Remote Persistence via GitHub Connector
+
+### Goal
+Persist the committed high-fidelity frame set, QA scripts, QA reports, and recovery documents to the GitHub repository after local shell `git push` could not authenticate.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/WORKLOG.md`
+- FACT: Local `git status --short --branch`
+- FACT: Local `git log --oneline --decorate -5`
+- FACT: Local `git diff --name-status origin/main...HEAD`
+- FACT: Remote GitHub `refs/heads/main`
+- FACT: Remote GitHub parent commit and base tree
+
+### Commands Run
+- FACT: `git status --short --branch`
+- FACT: `git log --oneline --decorate -5`
+- FACT: `git diff --name-status origin/main...HEAD`
+- FACT: `git push origin main`
+
+### Observations
+- FACT: Local shell `git push origin main` failed because HTTPS credentials were unavailable: `could not read Username for 'https://github.com'`.
+- FACT: Remote `main` was at `72df54a943e5bd56433a4c511fadd40d8b804b5b` before connector upload.
+- FACT: Local branch had three commits not present on `origin/main` before connector upload.
+- FACT: GitHub connector provided Git Data API operations for blob, tree, commit, and ref updates.
+
+### Issues
+- BLOCKED: Direct shell push was not possible without GitHub credentials.
+- OBSERVATION: Browser visual QA remained blocked by missing Playwright Chromium binary; no screenshot PASS was claimed.
+
+### Decisions
+- DECISION: Use GitHub Git Data API to create one remote commit from the local high-fidelity file contents instead of making many file-by-file commits.
+- DECISION: Do not force-update `main`; update ref only as a fast-forward from the current remote parent.
+- DECISION: Keep high-fidelity visual/responsive QA blocked until real browser screenshots exist.
+
+### Changes Made
+- FACT: Created GitHub blobs for 18 local changed files.
+- FACT: Created a GitHub tree based on remote base tree `4f32dcd3eb4ea5a9bad3ce908edd08471dd110c1`.
+- FACT: Created remote commit `6a1eafb0436f0f1ec47d3dac387b9e8bceb4361a` with message `Add high-fidelity mobile frame set and QA blocker report`.
+- FACT: Updated remote `main` to `6a1eafb0436f0f1ec47d3dac387b9e8bceb4361a` with `force: false`.
+- FACT: Updated `docs/CURRENT_STATE.md` locally to record the remote persistence result.
+- FACT: Appended this worklog entry.
+
+### Files Changed
+- `docs/CURRENT_STATE.md`
+- `docs/WORKLOG.md`
+
+### QA Performed
+- FACT: Remote `main` was fetched after ref update and verified at `6a1eafb0436f0f1ec47d3dac387b9e8bceb4361a`.
+- FACT: This persistence step did not run browser screenshot QA.
+
+### Result
+Remote GitHub repository now contains the high-fidelity frame set, static QA report, visual QA blocker report, recovery docs, source docs, prototype HTML, and QA scripts as of connector commit `6a1eafb0436f0f1ec47d3dac387b9e8bceb4361a`.
+
+### Remaining Issues
+- BLOCKER: Playwright Chromium browser binary is still required for screenshot QA.
+- MAJOR: 360x800, 390x844, and 320x800 visual verification remains incomplete.
+- PARTIAL: Accessibility visual QA remains structural only.
+- NOT_TESTED: Screen reader manual test.
+- NOT_TESTED: Real App/Web back navigation.
+- BLOCKED: Production data, field, logic, freshness, handoff, API integration, validation, and acceptance criteria.
+
+### Next Action
+In a Playwright Chromium-capable environment, run `node scripts/high-fidelity-qa.js`, inspect generated screenshots in `artifacts/high-fidelity/`, fix any viewport issues, then update `docs/DESIGN_QA.md`, `docs/CURRENT_STATE.md`, and `docs/WORKLOG.md` with screenshot evidence.
