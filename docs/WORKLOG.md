@@ -891,13 +891,13 @@ Complete Chromium-rendered visual QA through GitHub Actions, inspect generated s
 ### Commands Run
 - FACT: GitHub Actions workflow `High-fidelity Visual QA`
 - FACT: Artifact download for `9965214345`
-- FACT: Local screenshot inventory and contact sheet generation
+- FACT: Local screenshot inventory and contact sheet generation for inspection only
 - FACT: Visual inspection with rendered screenshots
 
 ### Screenshots Generated
 - FACT: 34 browser-rendered state screenshots.
-- FACT: 3 contact sheets.
-- FACT: Screenshots persisted under `artifacts/high-fidelity/`.
+- FACT: Contact sheets were generated locally for visual inspection only.
+- FACT: 34 original state screenshots were persisted under `artifacts/high-fidelity/`.
 
 ### Observations
 - FACT: GitHub Actions run `33952279661` completed with conclusion `success`.
@@ -905,7 +905,7 @@ Complete Chromium-rendered visual QA through GitHub Actions, inspect generated s
 - FACT: `visual-qa-report.json` recorded screenshots `34`, blockers `0`, and undersized controls `0`.
 - FACT: Korean text rendered legibly after installing `fonts-noto-cjk`.
 - OBSERVATION: 320x800 stress frames did not show horizontal overflow, ticker collision, badge clipping, or source/timestamp collision.
-- OBSERVATION: 360x800 and 390x844 full state contact sheets preserved the locked visual order: `Event -> Asset -> Context -> Evidence -> Outcome -> Handoff`.
+- OBSERVATION: 360x800 and 390x844 full state screenshot review preserved the locked visual order: `Event -> Asset -> Context -> Evidence -> Outcome -> Handoff`.
 - OBSERVATION: Sticky CTA did not cover the Evidence section.
 - OBSERVATION: Outcome surfaces remained copy-led and did not visually read as buy/sell/hold, risk, safety, or portfolio impact scoring.
 

@@ -9,7 +9,7 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus contact sheets and PASS QA reports. No Product/Design HTML change was required from screenshot evidence.
+High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus PASS QA reports. No Product/Design HTML change was required from screenshot evidence.
 
 ## Current Gate
 - RECOVERY: PASS
@@ -79,7 +79,7 @@ Convert approved `docs/DESIGN.md` into high-fidelity mobile frames and verify re
 - Downloaded artifact `9965214345` and inspected rendered screenshots.
 - CI `visual-qa-report.json`: `PASS`, screenshots `34`, blockers `0`, undersized controls `0`.
 - CI `static-qa-report.json`: `PASS`.
-- Persisted 34 PNG screenshots, 3 contact sheets, and PASS report JSON files under `artifacts/high-fidelity/`.
+- Persisted 34 PNG screenshots and PASS report JSON files under `artifacts/high-fidelity/`.
 - Visual review found no BLOCKER or MAJOR issue in first viewport hierarchy, title/ticker/badge/source wrapping, sticky CTA overlap, financial safety, or non-color accessibility cues.
 
 ## Locked Decisions

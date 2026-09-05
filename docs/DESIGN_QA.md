@@ -454,9 +454,7 @@ Artifact: `9965214345`
 | 360x800 | 15 | 15 | PASS |
 | 390x844 | 15 | 15 | PASS |
 | 320x800 stress | 4 | 4 | PASS |
-| Contact sheets | 3 | 3 | PASS |
-
-Total persisted PNG evidence: `37` files.
+Total persisted PNG evidence: `34` files.
 
 ### Automated QA Result
 
