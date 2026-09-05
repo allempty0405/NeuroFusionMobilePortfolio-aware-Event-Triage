@@ -627,3 +627,86 @@ The blocker is confirmed as an environment/browser-availability blocker, not an 
 
 ### Next Action
 Run `node scripts/high-fidelity-qa.js` in an environment with an installed Playwright Chromium binary or compatible system Chromium, then visually inspect generated PNGs before any HTML changes or final gate upgrade.
+
+---
+
+## 2026-09-05 13:46 KST — Visual QA Continuation: Apt Sandbox Override and Playwright 1.63 Retry
+
+### Goal
+Continue resolving the Chromium environment blocker without changing product UI, verify whether apt can provide a system Chromium after sandbox override, retry Playwright browser installation, and refresh QA reports.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/WORKLOG.md`
+- FACT: `docs/DESIGN.md`
+- FACT: `docs/DESIGN_QA.md`
+- FACT: `prototype/high-fidelity/index.html`
+- FACT: `scripts/high-fidelity-qa.js`
+- FACT: `scripts/high-fidelity-static-qa.js`
+- FACT: `artifacts/high-fidelity/static-qa-report.json`
+- FACT: `artifacts/high-fidelity/visual-qa-report.json`
+
+### Commands Run
+- FACT: `git fetch origin`
+- FACT: `git status --short --branch`
+- FACT: `git rev-list --left-right --count origin/main...HEAD`
+- FACT: `git diff HEAD origin/main -- .`
+- FACT: `apt-get -o APT::Sandbox::User=root update`
+- FACT: `apt-cache policy chromium chromium-browser google-chrome-stable`
+- FACT: `apt-cache search chromium`
+- FACT: `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium --only-shell`
+- FACT: `node scripts/high-fidelity-qa.js`
+- FACT: `node scripts/high-fidelity-static-qa.js`
+
+### Screenshots Generated
+- FACT: `0`
+- BLOCKED: Chromium binary remained unavailable.
+
+### Observations
+- FACT: Local branch reported `main...origin/main [ahead 8, behind 6]`.
+- FACT: `origin/main` was `3e9197569c119d094e2d9a6fc18b2c1fb0e40ab7`.
+- FACT: `git diff HEAD origin/main -- .` returned no file diff before this continuation.
+- FACT: `apt-get -o APT::Sandbox::User=root update` completed and read package lists.
+- FACT: `apt-cache policy chromium` returned no deb candidate.
+- FACT: `apt-cache policy chromium-browser` returned only `2:1snap1-0ubuntu2`, a transitional package to the chromium snap.
+- FACT: No usable system Chromium deb install path was identified.
+- FACT: `npx` attempted temporary Playwright `1.63.0` and Chromium headless shell `v1243`.
+- FACT: Playwright CDN responses still downloaded as `0 MiB` / truncated zip.
+- FACT: `node scripts/high-fidelity-qa.js` returned `BLOCKED` and exited with code `2`.
+- FACT: `node scripts/high-fidelity-static-qa.js` returned `PASS` and exited with code `0`.
+
+### Issues
+- BLOCKER: Playwright Chromium download remains unusable in this environment.
+- BLOCKER: Ubuntu apt does not provide a usable Chromium deb candidate; the available `chromium-browser` path is a snap transition package.
+- MAJOR: Screenshot QA for 320/360/390 remains incomplete.
+
+### Decisions
+- DECISION: Do not install snap-based Chromium in this container as a visual QA dependency.
+- DECISION: Do not modify `prototype/high-fidelity/index.html` without screenshot evidence.
+- DECISION: Keep visual/responsive QA `BLOCKED`.
+- DECISION: Keep Production `BLOCKED`.
+
+### Changes Made
+- Updated `artifacts/high-fidelity/visual-qa-report.json`.
+- Updated `artifacts/high-fidelity/static-qa-report.json`.
+- Updated `docs/CURRENT_STATE.md`.
+- Updated `docs/DESIGN_QA.md`.
+- Appended this worklog entry.
+
+### QA Performed
+- FACT: Browser visual QA: `BLOCKED`.
+- FACT: Static QA: `PASS`.
+- FACT: Screenshot count: `0`.
+
+### Result
+Chromium remains unavailable in this environment. The high-fidelity frame set is unchanged; no UI defect was observed because screenshots could not be generated.
+
+### Remaining Issues
+- BLOCKER: Need a Chromium-capable environment or a compatible installed browser executable path.
+- MAJOR: Actual visual review for 320x800, 360x800, and 390x844 remains incomplete.
+- NOT_TESTED: Screen reader manual test.
+- NOT_TESTED: Real App/Web back navigation.
+- BLOCKED: Production data, field, logic, freshness, handoff, API integration, validation, and acceptance criteria.
+
+### Next Action
+Run `node scripts/high-fidelity-qa.js` in an environment with a working Playwright Chromium binary or add a browser-launch-only `executablePath` fallback if a compatible system browser exists.

@@ -243,7 +243,7 @@ PRODUCTION: BLOCKED
 
 ## High-fidelity Visual QA Continuation
 
-Date: 2026-09-05 03:27 KST
+Date: 2026-09-05 13:46 KST
 Target: `prototype/high-fidelity/index.html`
 
 ### Browser Environment
@@ -256,7 +256,8 @@ Target: `prototype/high-fidelity/index.html`
 | Browser install attempt | BLOCKED | `npx playwright install chromium --only-shell` timed out repeatedly. |
 | Extended-timeout install attempt | BLOCKED | `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium --only-shell` received truncated zip / `502 Bad Gateway` responses. |
 | Full Chromium install attempt | BLOCKED | `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium` received `0 MiB` / truncated zip responses. |
-| System package route | BLOCKED | `apt-get update` failed due container apt method permission errors before Chromium package install could be evaluated. |
+| System package route | BLOCKED | `apt-get update` failed without sandbox override; `apt-get -o APT::Sandbox::User=root update` completed, but `chromium` had no deb candidate and `chromium-browser` was only a snap transitional package. |
+| Temporary Playwright 1.63 route | BLOCKED | `npx` tried Playwright `1.63.0` and Chromium headless shell `v1243`; CDN still returned `0 MiB` / truncated zip responses. |
 
 ### Screenshot Count
 
