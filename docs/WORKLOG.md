@@ -782,3 +782,94 @@ The project now has a CI execution path for high-fidelity visual QA. Browser scr
 
 ### Next Action
 Push the workflow to remote `main`, run the `High-fidelity Visual QA` GitHub Actions workflow, download the `high-fidelity-visual-qa` artifact, and inspect the generated PNG screenshots before any HTML changes or gate upgrade.
+
+---
+
+## 2026-09-05 16:18 KST — Visual QA CI Run 1 and Infrastructure Fixes
+
+### Goal
+Inspect the first GitHub Actions visual QA run, determine whether failure is a Product/UI defect or QA infrastructure issue, then apply only infrastructure-level fixes.
+
+### Sources Read
+- FACT: `.github/workflows/high-fidelity-visual-qa.yml`
+- FACT: `scripts/high-fidelity-qa.js`
+- FACT: `scripts/high-fidelity-static-qa.js`
+- FACT: CI workflow run `33951946027`
+- FACT: CI artifact `9965108437`
+- FACT: Downloaded CI screenshots from artifact `high-fidelity-visual-qa`
+- FACT: Downloaded CI `visual-qa-report.json`
+
+### Commands Run
+- FACT: `git push origin main`
+- FACT: GitHub connector Git Data commit/update-ref for `934ac062b9268881c22e849a09407a6447a79f86`
+- FACT: GitHub Actions run inspection for run `33951946027`
+- FACT: Artifact download and local unzip to inspect CI screenshots
+- FACT: `node --check scripts/high-fidelity-qa.js`
+- FACT: `node --check scripts/high-fidelity-static-qa.js`
+- FACT: `node scripts/high-fidelity-static-qa.js`
+- FACT: `node scripts/high-fidelity-qa.js`
+
+### Screenshots Generated
+- FACT: CI generated 34 PNG screenshots.
+- OBSERVATION: First screenshot artifact was not valid for final visual QA because Korean text rendered as missing glyph boxes.
+
+### Observations
+- FACT: Normal shell `git push` failed again because GitHub HTTPS credentials are unavailable in this container.
+- FACT: Remote `main` was updated through GitHub connector commit `934ac062b9268881c22e849a09407a6447a79f86`.
+- FACT: GitHub Actions run `33951946027` installed the Playwright package and Chromium shell successfully.
+- FACT: GitHub Actions run `33951946027` uploaded artifact `9965108437`.
+- FACT: Browser visual QA generated 34 screenshots.
+- OBSERVATION: Korean text appeared as missing glyph boxes in the CI screenshots.
+- OBSERVATION: The QA script recorded hidden capture-mode state buttons as `0x0` controls.
+- OBSERVATION: The QA script required complete-state labels for loading state, including `Portfolio / Attention Context` and `Relevance Outcome`.
+- INTERPRETATION: These are QA infrastructure issues, not confirmed Product UI defects.
+
+### Issues
+- MAJOR: CI screenshot font rendering is invalid without CJK font support.
+- MAJOR: QA script creates false positives from hidden controls.
+- MAJOR: QA script applies complete-state label requirements to loading state.
+- NOT_CONFIRMED: No visual Product/UI BLOCKER was confirmed because text rendering was invalid.
+
+### Decisions
+- DECISION: Do not modify `prototype/high-fidelity/index.html`.
+- DECISION: Install `fonts-noto-cjk` in the workflow before browser visual QA.
+- DECISION: Ignore hidden controls in button-size measurements.
+- DECISION: Use loading-state-specific required labels in visual QA.
+- DECISION: Keep final visual QA gate unresolved until the revised CI workflow runs and the new screenshots are inspected.
+
+### Changes Made
+- Updated `.github/workflows/high-fidelity-visual-qa.yml`.
+- Updated `scripts/high-fidelity-qa.js`.
+- Updated `artifacts/high-fidelity/static-qa-report.json`.
+- Updated `artifacts/high-fidelity/visual-qa-report.json`.
+- Updated `docs/CURRENT_STATE.md`.
+- Updated `docs/DESIGN_QA.md`.
+- Appended this worklog entry.
+
+### Files Changed
+- `.github/workflows/high-fidelity-visual-qa.yml`
+- `scripts/high-fidelity-qa.js`
+- `artifacts/high-fidelity/static-qa-report.json`
+- `artifacts/high-fidelity/visual-qa-report.json`
+- `docs/CURRENT_STATE.md`
+- `docs/DESIGN_QA.md`
+- `docs/WORKLOG.md`
+
+### QA Performed
+- FACT: `node --check scripts/high-fidelity-qa.js` returned `PASS`.
+- FACT: `node --check scripts/high-fidelity-static-qa.js` returned `PASS`.
+- FACT: `node scripts/high-fidelity-static-qa.js` returned `PASS`.
+- FACT: Local `node scripts/high-fidelity-qa.js` returned `BLOCKED` because local Chromium is unavailable.
+
+### Result
+The environment blocker has been narrowed. GitHub Actions can install Chromium and generate screenshots, but the workflow needed CJK font support and the visual QA script needed capture/loading-state adjustments. Revised CI execution is pending.
+
+### Remaining Issues
+- BLOCKED: Revised GitHub Actions run has not yet completed.
+- MAJOR: Final 320/360/390 visual review remains incomplete.
+- NOT_TESTED: Screen reader manual test.
+- NOT_TESTED: Real App/Web back navigation.
+- BLOCKED: Production data, field, logic, freshness, handoff, API integration, validation, and acceptance criteria.
+
+### Next Action
+Push the workflow/script fixes, wait for the new GitHub Actions run, download the updated artifact, and inspect readable screenshots before changing Product HTML or upgrading the final gate.

@@ -390,3 +390,42 @@ After the workflow generates the `high-fidelity-visual-qa` artifact, inspect PNG
 - Sticky CTA overlap.
 - Financial safety interpretation.
 - Non-color accessibility cues.
+
+### First CI Run Result
+
+Date: 2026-09-05 16:18 KST
+Run: `33951946027`
+Head SHA: `934ac062b9268881c22e849a09407a6447a79f86`
+Artifact: `9965108437`
+
+| Area | Result | Evidence / Note |
+|---|---|---|
+| Chromium install | PASS | GitHub Actions installed Playwright Chromium shell. |
+| Screenshot generation | PARTIAL | 34 PNG files were generated and uploaded. |
+| Korean text rendering | REVISE | Screenshots showed missing glyph boxes for Korean text because CJK fonts were absent. |
+| QA script result | REVISE | Loading states were treated as missing complete-state labels; hidden capture controls were measured as `0x0`. |
+| Product HTML defects | NOT_CONFIRMED | No product UI fix was made because the first screenshot set was not valid for final visual judgment. |
+
+### Infrastructure Fixes Applied
+
+| File | Change | Reason |
+|---|---|---|
+| `.github/workflows/high-fidelity-visual-qa.yml` | Install `fonts-noto-cjk` before browser visual QA. | Required for Korean screenshot readability in GitHub Actions. |
+| `scripts/high-fidelity-qa.js` | Ignore hidden controls when measuring button sizes. | Capture-mode review controls should not create false accessibility failures. |
+| `scripts/high-fidelity-qa.js` | Use loading-state-specific required labels. | Loading intentionally avoids definitive Outcome presentation. |
+
+### Regression After Infrastructure Fix
+
+```text
+node --check scripts/high-fidelity-qa.js
+Result: PASS
+
+node --check scripts/high-fidelity-static-qa.js
+Result: PASS
+
+node scripts/high-fidelity-static-qa.js
+Result: PASS
+
+node scripts/high-fidelity-qa.js
+Result: BLOCKED locally because Chromium remains unavailable in this container.
+```

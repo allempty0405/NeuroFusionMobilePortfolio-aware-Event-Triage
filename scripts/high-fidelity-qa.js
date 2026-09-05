@@ -64,18 +64,28 @@ function fail(message) {
       await page.goto(`${fileUrl}?state=${state}&capture=1`, { waitUntil: "networkidle" });
       await page.screenshot({ path: path.join(outputDir, `${viewport.name}-${state}.png`), fullPage: true });
 
-      const result = await page.evaluate(() => {
+      const result = await page.evaluate((currentState) => {
         const body = document.body;
-        const requiredLabels = [
+        const completeStateLabels = [
           "Event Context",
           "Asset Relationship",
           "Portfolio / Attention Context",
           "Relationship Evidence + Trust",
           "Relevance Outcome"
         ];
+        const loadingStateLabels = [
+          "Event Context",
+          "Asset Relationship",
+          "Relationship Evidence + Trust"
+        ];
+        const requiredLabels = currentState === "loading" ? loadingStateLabels : completeStateLabels;
         const text = body.innerText;
         const missingLabels = requiredLabels.filter((label) => !text.includes(label));
-        const controls = Array.from(document.querySelectorAll("button"));
+        const controls = Array.from(document.querySelectorAll("button")).filter((control) => {
+          const rect = control.getBoundingClientRect();
+          const style = window.getComputedStyle(control);
+          return style.display !== "none" && style.visibility !== "hidden" && rect.width > 0 && rect.height > 0;
+        });
         const undersizedControls = controls
           .map((control) => {
             const rect = control.getBoundingClientRect();
@@ -96,7 +106,7 @@ function fail(message) {
           scrollWidth: document.documentElement.scrollWidth,
           innerWidth: window.innerWidth
         };
-      });
+      }, state);
 
       results.push({ viewport: viewport.name, state, ...result });
     }

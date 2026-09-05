@@ -1,5 +1,5 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-05 16:09 KST
+Last Updated: 2026-09-05 16:18 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -9,16 +9,16 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA remains blocked in the local container by missing Playwright Chromium binary. Additional retries confirmed that Playwright Chromium downloads return truncated CDN responses; apt package lists can update with `APT::Sandbox::User=root`, but Ubuntu noble only exposes the snap transitional `chromium-browser` package, not a usable deb Chromium browser for this container. A GitHub Actions workflow now exists to run static QA, install Playwright Chromium shell, run browser visual QA, and upload screenshot/report artifacts in a Chromium-capable CI environment.
+High-fidelity HTML frame set created; static QA passed; browser visual QA remains blocked in the local container by missing Playwright Chromium binary. A GitHub Actions workflow exists and confirmed that Chromium can run in CI, but the first CI visual QA run required infrastructure fixes: Korean text rendered as missing glyph boxes because CJK fonts were absent, and the QA script treated hidden capture-mode state controls plus loading-state label omissions as failures. The workflow and QA script have been revised; a second CI run is pending.
 
 ## Current Gate
 - RECOVERY: PASS
 - CANONICAL SOURCE RESTORE: PASS
 - DESIGN SPEC: PASS
 - HIGH-FIDELITY FRAME SET: CREATED
-- HIGH-FIDELITY DESIGN: REVISE — visual QA blocked
+- HIGH-FIDELITY DESIGN: REVISE — CI visual QA rerun pending
 - DESIGN SYSTEM ALIGNMENT: PASS
-- RESPONSIVE QA: BLOCKED — browser screenshot unavailable
+- RESPONSIVE QA: REVISE — first CI screenshots generated, but CJK font support and QA script fixes required
 - ACCESSIBILITY VISUAL QA: PARTIAL
 - MOCK PROTOTYPE: PASS FOR STATIC STRUCTURE
 - PRODUCTION: BLOCKED
@@ -66,6 +66,15 @@ Convert approved `docs/DESIGN.md` into high-fidelity mobile frames and verify re
 - Re-ran QA scripts: visual QA `BLOCKED` with screenshots `0`; static QA `PASS`.
 - Added `.github/workflows/high-fidelity-visual-qa.yml` to run high-fidelity static QA, install Playwright Chromium shell, run browser visual QA, and upload `artifacts/high-fidelity/*.png` plus QA reports.
 - Re-ran local static high-fidelity QA after adding the workflow: `PASS`.
+- First GitHub Actions run `33951946027` generated 34 PNG screenshots and uploaded artifact `9965108437`, but concluded `failure`.
+- OBSERVATION: GitHub Actions installed Playwright Chromium shell successfully; the blocker moved from browser availability to QA infrastructure.
+- OBSERVATION: Downloaded CI screenshots showed Korean text rendered as missing glyph boxes, making visual inspection invalid until CJK fonts are installed.
+- OBSERVATION: `visual-qa-report.json` marked loading states as missing `Portfolio / Attention Context` and `Relevance Outcome`; this conflicts with the design decision that loading should not expose a definitive outcome.
+- Updated `.github/workflows/high-fidelity-visual-qa.yml` to install `fonts-noto-cjk`.
+- Updated `scripts/high-fidelity-qa.js` to ignore hidden controls in capture mode and apply loading-state label expectations.
+- Re-ran local `node --check` for both QA scripts: `PASS`.
+- Re-ran local static QA: `PASS`.
+- Re-ran local browser visual QA: still `BLOCKED` locally because Chromium is unavailable.
 
 ## Locked Decisions
 - Mobile role: `Triage Layer`.
@@ -107,8 +116,9 @@ Event Context
 - Production Acceptance Criteria
 
 ## Open Issues
-- BLOCKER: Browser visual QA could not run because Playwright Chromium binary is unavailable.
-- MAJOR: 360x800, 390x844, and 320px screenshot verification remains incomplete.
+- BLOCKER: Local browser visual QA cannot run because Playwright Chromium binary is unavailable in this container.
+- MAJOR: First CI visual QA generated screenshots, but they require rerun after CJK font and QA script fixes.
+- MAJOR: 360x800, 390x844, and 320px screenshot verification remains incomplete until revised CI screenshots are inspected.
 - PARTIAL: Accessibility visual QA is static/structural only.
 - NOT_TESTED: Screen reader manual reading order.
 - NOT_TESTED: Real browser/app back navigation after Web handoff.
@@ -137,7 +147,7 @@ Before continuing high-fidelity QA, read:
 6. `scripts/high-fidelity-qa.js`
 
 ## Next Exact Action
-Run the `High-fidelity Visual QA` GitHub Actions workflow from remote `main`, download the `high-fidelity-visual-qa` artifact, inspect generated screenshots in `artifacts/high-fidelity/`, then fix any 360/390/320 viewport issues before final high-fidelity PASS.
+Push the revised workflow/QA-script changes, run the `High-fidelity Visual QA` GitHub Actions workflow again from remote `main`, download the `high-fidelity-visual-qa` artifact, inspect generated screenshots in `artifacts/high-fidelity/`, then fix any 360/390/320 viewport issues before final high-fidelity PASS.
 
 ## Last Verification
 - `node scripts/high-fidelity-static-qa.js` returned `PASS`.
@@ -150,6 +160,12 @@ Run the `High-fidelity Visual QA` GitHub Actions workflow from remote `main`, do
 - No local system Chromium/Chrome executable was found.
 - `.github/workflows/high-fidelity-visual-qa.yml` was added as the next Chromium-capable execution path.
 - `node scripts/high-fidelity-static-qa.js` returned `PASS` after the workflow addition.
+- GitHub Actions run `33951946027` installed Chromium and generated screenshots, but failed because the QA script needed loading/capture-mode adjustments.
+- CI screenshots from run `33951946027` showed Korean missing glyph boxes, so visual inspection remains invalid until the font workflow fix is rerun.
+- `node --check scripts/high-fidelity-qa.js` returned `PASS`.
+- `node --check scripts/high-fidelity-static-qa.js` returned `PASS`.
+- `node scripts/high-fidelity-static-qa.js` returned `PASS`.
+- Local `node scripts/high-fidelity-qa.js` still returned `BLOCKED` because local Chromium is unavailable.
 - UI forbidden-copy search found no matches in `prototype/high-fidelity/index.html`; matches exist only inside QA regex patterns.
 - GitHub remote `main` was previously updated and verified at `66997720ae646c13d17e830b5c1f0e282da854b8`; local and remote file trees matched before this continuation's new QA-blocker report refresh.
 
