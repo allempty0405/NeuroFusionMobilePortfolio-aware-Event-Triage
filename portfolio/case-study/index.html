@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio-aware Event Triage Case Study</title>
+    <style>
+      @import url("../../design-system/tokens/valley-reference-tokens.css");
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        background: var(--nf-surface-dashboard-desktop);
+        color: var(--nf-text-body);
+        font-family: var(--nf-font-sans);
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, var(--nf-surface-dashboard-mobile) 0, var(--nf-surface-dashboard-desktop) 720px);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        margin: 0 auto;
+        max-width: 1180px;
+        padding: 28px 20px 72px;
+      }
+
+      .topbar {
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+        gap: var(--nf-space-4);
+        margin-bottom: 36px;
+      }
+
+      .brand {
+        color: var(--nf-text-title);
+        font-size: var(--nf-text-sm);
+        font-weight: var(--nf-weight-semibold);
+        letter-spacing: 0;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--nf-space-2);
+        justify-content: flex-end;
+      }
+
+      .nav a,
+      .tag {
+        align-items: center;
+        background: rgb(255 255 255 / 72%);
+        border: 1px solid var(--nf-border-default);
+        border-radius: 999px;
+        color: var(--nf-text-muted);
+        display: inline-flex;
+        font-size: var(--nf-text-xs);
+        font-weight: var(--nf-weight-medium);
+        min-height: 32px;
+        padding: 6px 10px;
+        text-decoration: none;
+      }
+
+      .hero {
+        display: grid;
+        gap: 36px;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+        min-height: 620px;
+        place-items: center;
+      }
+
+      .eyebrow {
+        color: var(--nf-text-primary);
+        font-size: var(--nf-text-xs);
+        font-weight: var(--nf-weight-bold);
+        margin: 0 0 var(--nf-space-3);
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        color: var(--nf-text-title);
+        font-size: clamp(2.1rem, 5vw, 4.5rem);
+        letter-spacing: 0;
+        line-height: 1.02;
+        margin-bottom: var(--nf-space-5);
+      }
+
+      h2 {
+        color: var(--nf-text-title);
+        font-size: clamp(1.55rem, 3vw, 2.4rem);
+        letter-spacing: 0;
+        line-height: 1.12;
+        margin-bottom: var(--nf-space-4);
+      }
+
+      h3 {
+        color: var(--nf-text-strong);
+        font-size: var(--nf-text-lg);
+        letter-spacing: 0;
+        line-height: var(--nf-leading-lg);
+        margin-bottom: var(--nf-space-2);
+      }
+
+      .lead {
+        color: var(--nf-text-body);
+        font-size: var(--nf-text-lg);
+        line-height: 1.75;
+        max-width: 680px;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--nf-space-2);
+        margin-top: var(--nf-space-5);
+      }
+
+      .phone-frame {
+        background: var(--nf-surface-card);
+        border: 1px solid var(--nf-border-default);
+        border-radius: 28px;
+        box-shadow: 0 18px 60px rgb(24 24 27 / 10%);
+        padding: 10px;
+        width: min(100%, 390px);
+      }
+
+      .phone-frame img,
+      .shot img {
+        border-radius: 20px;
+        display: block;
+        height: auto;
+        width: 100%;
+      }
+
+      .section {
+        border-top: 1px solid var(--nf-border-default);
+        margin-top: 72px;
+        padding-top: 56px;
+      }
+
+      .section-head {
+        align-items: end;
+        display: grid;
+        gap: var(--nf-space-4);
+        grid-template-columns: minmax(0, 0.9fr) minmax(260px, 1.1fr);
+        margin-bottom: 28px;
+      }
+
+      .section-copy {
+        color: var(--nf-text-muted);
+        font-size: var(--nf-text-base);
+        line-height: var(--nf-leading-base);
+      }
+
+      .grid {
+        display: grid;
+        gap: var(--nf-space-4);
+      }
+
+      .grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid.four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .card,
+      .evidence-card {
+        background: var(--nf-surface-card);
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        box-shadow: var(--nf-shadow-card);
+        padding: var(--nf-space-5);
+      }
+
+      .card.compact {
+        padding: var(--nf-space-4);
+      }
+
+      .card p,
+      .evidence-card p {
+        color: var(--nf-text-body);
+        font-size: var(--nf-text-sm);
+        line-height: var(--nf-leading-sm);
+        margin-bottom: 0;
+      }
+
+      .small {
+        color: var(--nf-text-muted);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-sm);
+      }
+
+      .role {
+        min-height: 188px;
+      }
+
+      .role.mobile {
+        border-top: 4px solid var(--nf-semantic-primary-500);
+      }
+
+      .role.web {
+        border-top: 4px solid var(--nf-semantic-tertiary-500);
+      }
+
+      .ia {
+        counter-reset: ia;
+        display: grid;
+        gap: var(--nf-space-3);
+      }
+
+      .ia-step {
+        align-items: center;
+        background: var(--nf-surface-card);
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        display: grid;
+        gap: var(--nf-space-3);
+        grid-template-columns: 44px 1fr;
+        min-height: 64px;
+        padding: var(--nf-space-3) var(--nf-space-4);
+      }
+
+      .ia-step::before {
+        align-items: center;
+        background: var(--nf-semantic-primary-50);
+        border: 1px solid var(--nf-semantic-primary-100);
+        border-radius: 50%;
+        color: var(--nf-text-primary);
+        content: counter(ia);
+        counter-increment: ia;
+        display: inline-flex;
+        font-size: var(--nf-text-sm);
+        font-weight: var(--nf-weight-bold);
+        height: 36px;
+        justify-content: center;
+        width: 36px;
+      }
+
+      .callout-layout {
+        display: grid;
+        gap: 28px;
+        grid-template-columns: minmax(280px, 390px) minmax(0, 1fr);
+      }
+
+      .callout-list {
+        display: grid;
+        gap: var(--nf-space-3);
+      }
+
+      .callout {
+        background: var(--nf-surface-card);
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        padding: var(--nf-space-4);
+      }
+
+      .callout strong {
+        color: var(--nf-text-title);
+        display: block;
+        font-size: var(--nf-text-sm);
+        margin-bottom: var(--nf-space-1);
+      }
+
+      .shot-grid {
+        display: grid;
+        gap: var(--nf-space-4);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .shot {
+        background: var(--nf-surface-card);
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        box-shadow: var(--nf-shadow-card);
+        overflow: hidden;
+      }
+
+      .shot figcaption {
+        border-top: 1px solid var(--nf-border-subtle);
+        color: var(--nf-text-body);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-sm);
+        padding: var(--nf-space-3);
+      }
+
+      .result-table {
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        overflow: hidden;
+      }
+
+      .result-row {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+      }
+
+      .result-row > div {
+        background: var(--nf-surface-card);
+        border-bottom: 1px solid var(--nf-border-subtle);
+        color: var(--nf-text-body);
+        font-size: var(--nf-text-sm);
+        line-height: var(--nf-leading-sm);
+        padding: var(--nf-space-4);
+      }
+
+      .result-row:last-child > div {
+        border-bottom: 0;
+      }
+
+      .result-row > div:first-child {
+        color: var(--nf-text-strong);
+        font-weight: var(--nf-weight-semibold);
+      }
+
+      .boundary {
+        background: var(--nf-surface-card-muted);
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        padding: var(--nf-space-5);
+      }
+
+      .boundary li {
+        color: var(--nf-text-body);
+        font-size: var(--nf-text-sm);
+        line-height: var(--nf-leading-base);
+        margin-bottom: var(--nf-space-2);
+      }
+
+      .footer-note {
+        color: var(--nf-text-muted);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-sm);
+        margin-top: 48px;
+      }
+
+      @media (max-width: 860px) {
+        .hero,
+        .section-head,
+        .callout-layout,
+        .grid.two,
+        .grid.three,
+        .grid.four,
+        .shot-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .topbar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar" aria-label="Case study navigation">
+        <div class="brand">NeuroFusion / Valley AI Mobile Product Improvement Project</div>
+        <nav class="nav" aria-label="Sections">
+          <a href="#problem">Problem</a>
+          <a href="#ia">IA</a>
+          <a href="#anatomy">Anatomy</a>
+          <a href="#states">States</a>
+          <a href="#qa">QA Evidence</a>
+          <a href="#limits">Limits</a>
+        </nav>
+      </header>
+
+      <section class="hero" aria-labelledby="title">
+        <div>
+          <p class="eyebrow">High-fidelity case study package</p>
+          <h1 id="title">Portfolio-aware Event Triage</h1>
+          <p class="lead">
+            시장 이벤트를 모바일에서 빠르게 읽고, 내 보유/관심/관련 맥락과 확인 가능한 근거를 본 뒤,
+            더 깊게 볼 필요가 있는지 판단하도록 돕는 concept-level triage 화면입니다.
+          </p>
+          <div class="meta-row" aria-label="Current gate">
+            <span class="tag">High-fidelity Design PASS</span>
+            <span class="tag">Visual QA PASS</span>
+            <span class="tag">Production BLOCKED</span>
+          </div>
+        </div>
+        <figure class="phone-frame">
+          <img src="../../artifacts/high-fidelity/390x844-normal.png" alt="390x844 canonical normal high-fidelity mobile frame" />
+        </figure>
+      </section>
+
+      <section class="section" id="problem" aria-labelledby="problem-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">01 Problem and context</p>
+            <h2 id="problem-title">모바일은 이벤트를 깊이 분석하기 전에, 먼저 개인 관련성과 근거 한계를 정리해야 합니다.</h2>
+          </div>
+          <p class="section-copy">
+            이 화면의 목적은 투자 판단을 대신하는 것이 아니라, 이벤트가 어떤 자산과 연결되는지,
+            그 관계가 보유/관심/관련/미확인 중 무엇인지, 그리고 어떤 근거와 한계가 있는지 보여주는 것입니다.
+          </p>
+        </div>
+        <div class="grid three">
+          <article class="card">
+            <h3>무슨 Event인가?</h3>
+            <p>이벤트 타입, 제목, 발생/기준 시점을 먼저 배치해 사용자가 맥락을 놓치지 않게 합니다.</p>
+          </article>
+          <article class="card">
+            <h3>내 맥락과 어떻게 연결되는가?</h3>
+            <p>Holding, Watchlist, Related-only, Unconnected를 분리해 관심과 보유를 섞지 않습니다.</p>
+          </article>
+          <article class="card">
+            <h3>더 볼 근거가 있는가?</h3>
+            <p>Source, timestamp, 요약 구분, 데이터 부족을 Outcome보다 먼저 읽게 합니다.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="roles" aria-labelledby="roles-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">02 Product role split</p>
+            <h2 id="roles-title">Mobile은 Triage Layer, Web은 Analysis Workspace입니다.</h2>
+          </div>
+          <p class="section-copy">
+            모바일 화면은 깊은 재무표나 긴 리서치를 복제하지 않고, Event - Asset - Evidence - Handoff의
+            판단 전 구조를 압축해서 보여줍니다.
+          </p>
+        </div>
+        <div class="grid two">
+          <article class="card role mobile">
+            <h3>Mobile Triage Layer</h3>
+            <p>Event Context, Asset Relationship, Portfolio/Watchlist Context, Evidence, non-advisory Outcome, Web Handoff entry.</p>
+          </article>
+          <article class="card role web">
+            <h3>Web Analysis Workspace</h3>
+            <p>Deep analysis, documents, transcripts, advanced charts, longer research, detailed investment analysis.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="ia" aria-labelledby="ia-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">03 Locked IA</p>
+            <h2 id="ia-title">Outcome은 보여주되, 근거보다 먼저 확정 판단처럼 보이면 안 됩니다.</h2>
+          </div>
+          <p class="section-copy">
+            Chromium screenshot QA에서도 이 순서가 시각적으로 유지되는지 확인했습니다.
+          </p>
+        </div>
+        <div class="ia" aria-label="Locked information architecture">
+          <div class="ia-step">Event Context</div>
+          <div class="ia-step">Asset Relationship</div>
+          <div class="ia-step">Portfolio / Attention Context</div>
+          <div class="ia-step">Relationship Evidence + Trust</div>
+          <div class="ia-step">Relevance Outcome</div>
+          <div class="ia-step">Web Handoff</div>
+        </div>
+      </section>
+
+      <section class="section" id="anatomy" aria-labelledby="anatomy-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">04 Canonical screen anatomy</p>
+            <h2 id="anatomy-title">한 장의 모바일 Frame 안에서 사건, 관계, 근거, 다음 깊이를 순서대로 읽게 합니다.</h2>
+          </div>
+          <p class="section-copy">
+            Canonical state는 `CHECK_FURTHER + Holding + Evidence available + Concept Web Handoff`입니다.
+          </p>
+        </div>
+        <div class="callout-layout">
+          <figure class="phone-frame">
+            <img src="../../artifacts/high-fidelity/360x800-normal.png" alt="360x800 normal high-fidelity mobile frame" />
+          </figure>
+          <div class="callout-list">
+            <div class="callout"><strong>1. Event Context</strong><span class="small">이벤트 정체성과 기준 시점이 첫 화면의 시작점입니다.</span></div>
+            <div class="callout"><strong>2. Asset Relationship</strong><span class="small">자산명, 티커, 관계 badge로 연결 대상을 분명히 합니다.</span></div>
+            <div class="callout"><strong>3. Portfolio / Attention Context</strong><span class="small">보유, 관심, 관련, 미연결 상태를 서로 다른 의미로 다룹니다.</span></div>
+            <div class="callout"><strong>4. Evidence + Trust</strong><span class="small">Source, timestamp, 요약 구분, 데이터 상태가 Outcome 앞에 놓입니다.</span></div>
+            <div class="callout"><strong>5. Relevance Outcome</strong><span class="small">Outcome은 근거 기반 check-status이며 권유나 점수가 아닙니다.</span></div>
+            <div class="callout"><strong>6. Web Handoff</strong><span class="small">깊은 분석의 목적지만 설명하며 실제 route/payload는 확정하지 않습니다.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="outcomes" aria-labelledby="outcomes-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">05 Three non-advisory outcomes</p>
+            <h2 id="outcomes-title">Outcome은 투자 행동이 아니라 확인 상태입니다.</h2>
+          </div>
+          <p class="section-copy">
+            의미는 label, copy, hierarchy, icon/shape, supporting evidence 순서로 전달하고 색은 보조 cue로만 사용합니다.
+          </p>
+        </div>
+        <div class="shot-grid">
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-normal.png" alt="CHECK_FURTHER holding state screenshot" />
+            <figcaption><strong>CHECK_FURTHER</strong><br />현재 확인된 관계 또는 Evidence 기준에서 추가로 확인할 정보가 있습니다.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-watchlist.png" alt="NO_IMMEDIATE_CHECK_NEEDED watchlist state screenshot" />
+            <figcaption><strong>NO_IMMEDIATE_CHECK_NEEDED</strong><br />현재 확인 가능한 범위에서는 우선성을 높일 충분한 근거가 제한적입니다.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-insufficient.png" alt="INSUFFICIENT_DATA state screenshot" />
+            <figcaption><strong>INSUFFICIENT_DATA</strong><br />개인 관계 또는 Evidence 판단에 필요한 데이터가 충분하지 않습니다.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="portfolio" aria-labelledby="portfolio-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">06 Portfolio context variants</p>
+            <h2 id="portfolio-title">Watchlist는 Holding이 아니고, Related-only는 개인 관계가 아닙니다.</h2>
+          </div>
+          <p class="section-copy">
+            Portfolio-aware 화면의 신뢰는 개인 맥락을 과장하지 않는 데서 시작합니다.
+          </p>
+        </div>
+        <div class="shot-grid">
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-normal.png" alt="Holding context screenshot" />
+            <figcaption>Holding: 실제 보유 관계가 있는 mock state.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-watchlist.png" alt="Watchlist context screenshot" />
+            <figcaption>Watchlist: 관심 맥락만 표시하고 보유처럼 말하지 않습니다.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-related.png" alt="Related-only context screenshot" />
+            <figcaption>Related-only: 이벤트와 자산 관계는 있으나 개인 관계로 단정하지 않습니다.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-unconnected.png" alt="Portfolio unconnected context screenshot" />
+            <figcaption>Unconnected: 개인 Portfolio Context를 확인할 수 없는 상태입니다.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="states" aria-labelledby="states-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">07 Trust and evidence states</p>
+            <h2 id="states-title">불확실한 상태는 숨기지 않고 화면 구조 안에 남깁니다.</h2>
+          </div>
+          <p class="section-copy">
+            Partial, Empty, Stale, Source Unavailable, Permission, Error는 모두 다른 사용자의 해석을 만들기 때문에 같은 Empty로 묶지 않습니다.
+          </p>
+        </div>
+        <div class="shot-grid">
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-partial.png" alt="Partial data state screenshot" />
+            <figcaption>Partial: 일부 근거만 표시되어 확정적 판단을 억제합니다.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-empty.png" alt="Empty evidence state screenshot" />
+            <figcaption>Empty Evidence: 표시 가능한 Source가 없음을 직접 말합니다.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-stale.png" alt="Stale data state screenshot" />
+            <figcaption>Stale: timestamp를 노출하고 최신 관계처럼 단정하지 않습니다.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-source.png" alt="Source unavailable state screenshot" />
+            <figcaption>Source Unavailable: 숨겨진 근거가 있는 것처럼 표현하지 않습니다.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-permission.png" alt="Permission access state screenshot" />
+            <figcaption>Permission / Access: 권한 제한과 이벤트 의미를 분리합니다.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-error.png" alt="Generic error state screenshot" />
+            <figcaption>Generic Error: 오류 상태에서는 결론을 만들지 않고 retry/close를 제공합니다.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="responsive" aria-labelledby="responsive-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">08 Responsive screenshot QA evidence</p>
+            <h2 id="responsive-title">320, 360, 390 viewport에서 hierarchy와 wrapping을 검증했습니다.</h2>
+          </div>
+          <p class="section-copy">
+            Screenshot은 장식이 아니라 QA evidence입니다. 첫 viewport, title/ticker/badge/source wrapping, sticky CTA overlap을 확인하는 기준으로 사용합니다.
+          </p>
+        </div>
+        <div class="shot-grid">
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/320x800-normal.png" alt="320x800 stress normal screenshot" />
+            <figcaption>320x800 stress: canonical normal state.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/360x800-normal.png" alt="360x800 normal screenshot" />
+            <figcaption>360x800: all 15 states were captured at this viewport.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="../../artifacts/high-fidelity/390x844-normal.png" alt="390x844 normal screenshot" />
+            <figcaption>390x844: all 15 states were captured at this viewport.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="qa" aria-labelledby="qa-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">09 Visual QA result</p>
+            <h2 id="qa-title">Chromium-rendered evidence supports high-fidelity PASS, not Production readiness.</h2>
+          </div>
+          <p class="section-copy">
+            QA result is scoped to visual hierarchy, responsive behavior, screenshot state coverage, and visual accessibility requirements.
+          </p>
+        </div>
+        <div class="result-table" role="table" aria-label="Visual QA result table">
+          <div class="result-row" role="row"><div role="cell">Visual QA report</div><div role="cell">PASS, 34 screenshots, 0 blockers.</div></div>
+          <div class="result-row" role="row"><div role="cell">Static QA report</div><div role="cell">PASS, required state/token/hierarchy/accessibility hook checks passed.</div></div>
+          <div class="result-row" role="row"><div role="cell">Viewport coverage</div><div role="cell">360x800: 15 states, 390x844: 15 states, 320x800 stress: 4 states.</div></div>
+          <div class="result-row" role="row"><div role="cell">Visual review</div><div role="cell">No confirmed BLOCKER or MAJOR issue in screenshot review.</div></div>
+          <div class="result-row" role="row"><div role="cell">Prototype HTML</div><div role="cell">Not modified after screenshot QA because no evidence-supported BLOCKER/MAJOR issue was found.</div></div>
+        </div>
+      </section>
+
+      <section class="section" id="limits" aria-labelledby="limits-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">10 Remaining limits</p>
+            <h2 id="limits-title">이 case study는 어디까지 완료됐고, 어디서 멈춰야 하는지 함께 보여줍니다.</h2>
+          </div>
+          <p class="section-copy">
+            포트폴리오에서 강한 인상보다 중요한 것은 claim boundary입니다. 이 결과는 high-fidelity와 visual QA의 완료이지 Production 해제가 아닙니다.
+          </p>
+        </div>
+        <div class="boundary">
+          <ul>
+            <li>Screen Reader Manual Test: <strong>NOT_TESTED</strong></li>
+            <li>Real App/Web Back behavior: <strong>NOT_TESTED</strong></li>
+            <li>Production Data Contract, Field, Outcome Logic, Freshness SLA, Handoff Payload, API Integration, Real User Validation, Production Acceptance Criteria: <strong>BLOCKED</strong></li>
+            <li>Next step: assemble Figma/deck visuals from this page and the persisted screenshots, or start a separate manual validation track.</li>
+          </ul>
+        </div>
+      </section>
+
+      <p class="footer-note">
+        Source of Truth: `docs/DESIGN.md`, `docs/DESIGN_QA.md`, `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`,
+        `artifacts/high-fidelity/visual-qa-report.json`, `artifacts/high-fidelity/static-qa-report.json`.
+      </p>
+    </main>
+  </body>
+</html>

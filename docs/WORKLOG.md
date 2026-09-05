@@ -1019,3 +1019,62 @@ Portfolio/Figma presentation packaging is ready to proceed from a structured out
 
 ### Next Action
 Create the Figma/portfolio deck or case-study page from `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` and `artifacts/high-fidelity/*.png`, keeping all claims concept/high-fidelity bounded.
+
+---
+
+## 2026-09-05 18:01 KST — Portfolio Case-study Page Assembly
+
+### Goal
+Create an actual portfolio-ready case-study page from the approved presentation structure and Chromium screenshot evidence without redesigning PRD, `docs/DESIGN.md`, outcome model, or Production policy.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/WORKLOG.md`
+- FACT: `docs/DESIGN_QA.md`
+- FACT: `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
+- FACT: `artifacts/high-fidelity/visual-qa-report.json`
+- FACT: `artifacts/high-fidelity/static-qa-report.json`
+- FACT: `artifacts/high-fidelity/*.png`
+- FACT: `design-system/tokens/valley-reference-tokens.css`
+
+### Observations
+- FACT: Visual QA remains `PASS` with 34 persisted screenshots.
+- FACT: Static QA remains `PASS`.
+- OBSERVATION: The portfolio packaging structure already defines the required 10-part presentation flow.
+- OBSERVATION: No Figma file key was provided, so a repository-native case-study page is the safest persistent artifact for later Figma/deck composition.
+
+### Decisions
+- DECISION: Create `portfolio/case-study/index.html` as the actual portfolio-ready page artifact.
+- DECISION: Reuse `design-system/tokens/valley-reference-tokens.css` for visual continuity.
+- DECISION: Use Chromium screenshots as evidence in the page, not as decorative images.
+- DECISION: Keep Screen Reader `NOT_TESTED`, Real App/Web Back `NOT_TESTED`, and Production `BLOCKED`.
+- DECISION: Do not modify `prototype/high-fidelity/index.html`.
+
+### Changes Made
+- Added `portfolio/case-study/index.html`.
+- Updated `docs/CURRENT_STATE.md`.
+- Appended this worklog entry.
+
+### Files Changed
+- `portfolio/case-study/index.html`
+- `docs/CURRENT_STATE.md`
+- `docs/WORKLOG.md`
+
+### Validation Performed
+- FACT: Checked 18 image references in `portfolio/case-study/index.html`; all referenced screenshot files exist.
+- FACT: Confirmed `artifacts/high-fidelity/visual-qa-report.json` status is `PASS`, screenshots `34`.
+- FACT: Confirmed `artifacts/high-fidelity/static-qa-report.json` status is `PASS`.
+- FACT: Forbidden production/trading/score claim search on `portfolio/case-study/index.html` returned no matches.
+- FACT: `git diff --check` returned no issues.
+
+### Result
+The repository now contains a portfolio-ready case-study page that explains problem context, Mobile/Web role split, locked IA, canonical anatomy, non-advisory outcomes, portfolio-context variants, trust/evidence states, responsive QA evidence, visual QA result, and remaining limits.
+
+### Remaining Issues
+- OPEN: Final Figma deck or hosted portfolio platform layout has not yet been assembled.
+- NOT_TESTED: Screen reader manual test.
+- NOT_TESTED: Real App/Web back navigation.
+- BLOCKED: Production data, field, logic, freshness, handoff, API integration, validation, and acceptance criteria.
+
+### Next Action
+Use `portfolio/case-study/index.html` as the source layout for Figma/deck composition, or provide a Figma file key if the next step should write frames directly into Figma.

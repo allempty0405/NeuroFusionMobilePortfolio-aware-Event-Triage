@@ -1,5 +1,5 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-05 17:46 KST
+Last Updated: 2026-09-05 18:01 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -9,7 +9,7 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus PASS QA reports. No Product/Design HTML change was required from screenshot evidence. Portfolio/Figma presentation packaging has started with a repository document that maps the approved frames, QA evidence, state coverage, and remaining limits into a case-study structure.
+High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus PASS QA reports. No Product/Design HTML change was required from screenshot evidence. Portfolio/Figma presentation packaging now includes both a structure document and an actual repository case-study page that uses the verified screenshots as evidence.
 
 ## Current Gate
 - RECOVERY: PASS
@@ -24,7 +24,7 @@ High-fidelity HTML frame set created; static QA passed; browser visual QA comple
 - PRODUCTION: BLOCKED
 
 ## Current Task
-Package the approved high-fidelity frame set and visual QA evidence into a portfolio/Figma presentation structure while preserving concept/high-fidelity boundaries.
+Assemble the approved high-fidelity frame set and visual QA evidence into portfolio-ready case-study output while preserving concept/high-fidelity boundaries.
 
 ## Completed Since Previous Checkpoint
 - Created `prototype/high-fidelity/index.html`.
@@ -82,6 +82,7 @@ Package the approved high-fidelity frame set and visual QA evidence into a portf
 - Persisted 34 PNG screenshots and PASS report JSON files under `artifacts/high-fidelity/`.
 - Visual review found no BLOCKER or MAJOR issue in first viewport hierarchy, title/ticker/badge/source wrapping, sticky CTA overlap, financial safety, or non-color accessibility cues.
 - Created `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` to guide portfolio/Figma presentation packaging from existing Product SoT, high-fidelity frames, and QA evidence.
+- Created `portfolio/case-study/index.html` as a portfolio-ready case-study page using verified Chromium screenshots and the approved presentation structure.
 
 ## Locked Decisions
 - Mobile role: `Triage Layer`.
@@ -108,6 +109,7 @@ Event Context
 ## Active Design Hypotheses
 - Exact Outcome visual prominence is acceptable for the current high-fidelity frame set based on Chromium screenshots; further polish can happen in Figma/portfolio composition.
 - Portfolio/Figma presentation composition can use annotated screenshots and state grids without changing Product policy or prototype HTML.
+- The repository case-study page can serve as the Figma/deck composition source, but it has not yet been manually re-rendered in a browser in this local environment.
 - Long Korean/English event title wrapping passed 320/360/390 screenshot QA.
 - Sticky CTA overlap passed CI geometry checks and screenshot review.
 - Screen reader reading order remains `NOT_TESTED`.
@@ -128,7 +130,7 @@ Event Context
 - NOT_TESTED: Screen reader manual reading order.
 - NOT_TESTED: Real browser/app back navigation after Web handoff.
 - BLOCKED: Production route, payload, field, logic, and freshness contracts.
-- OPEN: Figma/portfolio deck or case-study page has not yet been assembled from the new presentation structure.
+- OPEN: Figma deck or final portfolio platform page has not yet been assembled from the repository case-study page.
 
 ## Files Changed
 - `docs/CURRENT_STATE.md`
@@ -143,6 +145,7 @@ Event Context
 - `artifacts/high-fidelity/visual-qa-report.json`
 - `artifacts/high-fidelity/*.png`
 - `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
+- `portfolio/case-study/index.html`
 
 ## Files To Read Next
 Before continuing high-fidelity QA, read:
@@ -152,11 +155,12 @@ Before continuing high-fidelity QA, read:
 3. `docs/DESIGN.md`
 4. `docs/DESIGN_QA.md`
 5. `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
-6. `prototype/high-fidelity/index.html`
-7. `scripts/high-fidelity-qa.js`
+6. `portfolio/case-study/index.html`
+7. `prototype/high-fidelity/index.html`
+8. `scripts/high-fidelity-qa.js`
 
 ## Next Exact Action
-Create the Figma/portfolio deck or case-study page from `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` and persisted screenshots in `artifacts/high-fidelity/`. Do not upgrade Screen Reader, real App/Web Back, or Production gates without their own tests/contracts.
+Use `portfolio/case-study/index.html` and persisted screenshots in `artifacts/high-fidelity/` to assemble the final Figma/deck or portfolio platform version. Do not upgrade Screen Reader, real App/Web Back, or Production gates without their own tests/contracts.
 
 ## Last Verification
 - `node scripts/high-fidelity-static-qa.js` returned `PASS`.
@@ -181,6 +185,9 @@ Create the Figma/portfolio deck or case-study page from `docs/PORTFOLIO_PRESENTA
 - GitHub remote `main` was previously updated and verified at `66997720ae646c13d17e830b5c1f0e282da854b8`; local and remote file trees matched before this continuation's new QA-blocker report refresh.
 - `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` created from existing SoT and QA evidence; no Product/Design HTML changes were made.
 - `node scripts/high-fidelity-static-qa.js` returned `PASS` after presentation packaging and refreshed `artifacts/high-fidelity/static-qa-report.json`.
+- `portfolio/case-study/index.html` created; 18 screenshot references were checked and all referenced files exist.
+- `artifacts/high-fidelity/visual-qa-report.json` remains `PASS` with 34 screenshots; `artifacts/high-fidelity/static-qa-report.json` remains `PASS`.
+- Forbidden production/trading/score claim search on the case-study page returned no matches.
 
 ## Recovery Note
 If a new chat starts, read this file first, then `WORKLOG.md`, then `docs/DESIGN.md`, `docs/DESIGN_QA.md`, and `prototype/high-fidelity/index.html`.
