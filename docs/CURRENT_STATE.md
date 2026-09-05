@@ -1,5 +1,5 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-05 16:18 KST
+Last Updated: 2026-09-05 17:28 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -9,18 +9,18 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA remains blocked in the local container by missing Playwright Chromium binary. A GitHub Actions workflow exists and confirmed that Chromium can run in CI, but the first CI visual QA run required infrastructure fixes: Korean text rendered as missing glyph boxes because CJK fonts were absent, and the QA script treated hidden capture-mode state controls plus loading-state label omissions as failures. The workflow and QA script have been revised; a second CI run is pending.
+High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus contact sheets and PASS QA reports. No Product/Design HTML change was required from screenshot evidence.
 
 ## Current Gate
 - RECOVERY: PASS
 - CANONICAL SOURCE RESTORE: PASS
 - DESIGN SPEC: PASS
 - HIGH-FIDELITY FRAME SET: CREATED
-- HIGH-FIDELITY DESIGN: REVISE — CI visual QA rerun pending
+- HIGH-FIDELITY DESIGN: PASS
 - DESIGN SYSTEM ALIGNMENT: PASS
-- RESPONSIVE QA: REVISE — first CI screenshots generated, but CJK font support and QA script fixes required
-- ACCESSIBILITY VISUAL QA: PARTIAL
-- MOCK PROTOTYPE: PASS FOR STATIC STRUCTURE
+- RESPONSIVE QA: PASS
+- ACCESSIBILITY VISUAL QA: PASS FOR VISUAL REQUIREMENTS
+- MOCK PROTOTYPE: PASS FOR CONCEPT / STATIC / VISUAL STRUCTURE
 - PRODUCTION: BLOCKED
 
 ## Current Task
@@ -75,6 +75,12 @@ Convert approved `docs/DESIGN.md` into high-fidelity mobile frames and verify re
 - Re-ran local `node --check` for both QA scripts: `PASS`.
 - Re-ran local static QA: `PASS`.
 - Re-ran local browser visual QA: still `BLOCKED` locally because Chromium is unavailable.
+- Second GitHub Actions run `33952279661` completed successfully at remote commit `3e15d812ead7573e0a967dd9cf01deb7cf3450fd`.
+- Downloaded artifact `9965214345` and inspected rendered screenshots.
+- CI `visual-qa-report.json`: `PASS`, screenshots `34`, blockers `0`, undersized controls `0`.
+- CI `static-qa-report.json`: `PASS`.
+- Persisted 34 PNG screenshots, 3 contact sheets, and PASS report JSON files under `artifacts/high-fidelity/`.
+- Visual review found no BLOCKER or MAJOR issue in first viewport hierarchy, title/ticker/badge/source wrapping, sticky CTA overlap, financial safety, or non-color accessibility cues.
 
 ## Locked Decisions
 - Mobile role: `Triage Layer`.
@@ -99,9 +105,9 @@ Event Context
 - Production remains blocked.
 
 ## Active Design Hypotheses
-- Exact Outcome visual prominence must be reviewed in actual screenshots/Figma frames.
-- Long Korean/English event title wrapping must be verified in 320/360/390 viewports.
-- Sticky CTA overlap must be verified in browser screenshots.
+- Exact Outcome visual prominence is acceptable for the current high-fidelity frame set based on Chromium screenshots; further polish can happen in Figma/portfolio composition.
+- Long Korean/English event title wrapping passed 320/360/390 screenshot QA.
+- Sticky CTA overlap passed CI geometry checks and screenshot review.
 - Screen reader reading order remains `NOT_TESTED`.
 
 ## Production Blockers
@@ -116,10 +122,7 @@ Event Context
 - Production Acceptance Criteria
 
 ## Open Issues
-- BLOCKER: Local browser visual QA cannot run because Playwright Chromium binary is unavailable in this container.
-- MAJOR: First CI visual QA generated screenshots, but they require rerun after CJK font and QA script fixes.
-- MAJOR: 360x800, 390x844, and 320px screenshot verification remains incomplete until revised CI screenshots are inspected.
-- PARTIAL: Accessibility visual QA is static/structural only.
+- NOTE: Local browser visual QA still cannot run because Playwright Chromium binary is unavailable in this container; CI is the verified visual QA path.
 - NOT_TESTED: Screen reader manual reading order.
 - NOT_TESTED: Real browser/app back navigation after Web handoff.
 - BLOCKED: Production route, payload, field, logic, and freshness contracts.
@@ -135,6 +138,7 @@ Event Context
 - `scripts/high-fidelity-static-qa.js`
 - `artifacts/high-fidelity/static-qa-report.json`
 - `artifacts/high-fidelity/visual-qa-report.json`
+- `artifacts/high-fidelity/*.png`
 
 ## Files To Read Next
 Before continuing high-fidelity QA, read:
@@ -147,7 +151,7 @@ Before continuing high-fidelity QA, read:
 6. `scripts/high-fidelity-qa.js`
 
 ## Next Exact Action
-Push the revised workflow/QA-script changes, run the `High-fidelity Visual QA` GitHub Actions workflow again from remote `main`, download the `high-fidelity-visual-qa` artifact, inspect generated screenshots in `artifacts/high-fidelity/`, then fix any 360/390/320 viewport issues before final high-fidelity PASS.
+Use the persisted Chromium screenshots in `artifacts/high-fidelity/` for portfolio/Figma review or proceed to final presentation packaging. Do not upgrade Screen Reader, real App/Web Back, or Production gates without their own tests/contracts.
 
 ## Last Verification
 - `node scripts/high-fidelity-static-qa.js` returned `PASS`.
@@ -160,8 +164,10 @@ Push the revised workflow/QA-script changes, run the `High-fidelity Visual QA` G
 - No local system Chromium/Chrome executable was found.
 - `.github/workflows/high-fidelity-visual-qa.yml` was added as the next Chromium-capable execution path.
 - `node scripts/high-fidelity-static-qa.js` returned `PASS` after the workflow addition.
-- GitHub Actions run `33951946027` installed Chromium and generated screenshots, but failed because the QA script needed loading/capture-mode adjustments.
-- CI screenshots from run `33951946027` showed Korean missing glyph boxes, so visual inspection remains invalid until the font workflow fix is rerun.
+- GitHub Actions run `33951946027` installed Chromium and generated screenshots, but failed because the QA script needed loading/capture-mode adjustments and CJK font support.
+- GitHub Actions run `33952279661` completed successfully after fixes.
+- Downloaded CI artifact `9965214345`: `visual-qa-report.json` returned `PASS`, screenshots `34`, blockers `0`, undersized controls `0`.
+- Screenshot review confirmed readable Korean text, no horizontal overflow, no sticky evidence overlap, and no confirmed financial-safety visual issue.
 - `node --check scripts/high-fidelity-qa.js` returned `PASS`.
 - `node --check scripts/high-fidelity-static-qa.js` returned `PASS`.
 - `node scripts/high-fidelity-static-qa.js` returned `PASS`.

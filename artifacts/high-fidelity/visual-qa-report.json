@@ -1,9 +1,347 @@
 {
-  "status": "BLOCKED",
-  "generatedAt": "2026-09-05T07:17:53.616Z",
-  "reason": "Playwright Chromium browser binary unavailable",
-  "error": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
-  "attemptedCommand": "node scripts/high-fidelity-qa.js",
-  "recoveryCommand": "npx playwright install chromium --only-shell",
-  "screenshots": 0
+  "status": "PASS",
+  "generatedAt": "2026-09-05T07:21:17.682Z",
+  "screenshots": 34,
+  "results": [
+    {
+      "viewport": "360x800",
+      "state": "normal",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "watchlist",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "insufficient",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "related",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "multiple",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "unconnected",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "partial",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "empty",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "stale",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "source",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "permission",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "error",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "loading",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "handoffFail",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "360x800",
+      "state": "handoffSuccess",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 360,
+      "innerWidth": 360
+    },
+    {
+      "viewport": "390x844",
+      "state": "normal",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "watchlist",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "insufficient",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "related",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "multiple",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "unconnected",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "partial",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "empty",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "stale",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "source",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "permission",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "error",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "loading",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "handoffFail",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "390x844",
+      "state": "handoffSuccess",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 390,
+      "innerWidth": 390
+    },
+    {
+      "viewport": "320x800",
+      "state": "normal",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 320,
+      "innerWidth": 320
+    },
+    {
+      "viewport": "320x800",
+      "state": "watchlist",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 320,
+      "innerWidth": 320
+    },
+    {
+      "viewport": "320x800",
+      "state": "insufficient",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 320,
+      "innerWidth": 320
+    },
+    {
+      "viewport": "320x800",
+      "state": "handoffFail",
+      "missingLabels": [],
+      "undersizedControls": [],
+      "horizontalOverflow": false,
+      "stickyCoversEvidence": false,
+      "scrollWidth": 320,
+      "innerWidth": 320
+    }
+  ]
 }

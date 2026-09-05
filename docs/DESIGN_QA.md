@@ -429,3 +429,86 @@ Result: PASS
 node scripts/high-fidelity-qa.js
 Result: BLOCKED locally because Chromium remains unavailable in this container.
 ```
+
+---
+
+## High-fidelity Visual QA Final Result
+
+Date: 2026-09-05 17:28 KST
+Run: `33952279661`
+Head SHA: `3e15d812ead7573e0a967dd9cf01deb7cf3450fd`
+Artifact: `9965214345`
+
+### Browser Environment
+
+| Area | Result | Evidence |
+|---|---|---|
+| GitHub Actions Chromium | PASS | Playwright Chromium shell installed and browser QA completed. |
+| Korean font rendering | PASS | `fonts-noto-cjk` installed; screenshots render Korean text legibly. |
+| Local Chromium | BLOCKED | Local container still lacks Playwright Chromium binary. |
+
+### Screenshot Inventory
+
+| Viewport | States | Screenshot Count | Result |
+|---|---:|---:|---|
+| 360x800 | 15 | 15 | PASS |
+| 390x844 | 15 | 15 | PASS |
+| 320x800 stress | 4 | 4 | PASS |
+| Contact sheets | 3 | 3 | PASS |
+
+Total persisted PNG evidence: `37` files.
+
+### Automated QA Result
+
+```text
+node scripts/high-fidelity-static-qa.js
+Result: PASS
+
+node scripts/high-fidelity-qa.js
+Result: PASS
+Screenshots: 34
+Blockers: 0
+Undersized controls: 0
+```
+
+### Visual Review
+
+| Check | Result | Note |
+|---|---|---|
+| First viewport | PASS | Event identity, asset identity, relationship, context, and trust cue are visible before Outcome. |
+| Visual hierarchy | PASS | Screens read as `Event -> Asset -> Context -> Evidence -> Outcome -> Handoff`. |
+| Title wrapping | PASS | 320/360/390 titles wrap without horizontal overflow or ticker collision. |
+| Badge wrapping | PASS | Holding, Watchlist, Related, Source, Error, and data-state badges remain contained. |
+| Source wrapping | PASS | Source, timestamp, and summary distinction remain legible. |
+| Sticky CTA overlap | PASS | Automated geometry and screenshot review show no Evidence overlap. |
+| Financial safety | PASS | Outcomes are copy-led and do not read as buy/sell/hold, danger, safety, or portfolio impact scoring. |
+| Accessibility visual | PASS FOR VISUAL REQUIREMENTS | Touch targets, visible labels, disabled state, and non-color cues are visible. |
+
+### Issues
+
+| Severity | Issue | Status |
+|---|---|---|
+| BLOCKER | None found in CI screenshot review. | CLOSED |
+| MAJOR | None found in CI screenshot review. | CLOSED |
+| MINOR | Further visual polish can be handled during portfolio/Figma composition. | OPEN |
+
+### Fixes Applied
+
+- CI workflow now installs Korean font support before screenshot QA.
+- Visual QA script ignores hidden capture-mode controls.
+- Visual QA script uses loading-state-specific label expectations.
+- `prototype/high-fidelity/index.html` was not changed.
+
+### Final High-fidelity Gate
+
+```text
+HIGH-FIDELITY DESIGN: PASS
+STATIC QA: PASS
+RESPONSIVE / VISUAL QA: PASS
+DESIGN SYSTEM ALIGNMENT: PASS
+ACCESSIBILITY VISUAL QA: PASS FOR VISUAL REQUIREMENTS
+FINANCIAL SAFETY: PASS
+SCREEN READER: NOT_TESTED
+REAL APP/WEB BACK: NOT_TESTED
+PRODUCTION: BLOCKED
+```
