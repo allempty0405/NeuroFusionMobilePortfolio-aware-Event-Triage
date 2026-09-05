@@ -1145,3 +1145,84 @@ The high-fidelity prototype now behaves as a final service screen demo: state co
 
 ### Next Action
 Push the external-selector shell update, let the GitHub Actions visual QA path rerun, and then use the responsive service demo and case-study page for Figma/deck composition.
+
+---
+
+## 2026-09-06 01:54 KST — Git Design-system Based Design Extraction
+
+### Goal
+Create a Figma/deck-ready design extraction from the Git reference design system, approved high-fidelity service frame, portfolio case-study page, and persisted screenshot evidence.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/WORKLOG.md`
+- FACT: `docs/DESIGN.md`
+- FACT: `docs/DESIGN_QA.md`
+- FACT: `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
+- FACT: `design-system/README.md`
+- FACT: `design-system/tokens/valley-reference-tokens.css`
+- FACT: `design-system/components/README.md`
+- FACT: `design-system/components/buttons-and-cta.md`
+- FACT: `design-system/components/cards-and-surfaces.md`
+- FACT: `design-system/components/badges-tabs-filters.md`
+- FACT: `design-system/components/data-and-evidence.md`
+- FACT: `design-system/components/feedback-states.md`
+- FACT: `design-system/patterns/portfolio-aware-event-triage.md`
+- FACT: `design-system/patterns/trust-and-data-state.md`
+- FACT: `design-system/patterns/investment-analysis-screen.md`
+- FACT: `design-system/checklists/mobile-design-qa.md`
+- FACT: `prototype/high-fidelity/index.html`
+- FACT: `portfolio/case-study/index.html`
+- FACT: `artifacts/high-fidelity/visual-qa-report.json`
+- FACT: `artifacts/high-fidelity/static-qa-report.json`
+- FACT: `artifacts/high-fidelity/*.png`
+
+### Observations
+- FACT: The Git design-system is a Valley-style reference system, not an official Valley Production library.
+- FACT: `visual-qa-report.json` remains `PASS` with 34 screenshots.
+- FACT: `static-qa-report.json` remains `PASS`.
+- OBSERVATION: The existing case-study page covered the portfolio story arc but did not expose a dedicated Design-system Mapping section.
+- OBSERVATION: `design-system/patterns/portfolio-aware-event-triage.md` still contains an older first-viewport ordering where Outcome appears earlier than the current locked IA.
+- INTERPRETATION: The pattern can support relationship/state framing, but the latest Product SoT and `docs/DESIGN.md` must control the final IA.
+
+### Decisions
+- DECISION: Add a repository-native extraction document instead of creating a native Figma file without a target file key.
+- DECISION: Keep one responsive service implementation and keep the external state selector outside the phone UI.
+- DECISION: Reuse existing token families, cards, badges, evidence, feedback states, and CTA rules instead of creating new components.
+- DECISION: Mark the portfolio-aware pattern as adapted where it conflicts with the locked IA.
+- DECISION: Preserve Screen Reader `NOT_TESTED`, Real App/Web Back `NOT_TESTED`, and Production `BLOCKED`.
+
+### Changes Made
+- Added `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`.
+- Updated `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` to include the extraction document and Design-system Mapping page.
+- Updated `portfolio/case-study/index.html` with a Design-system Mapping section.
+- Updated `docs/CURRENT_STATE.md`.
+- Refreshed `artifacts/high-fidelity/static-qa-report.json` by rerunning static QA.
+- Appended this worklog entry.
+
+### Files Changed
+- `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`
+- `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
+- `portfolio/case-study/index.html`
+- `docs/CURRENT_STATE.md`
+- `docs/WORKLOG.md`
+- `artifacts/high-fidelity/static-qa-report.json`
+
+### Validation Performed
+- FACT: `node scripts/high-fidelity-static-qa.js` returned `PASS`.
+- FACT: Case-study image reference check found 18 screenshot references and no missing files.
+- FACT: Forbidden production/trading/score claim search on the prototype, case-study page, extraction document, and presentation structure returned no matches.
+- FACT: Local Playwright Chromium executable remains unavailable, so browser visual QA was not rerun locally.
+
+### Result
+The repository now has a Figma/deck-ready design extraction that maps Product SoT, Git design-system references, final service screen structure, external selector rules, screenshot evidence, and remaining limitations.
+
+### Remaining Issues
+- OPEN: GitHub Actions visual QA should be rerun for the updated external-selector shell and case-study mapping update.
+- OPEN: Native Figma frame creation requires a target Figma file or follow-up Figma workflow.
+- NOT_TESTED: Screen reader manual test.
+- NOT_TESTED: Real App/Web back navigation.
+- BLOCKED: Production data, field, logic, freshness, handoff, API integration, validation, and acceptance criteria.
+
+### Next Action
+Run GitHub Actions visual QA for the updated shell/case-study state, then assemble native Figma or deck frames from `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`, `portfolio/case-study/index.html`, and persisted screenshots.

@@ -544,3 +544,58 @@ SCREEN READER: NOT_TESTED
 REAL APP/WEB BACK: NOT_TESTED
 PRODUCTION: BLOCKED
 ```
+
+---
+
+## Figma / Deck Design Extraction Addendum
+
+Date: 2026-09-06 01:54 KST
+
+### Scope
+
+This addendum checks the repository-native Figma/deck extraction and case-study mapping. It does not re-open Product strategy, `docs/DESIGN.md`, outcome semantics, or Production scope.
+
+### Targets
+
+- `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`
+- `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
+- `portfolio/case-study/index.html`
+
+### Extraction QA
+
+| Check | Result | Evidence / Note |
+|---|---|---|
+| Product SoT boundary | PASS | Extraction points to `docs/DESIGN.md`, `docs/DESIGN_QA.md`, `docs/CURRENT_STATE.md`, and `docs/WORKLOG.md`; it does not replace them. |
+| Design-system boundary | PASS | The design system is described as a Valley-style reference system, not an official Production library. |
+| Token mapping | PASS | Surface, text, border, typography, spacing, radius, shadow, layout, and outcome token families are mapped from `valley-reference-tokens.css`. |
+| Component mapping | PASS | Cards, badges, evidence, feedback states, and CTA treatments are mapped to existing reference files. |
+| New components | PASS | New components remain `NONE`; external selector is treated as presentation/demo tooling outside the service UI. |
+| Locked IA | PASS | Extraction keeps Event -> Asset -> Context -> Evidence -> Outcome -> Handoff. |
+| Pattern conflict handling | PASS WITH ADAPTATION | Older `portfolio-aware-event-triage.md` first-viewport order is treated as adapted where it conflicts with the locked Product IA. |
+| Screenshot evidence mapping | PASS | Extraction maps canonical, outcome, relationship, trust, access/system, and handoff screenshots. |
+| Case-study Design-system Mapping | PASS | `portfolio/case-study/index.html` now includes a Design-system Mapping section. |
+| Forbidden claim leakage | PASS | Search on prototype, case-study page, extraction document, and presentation structure returned no forbidden production/trading/score claim matches. |
+| Browser visual QA after extraction | NOT_TESTED LOCALLY | Local Chromium remains unavailable; use GitHub Actions or a Chromium-capable machine for rerun. |
+
+### Gate Impact
+
+```text
+HIGH-FIDELITY DESIGN: PASS
+STATIC QA: PASS
+RESPONSIVE / VISUAL QA: PASS based on existing Chromium evidence; updated shell/extraction rerun pending
+DESIGN SYSTEM ALIGNMENT: PASS WITH ADAPTATION
+ACCESSIBILITY VISUAL QA: PASS FOR VISUAL REQUIREMENTS
+SCREEN READER: NOT_TESTED
+REAL APP/WEB BACK: NOT_TESTED
+PRODUCTION: BLOCKED
+```
+
+### Remaining Issues
+
+| Issue | Status | Next Action |
+|---|---|---|
+| Updated shell/extraction browser visual rerun | OPEN | Run GitHub Actions visual QA or local Chromium QA. |
+| Native Figma frame creation | OPEN | Requires a target Figma file or follow-up Figma workflow. |
+| Screen reader manual test | NOT_TESTED | Run with assistive tech only when that validation track starts. |
+| Real App/Web Back | NOT_TESTED | Requires integrated route environment. |
+| Production contracts | BLOCKED | Requires separate owner-approved data/logic/handoff work. |

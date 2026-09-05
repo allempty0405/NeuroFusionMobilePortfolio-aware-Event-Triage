@@ -1,5 +1,5 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-06 01:11 KST
+Last Updated: 2026-09-06 01:54 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -9,7 +9,7 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus PASS QA reports. Portfolio/Figma presentation packaging includes both a structure document and a repository case-study page. The high-fidelity prototype now separates the final service screen from an external demo state selector, so the phone/service frame no longer contains QA/debug state tabs.
+High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus PASS QA reports. Portfolio/Figma presentation packaging now includes a structure document, a repository case-study page, and a Figma/deck design extraction document that maps Git design-system tokens/components/patterns to presentation frames. The high-fidelity prototype separates the final service screen from an external demo state selector, so the phone/service frame no longer contains QA/debug state tabs.
 
 ## Current Gate
 - RECOVERY: PASS
@@ -24,7 +24,7 @@ High-fidelity HTML frame set created; static QA passed; browser visual QA comple
 - PRODUCTION: BLOCKED
 
 ## Current Task
-Maintain a responsive final service screen demo with external state controls while preserving concept/high-fidelity boundaries.
+Prepare Figma/deck-ready design extraction from the Git design-system reference, high-fidelity service frame, case-study page, and persisted screenshot evidence while preserving concept/high-fidelity boundaries.
 
 ## Completed Since Previous Checkpoint
 - Created `prototype/high-fidelity/index.html`.
@@ -86,6 +86,9 @@ Maintain a responsive final service screen demo with external state controls whi
 - Updated `prototype/high-fidelity/index.html` so state selection controls live outside the phone/service frame.
 - Preserved one responsive service screen rather than creating separate fixed-width implementations.
 - Re-ran static QA after the service/demo shell update: `PASS`.
+- Added `docs/FIGMA_DECK_DESIGN_EXTRACTION.md` with source boundary, token/component extraction, 12-page Figma/deck frame plan, screenshot evidence mapping, visual treatment rules, and QA carryover.
+- Updated `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` to reference the extraction document and add a Design-system Mapping page.
+- Updated `portfolio/case-study/index.html` with a Design-system Mapping section that connects the case-study visuals to Git reference tokens/components/patterns.
 
 ## Locked Decisions
 - Mobile role: `Triage Layer`.
@@ -113,6 +116,7 @@ Event Context
 - Exact Outcome visual prominence is acceptable for the current high-fidelity frame set based on Chromium screenshots; further polish can happen in Figma/portfolio composition.
 - Portfolio/Figma presentation composition can use annotated screenshots and state grids without changing Product policy or prototype HTML.
 - The repository case-study page can serve as the Figma/deck composition source, but it has not yet been manually re-rendered in a browser in this local environment.
+- `docs/FIGMA_DECK_DESIGN_EXTRACTION.md` can serve as the Figma/deck transfer map; actual Figma frame creation has not been performed because no target Figma file was provided.
 - The updated external-selector shell is expected to preserve capture-mode screenshot behavior because `body.capture` hides the external demo panel; browser visual QA has not been rerun locally because Chromium remains unavailable.
 - Long Korean/English event title wrapping passed 320/360/390 screenshot QA.
 - Sticky CTA overlap passed CI geometry checks and screenshot review.
@@ -132,10 +136,11 @@ Event Context
 ## Open Issues
 - NOTE: Local browser visual QA still cannot run because Playwright Chromium binary is unavailable in this container; CI remains the verified visual QA path.
 - OPEN: Browser visual QA has not been rerun after the external-selector shell update in this local environment.
+- OPEN: Browser visual QA has not been rerun after the Figma/deck extraction and case-study Design-system Mapping update in this local environment.
 - NOT_TESTED: Screen reader manual reading order.
 - NOT_TESTED: Real browser/app back navigation after Web handoff.
 - BLOCKED: Production route, payload, field, logic, and freshness contracts.
-- OPEN: Figma deck or final portfolio platform page has not yet been assembled from the repository case-study page.
+- OPEN: Native Figma deck or final hosted portfolio platform version has not yet been assembled from the repository case-study page and extraction document.
 
 ## Files Changed
 - `docs/CURRENT_STATE.md`
@@ -150,6 +155,7 @@ Event Context
 - `artifacts/high-fidelity/visual-qa-report.json`
 - `artifacts/high-fidelity/*.png`
 - `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
+- `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`
 - `portfolio/case-study/index.html`
 - `prototype/high-fidelity/index.html`
 
@@ -166,7 +172,7 @@ Before continuing high-fidelity QA, read:
 8. `scripts/high-fidelity-qa.js`
 
 ## Next Exact Action
-Run the GitHub Actions visual QA path for the updated external-selector shell, then use `portfolio/case-study/index.html`, `prototype/high-fidelity/index.html`, and persisted screenshots in `artifacts/high-fidelity/` to assemble the final Figma/deck or portfolio platform version. Do not upgrade Screen Reader, real App/Web Back, or Production gates without their own tests/contracts.
+Run the GitHub Actions visual QA path for the updated external-selector shell and case-study mapping update, then use `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`, `portfolio/case-study/index.html`, `prototype/high-fidelity/index.html`, and persisted screenshots in `artifacts/high-fidelity/` to assemble the final Figma/deck or portfolio platform version. Do not upgrade Screen Reader, real App/Web Back, or Production gates without their own tests/contracts.
 
 ## Last Verification
 - `node scripts/high-fidelity-static-qa.js` returned `PASS`.
@@ -198,6 +204,10 @@ Run the GitHub Actions visual QA path for the updated external-selector shell, t
 - `node scripts/high-fidelity-static-qa.js` returned `PASS` after the external-selector shell update.
 - Structure check confirmed the state tabs are outside `.phone`, the external panel exists, capture mode hides the external panel, and all 15 states remain present.
 - Local Playwright Chromium executable path still does not exist; browser visual QA was not rerun locally.
+- `docs/FIGMA_DECK_DESIGN_EXTRACTION.md` created from Git design-system files, existing case-study structure, prototype, and screenshot QA reports.
+- `portfolio/case-study/index.html` now includes a Design-system Mapping section and continues to reference 18 existing screenshots with no missing files.
+- `node scripts/high-fidelity-static-qa.js` returned `PASS` after the Figma/deck extraction update.
+- Forbidden production/trading/score claim search on `prototype/high-fidelity/index.html`, `portfolio/case-study/index.html`, `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`, and `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` returned no matches.
 
 ## Recovery Note
 If a new chat starts, read this file first, then `WORKLOG.md`, then `docs/DESIGN.md`, `docs/DESIGN_QA.md`, and `prototype/high-fidelity/index.html`.

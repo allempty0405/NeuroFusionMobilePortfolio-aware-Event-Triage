@@ -387,6 +387,7 @@
           <a href="#anatomy">Anatomy</a>
           <a href="#states">States</a>
           <a href="#qa">QA Evidence</a>
+          <a href="#design-system">Design System</a>
           <a href="#limits">Limits</a>
         </nav>
       </header>
@@ -644,10 +645,32 @@
         </div>
       </section>
 
+      <section class="section" id="design-system" aria-labelledby="design-system-title">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">10 Design-system mapping</p>
+            <h2 id="design-system-title">Git reference system에서 토큰과 컴포넌트를 뽑아 화면에 연결했습니다.</h2>
+          </div>
+          <p class="section-copy">
+            이 디자인 시스템은 Valley 스타일을 참고한 모바일 설계용 reference입니다. Product policy나 Production 범위를 결정하지 않고,
+            surface, type, badge, evidence, feedback, CTA 표현을 일관되게 유지하는 데 사용했습니다.
+          </p>
+        </div>
+        <div class="result-table" role="table" aria-label="Design-system mapping table">
+          <div class="result-row" role="row"><div role="cell">Surface</div><div role="cell">`--nf-surface-dashboard-mobile`, `--nf-surface-card`, `--nf-surface-card-muted` for phone background, cards, and evidence surfaces.</div></div>
+          <div class="result-row" role="row"><div role="cell">Typography</div><div role="cell">`--nf-font-sans`, `--nf-text-xs` to `--nf-text-xl`, and `--nf-weight-*` for Korean-first hierarchy and metadata density.</div></div>
+          <div class="result-row" role="row"><div role="cell">Relationship / data badges</div><div role="cell">Badge treatment from `badges-tabs-filters.md`; Holding, Watchlist, Related-only, and Unconnected remain text-led and separated.</div></div>
+          <div class="result-row" role="row"><div role="cell">Evidence / trust</div><div role="cell">Evidence Card pattern from `data-and-evidence.md`; summary, source, timestamp, system summary label, and data state appear before Outcome.</div></div>
+          <div class="result-row" role="row"><div role="cell">Feedback states</div><div role="cell">Loading, Empty, Stale, Source Unavailable, Permission, Error, and Handoff Failure reuse or adapt `feedback-states.md`.</div></div>
+          <div class="result-row" role="row"><div role="cell">CTA</div><div role="cell">Primary, disabled, and retry CTA behavior follows `buttons-and-cta.md`; handoff remains concept-level.</div></div>
+          <div class="result-row" role="row"><div role="cell">Pattern adaptation</div><div role="cell">`portfolio-aware-event-triage.md` is adapted where older first-viewport ordering conflicts with the locked Product IA.</div></div>
+        </div>
+      </section>
+
       <section class="section" id="limits" aria-labelledby="limits-title">
         <div class="section-head">
           <div>
-            <p class="eyebrow">10 Remaining limits</p>
+            <p class="eyebrow">11 Remaining limits</p>
             <h2 id="limits-title">이 case study는 어디까지 완료됐고, 어디서 멈춰야 하는지 함께 보여줍니다.</h2>
           </div>
           <p class="section-copy">
@@ -665,7 +688,7 @@
       </section>
 
       <p class="footer-note">
-        Source of Truth: `docs/DESIGN.md`, `docs/DESIGN_QA.md`, `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`,
+        Source of Truth: `docs/DESIGN.md`, `docs/DESIGN_QA.md`, `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`, `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`,
         `artifacts/high-fidelity/visual-qa-report.json`, `artifacts/high-fidelity/static-qa-report.json`.
       </p>
     </main>

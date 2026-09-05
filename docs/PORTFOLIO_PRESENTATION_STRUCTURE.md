@@ -1,6 +1,6 @@
 # Portfolio Presentation Structure
 
-Last Updated: 2026-09-05 17:46 KST
+Last Updated: 2026-09-06 01:54 KST
 Last Updated By: Codex / GPT-5
 
 ## Purpose
@@ -18,6 +18,7 @@ It does not replace `docs/DESIGN.md`, change Product policy, or upgrade any Prod
 | Rendered frames | `artifacts/high-fidelity/*.png` | Visual evidence for portfolio slides and Figma pages. |
 | Prototype | `prototype/high-fidelity/index.html` | Reference implementation for state variants only; do not treat as Production evidence. |
 | QA reports | `artifacts/high-fidelity/static-qa-report.json`, `artifacts/high-fidelity/visual-qa-report.json` | Machine-readable evidence for static and Chromium visual QA. |
+| Design extraction | `docs/FIGMA_DECK_DESIGN_EXTRACTION.md` | Page-by-page Figma/deck transfer guide with token, component, and screenshot mapping. |
 
 ## Current Gate To Present
 
@@ -58,8 +59,8 @@ PRODUCTION: BLOCKED
 | 8 | Trust / Evidence States | Show partial, empty, stale, source unavailable, permission, and error handling. | State grid using 360 screenshots | The design reveals uncertainty instead of hiding it. |
 | 9 | Responsive QA Evidence | Demonstrate 320, 360, and 390 viewport coverage. | `320x800-normal.png`, `360x800-normal.png`, `390x844-normal.png` | Explain that 320 is stress coverage, while 360/390 cover all 15 states. |
 | 10 | Visual QA Result | Summarize Chromium QA results and issue severity. | QA result table plus artifact paths | State BLOCKER and MAJOR were not found in screenshot review. |
-| 11 | Remaining Limits | Make unresolved work explicit. | Boundary checklist | Keep Screen Reader `NOT_TESTED`, real App/Web Back `NOT_TESTED`, Production `BLOCKED`. |
-| 12 | Next Step | Prepare Figma/portfolio composition or optional manual validation track. | Final frame montage | Next design work is presentation polish, not Product policy change. |
+| 11 | Design-system Mapping | Show how the Git reference system informs the final visual treatment. | Token/component mapping table | Keep the design system framed as a reference layer, not Product policy or official Production system. |
+| 12 | Remaining Limits | Make unresolved work explicit. | Boundary checklist | Keep Screen Reader `NOT_TESTED`, real App/Web Back `NOT_TESTED`, Production `BLOCKED`. |
 
 ## Screenshot Selection
 
@@ -144,6 +145,7 @@ Avoid phrases that imply:
 | Annotation | Add numbered callouts for the locked IA. |
 | Evidence | Place QA report snippets next to screenshot grids, not as decoration. |
 | State grids | Use 2x2 or 3x2 groups for state families; avoid shrinking screenshots until text is unreadable. |
+| Design-system mapping | Use `docs/FIGMA_DECK_DESIGN_EXTRACTION.md` to place token/component mapping near the final service frame. |
 | Visual hierarchy | Keep Event/Evidence explanations before Outcome explanation. |
 | Boundary slide | End with unresolved tests and Production blockers so the case study stays honest. |
 
@@ -155,4 +157,4 @@ Short version:
 
 ## Next Exact Action
 
-Create the Figma or portfolio deck using this structure and the persisted screenshots in `artifacts/high-fidelity/`. Keep the work in presentation composition unless a new manual validation track is explicitly started.
+Create the Figma or portfolio deck using this structure, `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`, and the persisted screenshots in `artifacts/high-fidelity/`. Keep the work in presentation composition unless a new manual validation track is explicitly started.
