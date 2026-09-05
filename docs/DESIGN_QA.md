@@ -510,3 +510,37 @@ SCREEN READER: NOT_TESTED
 REAL APP/WEB BACK: NOT_TESTED
 PRODUCTION: BLOCKED
 ```
+
+## High-fidelity Service Demo Shell Update
+
+Date: 2026-09-06 01:11 KST
+
+### Scope
+
+This update separates the portfolio/demo controls from the user-facing phone frame in `prototype/high-fidelity/index.html`.
+
+The Product IA, state data, outcome model, Production boundary, and `docs/DESIGN.md` were not changed.
+
+### Result
+
+| Check | Result | Evidence |
+|---|---|---|
+| Responsive service screen | PASS FOR STATIC STRUCTURE | One responsive phone/service frame is preserved; no separate fixed-width implementation was created. |
+| External state selector | PASS FOR STATIC STRUCTURE | State chips now live in `.demo-panel` outside `.phone`. |
+| Service UI debug removal | PASS FOR STATIC STRUCTURE | `.phone` no longer contains the `.tabs` state selector. |
+| Capture mode | PASS FOR STATIC STRUCTURE | `body.capture .demo-panel` hides the external selector for screenshot QA. |
+| State preservation | PASS | All 15 required states remain present. |
+| Static QA | PASS | `node scripts/high-fidelity-static-qa.js` returned `PASS`. |
+| Browser visual QA after shell update | NOT_TESTED LOCALLY | Local Playwright Chromium executable is unavailable. |
+
+### Gate Impact
+
+```text
+HIGH-FIDELITY DESIGN: PASS
+STATIC QA: PASS
+RESPONSIVE / VISUAL QA: PASS BASED ON EXISTING CHROMIUM EVIDENCE; RERUN PENDING FOR UPDATED SHELL
+ACCESSIBILITY VISUAL QA: PASS FOR VISUAL REQUIREMENTS
+SCREEN READER: NOT_TESTED
+REAL APP/WEB BACK: NOT_TESTED
+PRODUCTION: BLOCKED
+```

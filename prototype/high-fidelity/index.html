@@ -29,6 +29,14 @@
         padding: 24px;
       }
 
+      .demo-layout {
+        width: min(100%, 820px);
+        display: grid;
+        grid-template-columns: minmax(0, var(--frame-width, 390px)) minmax(260px, 1fr);
+        gap: var(--nf-space-5);
+        align-items: start;
+      }
+
       .phone {
         width: min(100vw, var(--frame-width, 390px));
         min-height: var(--frame-height, 844px);
@@ -363,10 +371,36 @@
         font-weight: var(--nf-weight-medium);
       }
 
+      .demo-panel {
+        position: sticky;
+        top: 24px;
+        border: 1px solid var(--nf-border-default);
+        border-radius: var(--nf-radius-lg);
+        background: var(--nf-surface-card);
+        padding: var(--nf-space-4);
+        box-shadow: var(--nf-shadow-card);
+      }
+
+      .demo-panel-title {
+        margin: 0 0 var(--nf-space-2);
+        color: var(--nf-text-title);
+        font-size: var(--nf-text-base);
+        line-height: var(--nf-leading-base);
+        font-weight: var(--nf-weight-semibold);
+      }
+
+      .demo-panel-copy {
+        margin: 0 0 var(--nf-space-4);
+        color: var(--nf-text-muted);
+        font-size: var(--nf-text-xs);
+        line-height: var(--nf-leading-sm);
+        font-weight: var(--nf-weight-normal);
+      }
+
       .tabs {
         display: flex;
+        flex-wrap: wrap;
         gap: var(--nf-space-2);
-        overflow-x: auto;
         padding: 0 0 var(--nf-space-3);
         margin-bottom: var(--nf-space-3);
       }
@@ -398,9 +432,13 @@
         font-weight: var(--nf-weight-normal);
       }
 
-      body.capture .tabs,
-      body.capture [data-frame-note] {
+      body.capture .demo-panel {
         display: none;
+      }
+
+      body.capture .demo-layout {
+        width: min(100vw, var(--frame-width, 390px));
+        display: block;
       }
 
       body.capture .disclosure {
@@ -430,6 +468,11 @@
           padding: 0;
         }
 
+        .demo-layout {
+          width: 100vw;
+          display: block;
+        }
+
         .phone {
           width: 100vw;
           min-height: 100vh;
@@ -444,34 +487,50 @@
           font-size: var(--nf-text-base);
           line-height: var(--nf-leading-base);
         }
+
+        .demo-panel {
+          position: static;
+          border-radius: 0;
+          border-left: 0;
+          border-right: 0;
+          border-bottom: 0;
+        }
       }
     </style>
   </head>
   <body>
     <div class="review-shell">
-      <main class="phone" aria-label="Portfolio-aware Event Triage high-fidelity frame">
-        <div class="screen">
-          <header class="topbar" aria-label="화면 상단">
-            <button class="icon-button" aria-label="이전 화면으로 돌아가기">‹</button>
-            <h1 class="top-title">이벤트 상세</h1>
-            <button class="icon-button" aria-label="닫기">×</button>
-          </header>
+      <div class="demo-layout">
+        <main class="phone" aria-label="Portfolio-aware Event Triage final service screen demo">
+          <div class="screen">
+            <header class="topbar" aria-label="화면 상단">
+              <button class="icon-button" aria-label="이전 화면으로 돌아가기">‹</button>
+              <h1 class="top-title">이벤트 상세</h1>
+              <button class="icon-button" aria-label="닫기">×</button>
+            </header>
 
+            <section class="disclosure" aria-label="데이터 상태 안내" data-disclosure></section>
+
+            <div class="stack" data-content></div>
+
+            <section class="sticky-area" aria-label="Web 분석 이동">
+              <div class="handoff-card">
+                <button class="primary-cta" data-cta type="button"></button>
+                <p class="frame-note" data-cta-note style="margin: 8px 0 0"></p>
+              </div>
+            </section>
+          </div>
+        </main>
+
+        <aside class="demo-panel" aria-label="Demo state selector">
+          <h2 class="demo-panel-title">Case selector</h2>
+          <p class="demo-panel-copy">
+            이 패널은 포트폴리오 검토용 외부 컨트롤입니다. 왼쪽 phone frame 안의 서비스 UI에는 QA/debug 버튼을 넣지 않습니다.
+          </p>
           <nav class="tabs" aria-label="상태 변형 선택"></nav>
           <p class="frame-note" data-frame-note></p>
-
-          <section class="disclosure" aria-label="데이터 상태 안내" data-disclosure></section>
-
-          <div class="stack" data-content></div>
-
-          <section class="sticky-area" aria-label="Web 분석 이동">
-            <div class="handoff-card">
-              <button class="primary-cta" data-cta type="button"></button>
-              <p class="frame-note" data-cta-note style="margin: 8px 0 0"></p>
-            </div>
-          </section>
-        </div>
-      </main>
+        </aside>
+      </div>
     </div>
 
     <script>

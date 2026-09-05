@@ -1078,3 +1078,70 @@ The repository now contains a portfolio-ready case-study page that explains prob
 
 ### Next Action
 Use `portfolio/case-study/index.html` as the source layout for Figma/deck composition, or provide a Figma file key if the next step should write frames directly into Figma.
+
+---
+
+## 2026-09-06 01:11 KST — Final Service Demo Shell Separation
+
+### Goal
+Create a portfolio-ready final service screen demo where the actual phone UI looks like a real product screen and case/state selection controls live outside the service frame.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/WORKLOG.md`
+- FACT: `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
+- FACT: `docs/DESIGN_QA.md`
+- FACT: `prototype/high-fidelity/index.html`
+- FACT: `portfolio/case-study/index.html`
+- FACT: `artifacts/high-fidelity/visual-qa-report.json`
+- FACT: `artifacts/high-fidelity/static-qa-report.json`
+- FACT: `artifacts/high-fidelity/*.png`
+
+### Observations
+- FACT: Existing visual QA report remains `PASS` with 34 screenshots.
+- FACT: Existing static QA report remains `PASS`.
+- OBSERVATION: The prototype already preserves the locked IA and 15 state data variants.
+- OBSERVATION: The previous interactive tabs were part of the demo/review shell, not the final service screen.
+
+### Decisions
+- DECISION: Keep one responsive implementation instead of creating fixed-width variants.
+- DECISION: Move state selection into an external `.demo-panel` outside `.phone`.
+- DECISION: Keep the phone/service frame free of QA/debug tabs.
+- DECISION: Preserve capture-mode behavior by hiding the external demo panel when `?capture=1` is present.
+- DECISION: Do not change state data, outcome types, Product policy, or Production blockers.
+
+### Changes Made
+- Updated `prototype/high-fidelity/index.html` review shell layout.
+- Updated `docs/CURRENT_STATE.md`.
+- Updated `docs/DESIGN_QA.md`.
+- Refreshed `artifacts/high-fidelity/static-qa-report.json` by rerunning static QA.
+- Appended this worklog entry.
+
+### Files Changed
+- `prototype/high-fidelity/index.html`
+- `docs/CURRENT_STATE.md`
+- `docs/DESIGN_QA.md`
+- `docs/WORKLOG.md`
+- `artifacts/high-fidelity/static-qa-report.json`
+
+### Validation Performed
+- FACT: `node scripts/high-fidelity-static-qa.js` returned `PASS`.
+- FACT: Structure check confirmed `.tabs` is outside `.phone`.
+- FACT: Structure check confirmed `.demo-panel` exists and `body.capture .demo-panel` hides it.
+- FACT: Structure check confirmed all 15 states remain present.
+- FACT: Forbidden production/trading/score claim search on `prototype/high-fidelity/index.html` returned no matches.
+- FACT: Case-study image reference check still returns 18 references with no missing files.
+- FACT: Local Playwright Chromium executable path does not exist, so browser visual QA was not rerun locally.
+- FACT: `git diff --check` returned no issues.
+
+### Result
+The high-fidelity prototype now behaves as a final service screen demo: state controls are available for portfolio review, but they live outside the phone/service UI.
+
+### Remaining Issues
+- OPEN: GitHub Actions visual QA should be rerun for the updated shell.
+- NOT_TESTED: Screen reader manual test.
+- NOT_TESTED: Real App/Web back navigation.
+- BLOCKED: Production data, field, logic, freshness, handoff, API integration, validation, and acceptance criteria.
+
+### Next Action
+Push the external-selector shell update, let the GitHub Actions visual QA path rerun, and then use the responsive service demo and case-study page for Figma/deck composition.

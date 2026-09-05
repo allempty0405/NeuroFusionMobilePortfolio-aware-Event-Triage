@@ -1,5 +1,5 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-05 18:01 KST
+Last Updated: 2026-09-06 01:11 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -9,7 +9,7 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus PASS QA reports. No Product/Design HTML change was required from screenshot evidence. Portfolio/Figma presentation packaging now includes both a structure document and an actual repository case-study page that uses the verified screenshots as evidence.
+High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus PASS QA reports. Portfolio/Figma presentation packaging includes both a structure document and a repository case-study page. The high-fidelity prototype now separates the final service screen from an external demo state selector, so the phone/service frame no longer contains QA/debug state tabs.
 
 ## Current Gate
 - RECOVERY: PASS
@@ -24,7 +24,7 @@ High-fidelity HTML frame set created; static QA passed; browser visual QA comple
 - PRODUCTION: BLOCKED
 
 ## Current Task
-Assemble the approved high-fidelity frame set and visual QA evidence into portfolio-ready case-study output while preserving concept/high-fidelity boundaries.
+Maintain a responsive final service screen demo with external state controls while preserving concept/high-fidelity boundaries.
 
 ## Completed Since Previous Checkpoint
 - Created `prototype/high-fidelity/index.html`.
@@ -83,6 +83,9 @@ Assemble the approved high-fidelity frame set and visual QA evidence into portfo
 - Visual review found no BLOCKER or MAJOR issue in first viewport hierarchy, title/ticker/badge/source wrapping, sticky CTA overlap, financial safety, or non-color accessibility cues.
 - Created `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` to guide portfolio/Figma presentation packaging from existing Product SoT, high-fidelity frames, and QA evidence.
 - Created `portfolio/case-study/index.html` as a portfolio-ready case-study page using verified Chromium screenshots and the approved presentation structure.
+- Updated `prototype/high-fidelity/index.html` so state selection controls live outside the phone/service frame.
+- Preserved one responsive service screen rather than creating separate fixed-width implementations.
+- Re-ran static QA after the service/demo shell update: `PASS`.
 
 ## Locked Decisions
 - Mobile role: `Triage Layer`.
@@ -110,6 +113,7 @@ Event Context
 - Exact Outcome visual prominence is acceptable for the current high-fidelity frame set based on Chromium screenshots; further polish can happen in Figma/portfolio composition.
 - Portfolio/Figma presentation composition can use annotated screenshots and state grids without changing Product policy or prototype HTML.
 - The repository case-study page can serve as the Figma/deck composition source, but it has not yet been manually re-rendered in a browser in this local environment.
+- The updated external-selector shell is expected to preserve capture-mode screenshot behavior because `body.capture` hides the external demo panel; browser visual QA has not been rerun locally because Chromium remains unavailable.
 - Long Korean/English event title wrapping passed 320/360/390 screenshot QA.
 - Sticky CTA overlap passed CI geometry checks and screenshot review.
 - Screen reader reading order remains `NOT_TESTED`.
@@ -126,7 +130,8 @@ Event Context
 - Production Acceptance Criteria
 
 ## Open Issues
-- NOTE: Local browser visual QA still cannot run because Playwright Chromium binary is unavailable in this container; CI is the verified visual QA path.
+- NOTE: Local browser visual QA still cannot run because Playwright Chromium binary is unavailable in this container; CI remains the verified visual QA path.
+- OPEN: Browser visual QA has not been rerun after the external-selector shell update in this local environment.
 - NOT_TESTED: Screen reader manual reading order.
 - NOT_TESTED: Real browser/app back navigation after Web handoff.
 - BLOCKED: Production route, payload, field, logic, and freshness contracts.
@@ -146,6 +151,7 @@ Event Context
 - `artifacts/high-fidelity/*.png`
 - `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
 - `portfolio/case-study/index.html`
+- `prototype/high-fidelity/index.html`
 
 ## Files To Read Next
 Before continuing high-fidelity QA, read:
@@ -160,7 +166,7 @@ Before continuing high-fidelity QA, read:
 8. `scripts/high-fidelity-qa.js`
 
 ## Next Exact Action
-Use `portfolio/case-study/index.html` and persisted screenshots in `artifacts/high-fidelity/` to assemble the final Figma/deck or portfolio platform version. Do not upgrade Screen Reader, real App/Web Back, or Production gates without their own tests/contracts.
+Run the GitHub Actions visual QA path for the updated external-selector shell, then use `portfolio/case-study/index.html`, `prototype/high-fidelity/index.html`, and persisted screenshots in `artifacts/high-fidelity/` to assemble the final Figma/deck or portfolio platform version. Do not upgrade Screen Reader, real App/Web Back, or Production gates without their own tests/contracts.
 
 ## Last Verification
 - `node scripts/high-fidelity-static-qa.js` returned `PASS`.
@@ -188,6 +194,10 @@ Use `portfolio/case-study/index.html` and persisted screenshots in `artifacts/hi
 - `portfolio/case-study/index.html` created; 18 screenshot references were checked and all referenced files exist.
 - `artifacts/high-fidelity/visual-qa-report.json` remains `PASS` with 34 screenshots; `artifacts/high-fidelity/static-qa-report.json` remains `PASS`.
 - Forbidden production/trading/score claim search on the case-study page returned no matches.
+- `prototype/high-fidelity/index.html` external selector shell created; state controls are outside the phone/service frame.
+- `node scripts/high-fidelity-static-qa.js` returned `PASS` after the external-selector shell update.
+- Structure check confirmed the state tabs are outside `.phone`, the external panel exists, capture mode hides the external panel, and all 15 states remain present.
+- Local Playwright Chromium executable path still does not exist; browser visual QA was not rerun locally.
 
 ## Recovery Note
 If a new chat starts, read this file first, then `WORKLOG.md`, then `docs/DESIGN.md`, `docs/DESIGN_QA.md`, and `prototype/high-fidelity/index.html`.
