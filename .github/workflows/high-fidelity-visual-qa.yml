@@ -1,0 +1,52 @@
+name: High-fidelity Visual QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "prototype/high-fidelity/**"
+      - "scripts/high-fidelity-qa.js"
+      - "scripts/high-fidelity-static-qa.js"
+      - ".github/workflows/high-fidelity-visual-qa.yml"
+
+jobs:
+  high-fidelity-visual-qa:
+    name: Render mobile QA screenshots
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Playwright package
+        run: npm install --no-save playwright@1.62.1
+
+      - name: Run static high-fidelity QA
+        run: node scripts/high-fidelity-static-qa.js
+
+      - name: Install Playwright Chromium shell
+        env:
+          PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT: "120000"
+        run: npx playwright install chromium --only-shell
+
+      - name: Run browser high-fidelity QA
+        run: node scripts/high-fidelity-qa.js
+
+      - name: Upload high-fidelity QA artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: high-fidelity-visual-qa
+          path: |
+            artifacts/high-fidelity/*.png
+            artifacts/high-fidelity/static-qa-report.json
+            artifacts/high-fidelity/visual-qa-report.json
+          if-no-files-found: warn

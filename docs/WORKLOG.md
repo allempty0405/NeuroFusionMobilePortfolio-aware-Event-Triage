@@ -710,3 +710,75 @@ Chromium remains unavailable in this environment. The high-fidelity frame set is
 
 ### Next Action
 Run `node scripts/high-fidelity-qa.js` in an environment with a working Playwright Chromium binary or add a browser-launch-only `executablePath` fallback if a compatible system browser exists.
+
+---
+
+## 2026-09-05 16:09 KST — Visual QA CI Workflow Setup
+
+### Goal
+Create a GitHub Actions workflow that can run the existing high-fidelity static and browser visual QA scripts in a Chromium-capable environment and upload screenshot/report artifacts.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/WORKLOG.md`
+- FACT: `docs/DESIGN_QA.md`
+- FACT: `scripts/high-fidelity-qa.js`
+- FACT: `scripts/high-fidelity-static-qa.js`
+- FACT: `artifacts/high-fidelity/static-qa-report.json`
+- FACT: `artifacts/high-fidelity/visual-qa-report.json`
+
+### Commands Run
+- FACT: `git fetch origin`
+- FACT: `git status --short --branch`
+- FACT: `git rev-list --left-right --count origin/main...HEAD`
+- FACT: `git diff HEAD origin/main -- .`
+- FACT: `node scripts/high-fidelity-static-qa.js`
+
+### Screenshots Generated
+- FACT: `0`
+- BLOCKED: No local Chromium binary was installed or downloaded during this work unit.
+
+### Observations
+- FACT: Local branch still has commit ancestry divergence with remote, but `HEAD` and `origin/main` file trees matched before this workflow change.
+- FACT: The repository has no `package.json` or lockfile.
+- FACT: Local Playwright resolves from the Codex primary runtime at version `1.62.1`.
+- INTERPRETATION: A CI workflow needs to install the Playwright package before running `node scripts/high-fidelity-qa.js`; `npx playwright install chromium --only-shell` alone does not guarantee `require("playwright")` resolution.
+
+### Decisions
+- DECISION: Add a GitHub Actions workflow rather than changing Product/Design logic.
+- DECISION: Pin the temporary CI Playwright package to `1.62.1`, matching the locally verified runtime version.
+- DECISION: Upload PNG screenshots and both QA report JSON files as the workflow artifact.
+- DECISION: Keep `RESPONSIVE / VISUAL QA: BLOCKED` until actual screenshot evidence is generated and inspected.
+- DECISION: Do not modify `prototype/high-fidelity/index.html`.
+
+### Changes Made
+- Added `.github/workflows/high-fidelity-visual-qa.yml`.
+- Updated `docs/CURRENT_STATE.md`.
+- Updated `docs/DESIGN_QA.md`.
+- Refreshed `artifacts/high-fidelity/static-qa-report.json` by rerunning static QA.
+- Appended this worklog entry.
+
+### Files Changed
+- `.github/workflows/high-fidelity-visual-qa.yml`
+- `artifacts/high-fidelity/static-qa-report.json`
+- `docs/CURRENT_STATE.md`
+- `docs/DESIGN_QA.md`
+- `docs/WORKLOG.md`
+
+### QA Performed
+- FACT: `node scripts/high-fidelity-static-qa.js` returned `PASS`.
+- FACT: Browser visual QA was not rerun locally in this work unit because the blocker is known environment-only and no browser binary was added locally.
+
+### Result
+The project now has a CI execution path for high-fidelity visual QA. Browser screenshot evidence is still pending.
+
+### Remaining Issues
+- BLOCKED: GitHub Actions workflow has not yet been executed and its screenshot artifact has not been inspected.
+- BLOCKED: Local container still lacks Chromium.
+- MAJOR: 320/360/390 visual responsive QA remains incomplete.
+- NOT_TESTED: Screen reader manual test.
+- NOT_TESTED: Real App/Web back navigation.
+- BLOCKED: Production data, field, logic, freshness, handoff, API integration, validation, and acceptance criteria.
+
+### Next Action
+Push the workflow to remote `main`, run the `High-fidelity Visual QA` GitHub Actions workflow, download the `high-fidelity-visual-qa` artifact, and inspect the generated PNG screenshots before any HTML changes or gate upgrade.

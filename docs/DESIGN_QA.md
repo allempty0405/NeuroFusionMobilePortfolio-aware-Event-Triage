@@ -340,3 +340,53 @@ No HTML design changes were made because no rendered screenshot defect was obser
 ### Production Blockers
 
 Production Data Contract, Production Field definition, Production Outcome Logic, Source Freshness SLA, Production Web Handoff Payload, Actual API Integration, Real User Validation, Screen Reader Manual Test, and Production Acceptance Criteria remain `BLOCKED` or `NOT_TESTED`.
+
+---
+
+## High-fidelity Visual QA CI Path
+
+Date: 2026-09-05 16:09 KST
+Target: `.github/workflows/high-fidelity-visual-qa.yml`
+
+### Purpose
+
+Provide a Chromium-capable execution path for the existing high-fidelity QA scripts without changing Product policy, `docs/DESIGN.md`, or `prototype/high-fidelity/index.html`.
+
+### Workflow Coverage
+
+| Step | Command / Action | Result |
+|---|---|---|
+| Checkout | `actions/checkout@v4` | CONFIGURED |
+| Node setup | `actions/setup-node@v4`, Node `22` | CONFIGURED |
+| Playwright package | `npm install --no-save playwright@1.62.1` | CONFIGURED |
+| Static QA | `node scripts/high-fidelity-static-qa.js` | CONFIGURED |
+| Chromium shell | `npx playwright install chromium --only-shell` | CONFIGURED |
+| Browser visual QA | `node scripts/high-fidelity-qa.js` | CONFIGURED |
+| Artifact upload | `artifacts/high-fidelity/*.png`, `static-qa-report.json`, `visual-qa-report.json` | CONFIGURED |
+
+### Local Regression
+
+```text
+node scripts/high-fidelity-static-qa.js
+Result: PASS
+```
+
+### Current Visual QA Status
+
+```text
+RESPONSIVE / VISUAL QA: BLOCKED
+```
+
+No screenshot evidence has been generated yet. The workflow is an execution path for the required browser QA, not a substitute for visual inspection.
+
+### Next Review Requirement
+
+After the workflow generates the `high-fidelity-visual-qa` artifact, inspect PNGs for:
+
+- 360x800, 390x844, and 320x800 stress coverage.
+- First viewport hierarchy.
+- `Event -> Asset -> Context -> Evidence -> Outcome -> Handoff` visual order.
+- Title, ticker, badge, source, and timestamp wrapping.
+- Sticky CTA overlap.
+- Financial safety interpretation.
+- Non-color accessibility cues.

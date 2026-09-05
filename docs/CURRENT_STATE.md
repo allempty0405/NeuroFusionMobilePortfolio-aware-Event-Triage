@@ -1,5 +1,5 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-05 13:46 KST
+Last Updated: 2026-09-05 16:09 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -9,7 +9,7 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA remains blocked by missing Playwright Chromium binary. Additional retries confirmed that Playwright Chromium downloads return truncated CDN responses; apt package lists can update with `APT::Sandbox::User=root`, but Ubuntu noble only exposes the snap transitional `chromium-browser` package, not a usable deb Chromium browser for this container.
+High-fidelity HTML frame set created; static QA passed; browser visual QA remains blocked in the local container by missing Playwright Chromium binary. Additional retries confirmed that Playwright Chromium downloads return truncated CDN responses; apt package lists can update with `APT::Sandbox::User=root`, but Ubuntu noble only exposes the snap transitional `chromium-browser` package, not a usable deb Chromium browser for this container. A GitHub Actions workflow now exists to run static QA, install Playwright Chromium shell, run browser visual QA, and upload screenshot/report artifacts in a Chromium-capable CI environment.
 
 ## Current Gate
 - RECOVERY: PASS
@@ -64,6 +64,8 @@ Convert approved `docs/DESIGN.md` into high-fidelity mobile frames and verify re
 - Re-ran `apt-get -o APT::Sandbox::User=root update`; package list update completed, but `apt-cache policy chromium chromium-browser` showed no `chromium` deb candidate and only the snap transitional `chromium-browser` package.
 - Re-attempted `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium --only-shell`; `npx` used temporary Playwright `1.63.0`, but CDN zip responses still downloaded as `0 MiB` / truncated.
 - Re-ran QA scripts: visual QA `BLOCKED` with screenshots `0`; static QA `PASS`.
+- Added `.github/workflows/high-fidelity-visual-qa.yml` to run high-fidelity static QA, install Playwright Chromium shell, run browser visual QA, and upload `artifacts/high-fidelity/*.png` plus QA reports.
+- Re-ran local static high-fidelity QA after adding the workflow: `PASS`.
 
 ## Locked Decisions
 - Mobile role: `Triage Layer`.
@@ -116,6 +118,7 @@ Event Context
 - `docs/CURRENT_STATE.md`
 - `docs/WORKLOG.md`
 - `docs/DESIGN_QA.md`
+- `.github/workflows/high-fidelity-visual-qa.yml`
 - `prototype/high-fidelity/index.html`
 - `prototype/high-fidelity/README.md`
 - `scripts/high-fidelity-qa.js`
@@ -134,7 +137,7 @@ Before continuing high-fidelity QA, read:
 6. `scripts/high-fidelity-qa.js`
 
 ## Next Exact Action
-Run `node scripts/high-fidelity-qa.js` in an environment with Playwright Chromium installed, inspect generated screenshots in `artifacts/high-fidelity/`, then fix any 360/390/320 viewport issues before final high-fidelity PASS.
+Run the `High-fidelity Visual QA` GitHub Actions workflow from remote `main`, download the `high-fidelity-visual-qa` artifact, inspect generated screenshots in `artifacts/high-fidelity/`, then fix any 360/390/320 viewport issues before final high-fidelity PASS.
 
 ## Last Verification
 - `node scripts/high-fidelity-static-qa.js` returned `PASS`.
@@ -145,6 +148,8 @@ Run `node scripts/high-fidelity-qa.js` in an environment with Playwright Chromiu
 - `apt-get update` failed without sandbox override; `apt-get -o APT::Sandbox::User=root update` completed, but no usable Chromium deb package was available.
 - `PLAYWRIGHT_DOWNLOAD_CONNECTION_TIMEOUT=120000 npx playwright install chromium --only-shell` with temporary Playwright `1.63.0` also failed with truncated `0 MiB` zip responses.
 - No local system Chromium/Chrome executable was found.
+- `.github/workflows/high-fidelity-visual-qa.yml` was added as the next Chromium-capable execution path.
+- `node scripts/high-fidelity-static-qa.js` returned `PASS` after the workflow addition.
 - UI forbidden-copy search found no matches in `prototype/high-fidelity/index.html`; matches exist only inside QA regex patterns.
 - GitHub remote `main` was previously updated and verified at `66997720ae646c13d17e830b5c1f0e282da854b8`; local and remote file trees matched before this continuation's new QA-blocker report refresh.
 
