@@ -1,0 +1,6 @@
+participant_id,recruitment_status,eligibility_verified,consent_recorded,session_date,experience_band,portfolio_monitoring_pattern,episode_id,recall_window,recent_trigger,source_channel,asset_relationship,personal_relationship_part_of_task,current_workaround_chronology,tools_screens_count,elapsed_time_minutes,missed_context_consequence_level,missed_context_consequence_note,approximate_frequency_30d,verbatim_quote,moderator_observation,researcher_interpretation,contradicting_evidence,recall_limitation,moderator
+P01,NOT_RECRUITED,NOT_CHECKED,NO,,,,,,,,UNKNOWN,UNKNOWN,,,,UNKNOWN,,UNKNOWN,,,,,,
+P02,NOT_RECRUITED,NOT_CHECKED,NO,,,,,,,,UNKNOWN,UNKNOWN,,,,UNKNOWN,,UNKNOWN,,,,,,
+P03,NOT_RECRUITED,NOT_CHECKED,NO,,,,,,,,UNKNOWN,UNKNOWN,,,,UNKNOWN,,UNKNOWN,,,,,,
+P04,NOT_RECRUITED,NOT_CHECKED,NO,,,,,,,,UNKNOWN,UNKNOWN,,,,UNKNOWN,,UNKNOWN,,,,,,
+P05,NOT_RECRUITED,NOT_CHECKED,NO,,,,,,,,UNKNOWN,UNKNOWN,,,,UNKNOWN,,UNKNOWN,,,,,,

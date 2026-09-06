@@ -1379,3 +1379,66 @@ The validation plan is ready for participant recruitment and evidence collection
 
 ### Next Action
 Recruit five target investors and run Test 1 using unaided recent-event recall before showing any prototype or entry/outcome condition.
+
+---
+
+## 2026-09-07 02:02 KST — Test 1 Execution Preparation
+
+### Goal
+Prepare Test 1 recruitment, moderation, and evidence-capture materials for exactly five target investors without fabricating participants or session evidence.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/OPPORTUNITY_REVALIDATION_PLAN.md`
+- FACT: `docs/WORKLOG.md`
+
+### Observations
+- FACT: Test 1 requires five real target investors who actively manage or monitor a self-directed portfolio.
+- FACT: No participant identities, recruitment access, interview transcripts, or completed evidence rows are present in the repository or current workspace.
+- OBSERVATION: Participant recruitment and moderated sessions require external human access; they cannot be represented as complete through document preparation alone.
+- UNKNOWN: Participant eligibility, recent-event episodes, workaround frequency/cost, contradicting evidence, and recall limitations.
+
+### Decisions
+- DECISION: Create exactly five anonymized slots (`P01`–`P05`) without inventing identities.
+- DECISION: Keep recruitment state `NOT_RECRUITED`, evidence collection `NOT_STARTED`, and Test 1 gate `NOT_EVALUABLE` until real evidence exists.
+- DECISION: Store no account numbers, balances, exact holdings, quantities, names, or contact details in Git.
+- DECISION: Use a neutral recruitment message that does not reveal the working hypothesis.
+- DECISION: Prohibit prototype, entry-model, Outcome, competitor, and solution-hypothesis exposure before unaided recall is complete.
+- DECISION: Preserve the predeclared `STRONG_SIGNAL` / `MIXED_SIGNAL` / `WEAK_SIGNAL` thresholds unchanged.
+- DECISION: Keep Test 2 and Test 3 on hold until all five Test 1 sessions are evaluated.
+
+### Changes Made
+- Created `docs/TEST1_RECENT_BEHAVIOR_FREQUENCY.md`.
+- Created `docs/TEST1_EVIDENCE_CAPTURE.csv`.
+- Updated `docs/CURRENT_STATE.md` with Test 1 readiness, the participant-access blocker, files to read, and next exact action.
+- Appended this worklog entry.
+
+### Files Changed
+- `docs/TEST1_RECENT_BEHAVIOR_FREQUENCY.md`
+- `docs/TEST1_EVIDENCE_CAPTURE.csv`
+- `docs/CURRENT_STATE.md`
+- `docs/WORKLOG.md`
+
+### Validation Performed
+- FACT: The recruitment tracker contains exactly five participant IDs: `P01`–`P05`.
+- FACT: The CSV contains one blank recruitment/evidence row for each of `P01`–`P05`.
+- FACT: No sensitive financial field is requested.
+- FACT: The moderator guide starts with 30-day unaided recall and labels a 31–90-day fallback separately.
+- FACT: The capture schema includes trigger, source/channel, asset relationship, workaround chronology, tool/screen count, effort, consequence, frequency, short verbatim evidence, contradicting evidence, and recall limitation.
+- FACT: Observation and researcher interpretation are stored in separate fields.
+- FACT: No participant result or market-prevalence claim was created.
+- FACT: Product, design, prototype, QA, screenshot, Figma, and deck files were not modified.
+
+### Result
+Test 1 is prepared for recruitment and moderated execution. It is not yet executed.
+
+### Remaining Issues
+- `EXTERNAL_INPUT_REQUIRED`: Access to exactly five eligible investors or completed anonymized session records.
+- `NOT_STARTED`: Recruitment, eligibility confirmation, consent, scheduling, and P01–P05 sessions.
+- `NOT_EVALUABLE`: Test 1 signal gate.
+- `HOLD`: Test 2 and Test 3.
+- `NOT_TESTED`: Screen reader and real App/Web Back behavior.
+- `BLOCKED`: Production.
+
+### Next Action
+Recruit exactly five eligible target investors and run the P01–P05 sessions. If another person conducts them, return anonymized transcripts or completed CSV rows for evidence coding and fixed-threshold evaluation.

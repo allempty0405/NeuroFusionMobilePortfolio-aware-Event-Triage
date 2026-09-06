@@ -1,6 +1,6 @@
 # CURRENT PROJECT STATE
 
-Last Updated: 2026-09-07 01:49 KST
+Last Updated: 2026-09-07 02:02 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -15,7 +15,7 @@ This is the opportunity-revalidation workstream for the existing `Portfolio-awar
 
 ## Current Phase
 
-Opportunity revalidation planning is complete. Additional Figma, deck, and UI polish is paused pending behavioral evidence.
+Test 1 preparation is complete. The repository now contains a five-participant recruitment/session packet and a blank anonymized evidence-capture sheet. Recruitment and participant sessions have not started because no eligible participant access or session evidence has been provided. Additional Figma, deck, and UI polish remains paused.
 
 ## Current Gate
 
@@ -37,18 +37,20 @@ REAL APP/WEB BACK: NOT_TESTED
 
 ## Current Task
 
-Execute the three-test plan in `docs/OPPORTUNITY_REVALIDATION_PLAN.md`. Do not resume UI/Figma/deck polish or treat Prototype/QA evidence as user validation.
+Recruit exactly five eligible target investors and execute Test 1 using `docs/TEST1_RECENT_BEHAVIOR_FREQUENCY.md` and `docs/TEST1_EVIDENCE_CAPTURE.csv`. Do not expose solution stimuli before unaided recall.
 
 ## Completed Since Previous Checkpoint
 
-- Created `docs/OPPORTUNITY_REVALIDATION_PLAN.md` with exactly three tests:
-  1. Recent Behavior / Frequency
-  2. Event-first versus Portfolio-first Entry Model Comparison
-  3. Outcome Incremental Value
-- Added an anonymized evidence-capture schema, predeclared interpretation rules, and four exclusive post-evidence gates.
-- Reframed only the validation workstream from `Portfolio-aware Event Triage` to `Portfolio-aware Event Relevance`.
-- Marked Event-first, Mobile as Triage-only, and the current Outcome layer as test variables.
-- Preserved the PRD, `docs/DESIGN.md`, prototype, screenshots, QA reports, case-study page, and deck unchanged.
+- Created `docs/TEST1_RECENT_BEHAVIOR_FREQUENCY.md` with:
+  - eligibility screener and neutral recruitment copy;
+  - exactly five anonymized participant slots (`P01`–`P05`);
+  - pre-session safeguards and moderator script;
+  - 30-day-first / 90-day-fallback recall protocol;
+  - participant summary and contradictory-evidence templates;
+  - fixed Test 1 thresholds and Test 2/3 implication rules.
+- Created `docs/TEST1_EVIDENCE_CAPTURE.csv` as the canonical blank Section 7 capture sheet.
+- Recorded Test 1 as `READY_FOR_RECRUITMENT`, evidence collection as `NOT_STARTED`, and the current Test 1 gate as `NOT_EVALUABLE`.
+- Preserved the PRD, `docs/DESIGN.md`, prototype, screenshots, QA reports, case-study page, and deck unchanged during Test 1 preparation.
 
 ## Locked Decisions
 
@@ -83,7 +85,8 @@ Execute the three-test plan in `docs/OPPORTUNITY_REVALIDATION_PLAN.md`. Do not r
 
 ## Open Issues
 
-- `NOT_STARTED`: Five target investors have not been recruited or interviewed.
+- `EXTERNAL_INPUT_REQUIRED`: Access to five real eligible target investors or completed anonymized session records.
+- `NOT_STARTED`: P01–P05 recruitment, eligibility confirmation, consent, scheduling, and interviews.
 - `NOT_STARTED`: Test 1, Test 2, and Test 3 evidence collection.
 - `PAUSED`: Additional Figma, deck, and UI polish.
 - `NOT_TESTED`: Screen reader manual reading order.
@@ -92,7 +95,8 @@ Execute the three-test plan in `docs/OPPORTUNITY_REVALIDATION_PLAN.md`. Do not r
 
 ## Files Changed
 
-- `docs/OPPORTUNITY_REVALIDATION_PLAN.md`
+- `docs/TEST1_RECENT_BEHAVIOR_FREQUENCY.md`
+- `docs/TEST1_EVIDENCE_CAPTURE.csv`
 - `docs/CURRENT_STATE.md`
 - `docs/WORKLOG.md`
 
@@ -101,24 +105,27 @@ Execute the three-test plan in `docs/OPPORTUNITY_REVALIDATION_PLAN.md`. Do not r
 1. `docs/CURRENT_STATE.md`
 2. `docs/WORKLOG.md`
 3. `docs/OPPORTUNITY_REVALIDATION_PLAN.md`
-4. `docs/DESIGN.md` only when validation-stimulus meaning needs verification
-5. `prototype/high-fidelity/index.html` only when preparing validation stimuli
+4. `docs/TEST1_RECENT_BEHAVIOR_FREQUENCY.md`
+5. `docs/TEST1_EVIDENCE_CAPTURE.csv`
+6. `docs/DESIGN.md` only when later validation-stimulus meaning needs verification
+7. `prototype/high-fidelity/index.html` only when later preparing Test 2/3 stimuli
 
 ## Next Exact Action
 
-Recruit five target investors, prepare anonymized evidence-capture sheets from Section 7 of `docs/OPPORTUNITY_REVALIDATION_PLAN.md`, and run Test 1 with unaided recent-event recall before exposing any prototype or entry/outcome condition.
+Obtain access to exactly five eligible target investors, assign `P01`–`P05` only after eligibility confirmation, and run Test 1 with unaided recent-event recall. If sessions are conducted outside this workspace, provide anonymized transcripts or completed capture rows for evidence coding and the fixed gate evaluation.
 
 ## Last Verification
 
-- The validation plan contains all ten required sections and exactly three participant tests.
-- Test 1 uses recent behavior rather than hypothetical preference.
-- Test 2 compares equivalent Event-first and Portfolio-first conditions with counterbalanced order.
-- Test 3 isolates Outcome incremental value through an A→B reveal while rotating fixture order.
+- Test 1 execution packet contains exactly five participant slots (`P01`–`P05`) and no fabricated identities or evidence.
+- The evidence-capture CSV contains only blank/unknown recruitment and episode fields; no account number, balance, or exact-holding field exists.
+- The moderator sequence starts with 30-day unaided recall and uses 90 days only as an explicitly recorded fallback.
+- Prototype, entry-model stimuli, Outcomes, competitor examples, and solution framing are prohibited before recall completion.
+- Test 1 gate remains `NOT_EVALUABLE` because 0/5 sessions are complete.
 - No participant result or user-validation claim is present; evidence collection is `NOT_STARTED`.
-- Only the validation plan and recovery documents changed.
+- Only the Test 1 execution packet, blank capture sheet, and recovery documents changed.
 - Existing high-fidelity execution remains `PASS`; Production remains `BLOCKED`.
 - `git diff --check`: `PASS`.
 
 ## Recovery Note
 
-If a new chat starts, read this file first, then `docs/WORKLOG.md`, then `docs/OPPORTUNITY_REVALIDATION_PLAN.md`. Do not resume UI/Figma/deck polish before evidence changes the opportunity gate.
+If a new chat starts, read this file first, then `docs/WORKLOG.md`, `docs/OPPORTUNITY_REVALIDATION_PLAN.md`, `docs/TEST1_RECENT_BEHAVIOR_FREQUENCY.md`, and `docs/TEST1_EVIDENCE_CAPTURE.csv`. Do not invent participants or resume UI/Figma/deck polish before evidence changes the opportunity gate.
