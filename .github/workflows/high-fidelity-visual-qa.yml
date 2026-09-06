@@ -9,6 +9,9 @@ on:
       - "prototype/high-fidelity/**"
       - "scripts/high-fidelity-qa.js"
       - "scripts/high-fidelity-static-qa.js"
+      - "docs/FIGMA_DECK_DESIGN_EXTRACTION.md"
+      - "docs/PORTFOLIO_PRESENTATION_STRUCTURE.md"
+      - "portfolio/case-study/**"
       - ".github/workflows/high-fidelity-visual-qa.yml"
 
 jobs:
