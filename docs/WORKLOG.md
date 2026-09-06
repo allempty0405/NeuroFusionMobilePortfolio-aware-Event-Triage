@@ -1314,3 +1314,68 @@ GitHub Actions visual QA is rerun and passing for the updated workflow-trigger s
 
 ### Next Action
 Review `portfolio/deck/portfolio-aware-event-triage-case-study.pptx` as the portfolio-ready deck, then either transfer it into a target Figma file or continue final portfolio platform packaging from the case-study page.
+
+---
+
+## 2026-09-07 01:49 KST — Opportunity Revalidation Plan
+
+### Goal
+Pause additional UI/Figma/deck polish and create a minimal, evidence-first validation plan for `Portfolio-aware Event Relevance` without restarting completed project phases.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/WORKLOG.md`
+- FACT: `docs/DESIGN_QA.md`
+- FACT: `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`
+- FACT: Current audit direction supplied for this work unit.
+
+### Observations
+- FACT: High-fidelity execution, static QA, Chromium visual QA, the case-study page, and the native deck are complete.
+- OBSERVATION: These artifacts validate execution quality and visual behavior, not opportunity frequency, entry-model superiority, or Outcome incremental value.
+- OBSERVATION: `docs/CURRENT_STATE.md` still described Mobile as a locked Triage Layer and the Event-first Outcome sequence as locked, which conflicts with the new validation-workstream status.
+- UNKNOWN: How often target investors encounter the problem and the cost of their current workaround.
+- UNKNOWN: Whether Event-first or Portfolio-first better matches natural behavior.
+- UNKNOWN: Whether the current Outcome layer improves decisions without creating false certainty or recommendation-like interpretation.
+
+### Decisions
+- DECISION: Temporarily frame the validation workstream as `Portfolio-aware Event Relevance`.
+- DECISION: Keep Portfolio-aware relationship as `SUPPORTED_HYPOTHESIS`.
+- DECISION: Mark Event-first, Mobile as Triage-only, and the current Outcome layer `UNDER REVALIDATION` / `UNVALIDATED` in the validation workstream.
+- DECISION: Preserve the PRD, `docs/DESIGN.md`, prototype, screenshots, QA reports, case-study page, and deck unchanged.
+- DECISION: Use exactly three tests: recent behavior/frequency, entry-model comparison, and Outcome incremental value.
+- DECISION: Keep all financial-safety and trust constraints unchanged.
+- DECISION: Keep Production `BLOCKED`.
+
+### Changes Made
+- Created `docs/OPPORTUNITY_REVALIDATION_PLAN.md`.
+- Updated `docs/CURRENT_STATE.md` with the opportunity-revalidation gate, paused-polish status, open evidence questions, and next exact action.
+- Appended this worklog entry.
+
+### Files Changed
+- `docs/OPPORTUNITY_REVALIDATION_PLAN.md`
+- `docs/CURRENT_STATE.md`
+- `docs/WORKLOG.md`
+
+### Validation Performed
+- FACT: The plan contains all ten required sections.
+- FACT: The plan defines exactly three participant tests.
+- FACT: Test 1 uses unaided recent-event recall with five target investors.
+- FACT: Test 2 compares Event-first and Portfolio-first with equivalent fixtures and counterbalanced order.
+- FACT: Test 3 isolates Outcome incremental value by comparing Context Summary alone against the same content plus the existing Outcome layer.
+- FACT: The evidence schema separates participant, episode, entry-model, Outcome, and synthesis records.
+- FACT: No participant result or user-validation claim was fabricated.
+- FACT: Existing Product/design/QA artifacts were not modified.
+
+### Result
+The validation plan is ready for participant recruitment and evidence collection. Additional UI/Figma/deck polish remains paused.
+
+### Remaining Issues
+- OPEN: Recruit five target investors.
+- OPEN: Prepare anonymized evidence-capture sheets.
+- NOT_STARTED: Test 1, Test 2, and Test 3 evidence collection.
+- UNVALIDATED: Event-first and the current Triage Outcome layer.
+- NOT_TESTED: Screen reader manual test and real App/Web Back behavior.
+- BLOCKED: Production data, fields, logic, freshness, handoff, API integration, real-user validation, and acceptance criteria.
+
+### Next Action
+Recruit five target investors and run Test 1 using unaided recent-event recall before showing any prototype or entry/outcome condition.
