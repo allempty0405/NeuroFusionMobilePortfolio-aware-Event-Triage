@@ -1,0 +1,650 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/2fghdy",
+    "id": "2fghdy",
+    "slide": 2,
+    "layoutId": "8191db92-a0bb-4d1a-9295-b78ffd52c70f",
+    "layoutName": "Title Slide",
+    "layoutType": "title",
+    "masterLayoutId": "a190542a-8f48-464a-ae74-cd954c750ca3",
+    "masterLayoutName": "Master",
+    "backgroundColor": "#FAFAFA",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 1280,
+      "height": 720
+    }
+  },
+  "theme": {
+    "colorSchemeName": "ChatGPT",
+    "colors": {
+      "accent1": "#156082",
+      "accent2": "#E97132",
+      "accent3": "#196B24",
+      "accent4": "#0F9ED5",
+      "accent5": "#A02B93",
+      "accent6": "#4EA72E",
+      "bg1": "#FFFFFF",
+      "bg2": "#000000",
+      "tx1": "#1F1F1F",
+      "tx2": "#FFFFFF",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#0E2841",
+      "lt2": "#E8E8E8",
+      "hlink": "#467886",
+      "folHlink": "#96607D"
+    },
+    "typefaces": [
+      "+mn-lt"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "8191db92-a0bb-4d1a-9295-b78ffd52c70f",
+      "name": "Title Slide",
+      "type": "title",
+      "parentLayoutId": "a190542a-8f48-464a-ae74-cd954c750ca3",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "a190542a-8f48-464a-ae74-cd954c750ca3",
+      "name": "Master",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/qx0jy9g3",
+      "id": "1",
+      "bbox": [
+        64,
+        674,
+        420,
+        20
+      ],
+      "geometry": "rect",
+      "text": "Portfolio-aware Event Triage · 02",
+      "textPreview": "Portfolio-aware Event Triage · 02",
+      "resolvedFontSize": 11,
+      "resolvedTextStyle": {
+        "fontSize": 11,
+        "typeface": "+mn-lt",
+        "color": "#71717A",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Portfolio-aware Event Triage · 02"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Portfolio-aware Event Triage · 02",
+          "resolvedTextStyle": {
+            "fontSize": 11,
+            "color": "#71717A",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Portfolio-aware Event Triage · 02",
+              "fontSize": 11,
+              "color": "#71717A",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/d0ri94ze",
+      "id": "2",
+      "bbox": [
+        862,
+        674,
+        354,
+        20
+      ],
+      "geometry": "rect",
+      "text": "High-fidelity concept · Production blocked",
+      "textPreview": "High-fidelity concept · Production blocked",
+      "resolvedFontSize": 11,
+      "resolvedTextStyle": {
+        "fontSize": 11,
+        "typeface": "+mn-lt",
+        "color": "#71717A",
+        "alignment": "right",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "High-fidelity concept · Production blocked"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "High-fidelity concept · Production blocked",
+          "resolvedTextStyle": {
+            "fontSize": 11,
+            "color": "#71717A",
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "High-fidelity concept · Production blocked",
+              "fontSize": 11,
+              "color": "#71717A",
+              "alignment": "right"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/czi10zy9",
+      "id": "3",
+      "bbox": [
+        64,
+        56,
+        420,
+        24
+      ],
+      "geometry": "rect",
+      "text": "02 · PROBLEM CONTEXT",
+      "textPreview": "02 · PROBLEM CONTEXT",
+      "resolvedFontSize": 12,
+      "resolvedTextStyle": {
+        "fontSize": 12,
+        "typeface": "+mn-lt",
+        "color": "#71717A",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "02 · PROBLEM CONTEXT"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "02 · PROBLEM CONTEXT",
+          "resolvedTextStyle": {
+            "fontSize": 12,
+            "color": "#71717A",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "02 · PROBLEM CONTEXT",
+              "fontSize": 12,
+              "color": "#71717A",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/zm90behk",
+      "id": "4",
+      "bbox": [
+        64,
+        90,
+        720,
+        92
+      ],
+      "geometry": "rect",
+      "text": "Mobile has to answer relevance before analysis.",
+      "textPreview": "Mobile has to answer relevance before analysis.",
+      "resolvedFontSize": 38,
+      "resolvedTextStyle": {
+        "fontSize": 38,
+        "typeface": "+mn-lt",
+        "color": "#18181B",
+        "bold": true,
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Mobile has to answer relevance before"
+          },
+          {
+            "index": 2,
+            "text": "analysis."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Mobile has to answer relevance before analysis.",
+          "resolvedTextStyle": {
+            "fontSize": 38,
+            "color": "#18181B",
+            "bold": true,
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Mobile has to answer relevance before analysis.",
+              "fontSize": 38,
+              "color": "#18181B",
+              "bold": true,
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/y10j29gz",
+      "id": "5",
+      "bbox": [
+        64,
+        194,
+        620,
+        68
+      ],
+      "geometry": "rect",
+      "text": "The key job is not to compress the web workspace. It is to help users understand what happened, what it touches, and whether the evidence is enough to inspect further.",
+      "textPreview": "The key job is not to compress the web workspace. It is to help users understand what happened, what it touches, and whether the evidence...",
+      "resolvedFontSize": 19,
+      "resolvedTextStyle": {
+        "fontSize": 19,
+        "typeface": "+mn-lt",
+        "color": "#3F3F46",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 3,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The key job is not to compress the web workspace. It is to help users"
+          },
+          {
+            "index": 2,
+            "text": "understand what happened, what it touches, and whether the evidence"
+          },
+          {
+            "index": 3,
+            "text": "is enough to inspect further."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The key job is not to compress the web workspace. It is to help users understand what happened, what it touches, and whether the evidence is enough to inspect further.",
+          "resolvedTextStyle": {
+            "fontSize": 19,
+            "color": "#3F3F46",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "The key job is not to compress the web workspace. It is to help users understand what happened, what it touches, and whether the evidence is enough to inspect further.",
+              "fontSize": 19,
+              "color": "#3F3F46",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 6,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/krqlgjyt",
+      "id": "6",
+      "bbox": [
+        820,
+        86,
+        246,
+        548
+      ],
+      "geometry": "roundRect",
+      "alt": "Normal state screenshot for event triage context",
+      "contentType": "image/jpeg",
+      "imageFit": "contain",
+      "imageMask": {
+        "geometry": "roundRect",
+        "adjustmentList": [
+          {
+            "name": "adj",
+            "formula": "val 7317"
+          }
+        ]
+      },
+      "asset": {
+        "assetId": "dd3f7b48-3f44-42f2-9476-fe965cc2d25a",
+        "contentType": "image/jpeg",
+        "byteLength": 18225
+      }
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/0ni14jy5",
+      "id": "7",
+      "bbox": [
+        84,
+        319,
+        10,
+        10
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#15803D",
+      "lineWidth": 0
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/nqt0fehw",
+      "id": "8",
+      "bbox": [
+        108,
+        312,
+        596,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Market events are noisy unless tied to a specific asset relationship.",
+      "textPreview": "Market events are noisy unless tied to a specific asset relationship.",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "+mn-lt",
+        "color": "#3F3F46",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Market events are noisy unless tied to a specific asset"
+          },
+          {
+            "index": 2,
+            "text": "relationship."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Market events are noisy unless tied to a specific asset relationship.",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#3F3F46",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Market events are noisy unless tied to a specific asset relationship.",
+              "fontSize": 20,
+              "color": "#3F3F46",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mpkj6tgb",
+      "id": "9",
+      "bbox": [
+        84,
+        381,
+        10,
+        10
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#15803D",
+      "lineWidth": 0
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/snupcj69",
+      "id": "10",
+      "bbox": [
+        108,
+        374,
+        596,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Personal context must separate Holding, Watchlist, Related-only, and Unconnected.",
+      "textPreview": "Personal context must separate Holding, Watchlist, Related-only, and Unconnected.",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "+mn-lt",
+        "color": "#3F3F46",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Personal context must separate Holding, Watchlist, Related-only,"
+          },
+          {
+            "index": 2,
+            "text": "and Unconnected."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Personal context must separate Holding, Watchlist, Related-only, and Unconnected.",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#3F3F46",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Personal context must separate Holding, Watchlist, Related-only, and Unconnected.",
+              "fontSize": 20,
+              "color": "#3F3F46",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/to365o7u",
+      "id": "11",
+      "bbox": [
+        84,
+        443,
+        10,
+        10
+      ],
+      "geometry": "ellipse",
+      "fillColor": "#15803D",
+      "lineWidth": 0
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/61c7a9oj",
+      "id": "12",
+      "bbox": [
+        108,
+        436,
+        596,
+        34
+      ],
+      "geometry": "rect",
+      "text": "Evidence and data limits appear before a check-status outcome.",
+      "textPreview": "Evidence and data limits appear before a check-status outcome.",
+      "resolvedFontSize": 20,
+      "resolvedTextStyle": {
+        "fontSize": 20,
+        "typeface": "+mn-lt",
+        "color": "#3F3F46",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Evidence and data limits appear before a check-status outcome."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Evidence and data limits appear before a check-status outcome.",
+          "resolvedTextStyle": {
+            "fontSize": 20,
+            "color": "#3F3F46",
+            "alignment": "left"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Evidence and data limits appear before a check-status outcome.",
+              "fontSize": 20,
+              "color": "#3F3F46",
+              "alignment": "left"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ],
+      "lineWidth": 0
+    }
+  ],
+  "composeRuns": []
+}

@@ -1,6 +1,6 @@
 # Figma / Deck Design Extraction
 
-Last Updated: 2026-09-06 01:54 KST
+Last Updated: 2026-09-06 13:01 KST
 Last Updated By: Codex / GPT-5
 
 ## Purpose
@@ -22,7 +22,7 @@ It is a presentation and design-transfer guide. It does not replace `docs/DESIGN
 ```text
 HIGH-FIDELITY DESIGN: PASS
 STATIC QA: PASS
-RESPONSIVE / VISUAL QA: PASS based on existing Chromium evidence; updated shell rerun pending
+RESPONSIVE / VISUAL QA: PASS based on existing Chromium evidence; updated shell/deck-trigger rerun passed in GitHub Actions
 ACCESSIBILITY VISUAL QA: PASS FOR VISUAL REQUIREMENTS
 SCREEN READER: NOT_TESTED
 REAL APP/WEB BACK: NOT_TESTED
@@ -159,11 +159,11 @@ Presenter annotation
 |---|---|---|
 | Static QA | PASS | `artifacts/high-fidelity/static-qa-report.json`. |
 | Existing Chromium visual QA | PASS | `artifacts/high-fidelity/visual-qa-report.json`, 34 screenshots. |
-| Updated external-selector shell visual rerun | PENDING | Local Chromium unavailable; rerun through GitHub Actions or a Chromium-capable machine. |
+| Updated external-selector shell / deck-trigger visual rerun | PASS | GitHub Actions run `34010094421` completed successfully at remote commit `6991749c2dc40591eaedf43dbc948ac1e4b8201c`. |
 | Screen reader manual test | NOT_TESTED | Do not upgrade from visual accessibility checks. |
 | Real App/Web Back | NOT_TESTED | Requires integrated route environment. |
 | Production | BLOCKED | Requires separate data, field, logic, freshness, handoff, API, validation, and acceptance contracts. |
 
 ## Next Exact Action
 
-Use this extraction document, `portfolio/case-study/index.html`, and `artifacts/high-fidelity/*.png` to assemble Figma or deck frames. Then rerun visual QA for the updated external-selector shell in a Chromium-capable environment before treating the current service demo shell as visually re-verified.
+Use this extraction document, `portfolio/case-study/index.html`, `portfolio/deck/portfolio-aware-event-triage-case-study.pptx`, and `artifacts/high-fidelity/*.png` to continue final portfolio review or transfer the presentation into a target Figma file.

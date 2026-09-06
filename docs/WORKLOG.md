@@ -1226,3 +1226,91 @@ The repository now has a Figma/deck-ready design extraction that maps Product So
 
 ### Next Action
 Run GitHub Actions visual QA for the updated shell/case-study state, then assemble native Figma or deck frames from `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`, `portfolio/case-study/index.html`, and persisted screenshots.
+
+---
+
+## 2026-09-06 13:01 KST — Actions Rerun And Native Deck Assembly
+
+### Goal
+Run the Chromium-capable visual QA path after the external-selector shell / design-system extraction state, then assemble a portfolio-ready native deck from approved repository evidence.
+
+### Sources Read
+- FACT: `docs/CURRENT_STATE.md`
+- FACT: `docs/WORKLOG.md`
+- FACT: `docs/DESIGN_QA.md`
+- FACT: `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`
+- FACT: `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
+- FACT: `portfolio/case-study/index.html`
+- FACT: `prototype/high-fidelity/index.html`
+- FACT: `artifacts/high-fidelity/visual-qa-report.json`
+- FACT: `artifacts/high-fidelity/static-qa-report.json`
+- FACT: `design-system/README.md`
+- FACT: `design-system/tokens/valley-reference-tokens.css`
+- FACT: `design-system/components/`
+- FACT: `design-system/patterns/`
+- FACT: `design-system/checklists/mobile-design-qa.md`
+
+### Observations
+- FACT: Local and remote file trees matched at checkpoint `6a100658f306906be393c517c8bb1775a8864bfe`, but local and remote commit ancestry remained divergent.
+- FACT: Existing GitHub Actions visual QA run at `44c8bf312d1289af65b08df0559ddd010be06d07` had already passed.
+- OBSERVATION: The workflow supported `workflow_dispatch`, but the available GitHub connector did not expose a workflow-dispatch action.
+- OBSERVATION: The workflow `push.paths` list did not include the Figma/deck extraction or case-study paths, so documentation/presentation updates would not naturally rerun the visual QA workflow.
+- FACT: A rerun of the previous successful Actions job succeeded.
+- FACT: A new remote workflow-trigger update at `6991749c2dc40591eaedf43dbc948ac1e4b8201c` triggered Actions run `34010094421`.
+- FACT: Actions run `34010094421` completed successfully and uploaded artifact `9982193560`.
+
+### Decisions
+- DECISION: Update only QA infrastructure trigger paths, not Product UI, IA, outcome model, or Production scope.
+- DECISION: Assemble a native PowerPoint deck because no target Figma file was provided.
+- DECISION: Use persisted Chromium screenshots as evidence, not decoration.
+- DECISION: Keep Screen Reader `NOT_TESTED`, Real App/Web Back `NOT_TESTED`, and Production `BLOCKED`.
+
+### Changes Made
+- Updated `.github/workflows/high-fidelity-visual-qa.yml` to include:
+  - `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`
+  - `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md`
+  - `portfolio/case-study/**`
+- Created `portfolio/deck/portfolio-aware-event-triage-case-study.pptx`.
+- Created rendered deck previews under `portfolio/deck/rendered/`.
+- Added `portfolio/deck/README.md`.
+- Updated `docs/CURRENT_STATE.md`.
+- Updated `docs/DESIGN_QA.md`.
+- Updated `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`.
+- Refreshed `artifacts/high-fidelity/static-qa-report.json` by rerunning static QA.
+
+### Files Changed
+- `.github/workflows/high-fidelity-visual-qa.yml`
+- `portfolio/deck/README.md`
+- `portfolio/deck/portfolio-aware-event-triage-case-study.pptx`
+- `portfolio/deck/rendered/*.png`
+- `portfolio/deck/rendered/contact-sheet.png`
+- `docs/CURRENT_STATE.md`
+- `docs/DESIGN_QA.md`
+- `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`
+- `docs/WORKLOG.md`
+- `artifacts/high-fidelity/static-qa-report.json`
+
+### Validation Performed
+- FACT: GitHub Actions job rerun for existing visual QA completed successfully.
+- FACT: GitHub Actions run `34010094421` completed successfully at remote commit `6991749c2dc40591eaedf43dbc948ac1e4b8201c`.
+- FACT: Run `34010094421` passed static QA, Korean font install, Playwright Chromium shell install, browser high-fidelity QA, and artifact upload.
+- FACT: Artifact `9982193560` was uploaded.
+- FACT: `node scripts/high-fidelity-static-qa.js` returned `PASS`.
+- FACT: The native deck was rendered to slide previews and visually inspected.
+- FACT: Screenshot embedding was fixed from placeholder-like path references to byte-backed PNG images.
+- FACT: Subtitle overlap on deck slides was fixed.
+- FACT: `slides_test.py` returned `PASS`.
+- FACT: Forbidden production/trading/score claim search returned no matches on prototype, case-study, extraction, presentation structure, and deck outputs.
+- FACT: `git diff --check` returned no issues.
+
+### Result
+GitHub Actions visual QA is rerun and passing for the updated workflow-trigger state. A 12-slide native deck is assembled and verified for portfolio presentation handoff.
+
+### Remaining Issues
+- OPEN: Native Figma frame creation requires a target Figma file or a follow-up Figma workflow.
+- NOT_TESTED: Screen reader manual test.
+- NOT_TESTED: Real App/Web back navigation.
+- BLOCKED: Production data, field, logic, freshness, handoff, API integration, validation, and acceptance criteria.
+
+### Next Action
+Review `portfolio/deck/portfolio-aware-event-triage-case-study.pptx` as the portfolio-ready deck, then either transfer it into a target Figma file or continue final portfolio platform packaging from the case-study page.

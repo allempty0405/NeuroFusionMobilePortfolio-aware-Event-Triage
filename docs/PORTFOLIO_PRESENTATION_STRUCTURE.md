@@ -1,6 +1,6 @@
 # Portfolio Presentation Structure
 
-Last Updated: 2026-09-06 01:54 KST
+Last Updated: 2026-09-06 13:01 KST
 Last Updated By: Codex / GPT-5
 
 ## Purpose
@@ -19,6 +19,7 @@ It does not replace `docs/DESIGN.md`, change Product policy, or upgrade any Prod
 | Prototype | `prototype/high-fidelity/index.html` | Reference implementation for state variants only; do not treat as Production evidence. |
 | QA reports | `artifacts/high-fidelity/static-qa-report.json`, `artifacts/high-fidelity/visual-qa-report.json` | Machine-readable evidence for static and Chromium visual QA. |
 | Design extraction | `docs/FIGMA_DECK_DESIGN_EXTRACTION.md` | Page-by-page Figma/deck transfer guide with token, component, and screenshot mapping. |
+| Native deck | `portfolio/deck/portfolio-aware-event-triage-case-study.pptx` | Portfolio-ready 12-slide deck assembled from this structure and verified screenshots. |
 
 ## Current Gate To Present
 
@@ -157,4 +158,4 @@ Short version:
 
 ## Next Exact Action
 
-Create the Figma or portfolio deck using this structure, `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`, and the persisted screenshots in `artifacts/high-fidelity/`. Keep the work in presentation composition unless a new manual validation track is explicitly started.
+Review `portfolio/deck/portfolio-aware-event-triage-case-study.pptx` as the portfolio-ready deck, then transfer it into a target Figma file or final portfolio platform if needed. Keep the work in presentation composition unless a new manual validation track is explicitly started.

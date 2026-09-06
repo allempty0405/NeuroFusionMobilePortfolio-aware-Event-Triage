@@ -1,0 +1,277 @@
+{"kind":"deck","id":"pr/7kd8zn","name":"Deck"}
+{"kind":"layout","layoutId":"a190542a-8f48-464a-ae74-cd954c750ca3","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"8191db92-a0bb-4d1a-9295-b78ffd52c70f","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/1ybrz9","slide":1,"title":"Portfolio-aware Event Triage · 01","textShapes":10}
+{"kind":"textbox","id":"sh/bux8fq5c","slide":1,"text":"Portfolio-aware Event Triage · 01","textPreview":"Portfolio-aware Event Triage · 01","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/cf69ovmx","slide":1,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/dgfqh0ni","slide":1,"text":"01 · GATE SUMMARY","textPreview":"01 · GATE SUMMARY","textChars":17,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/2p4rilov","slide":1,"text":"Portfolio-aware Event Triage","textPreview":"Portfolio-aware Event Triage","textChars":28,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"textbox","id":"sh/3qd8bq5g","slide":1,"text":"A mobile triage concept that explains event relevance through personal context, evidence, and explicit limits.","textPreview":"A mobile triage concept that explains event relevance through personal context, evidence, and explicit limits.","textChars":110,"textLines":1,"bbox":[64,194,620,68]}
+{"kind":"shape","id":"sh/psfqdgn6","slide":1,"bbox":[64,310,650,190]}
+{"kind":"textbox","id":"sh/el4re1oj","slide":1,"text":"Current gate","textPreview":"Current gate","textChars":12,"textLines":1,"bbox":[88,334,180,24]}
+{"kind":"shape","id":"sh/fmd87654","slide":1,"bbox":[90,381,10,10]}
+{"kind":"textbox","id":"sh/fmh0za54","slide":1,"text":"High-fidelity design, static QA, and Chromium visual QA passed.","textPreview":"High-fidelity design, static QA, and Chromium visual QA passed.","textChars":63,"textLines":1,"bbox":[114,374,546,34]}
+{"kind":"shape","id":"sh/ul8jq54z","slide":1,"bbox":[90,423,10,10]}
+{"kind":"textbox","id":"sh/hozi1kna","slide":1,"text":"The frame set remains concept/mock bounded.","textPreview":"The frame set remains concept/mock bounded.","textChars":43,"textLines":1,"bbox":[114,416,546,34]}
+{"kind":"shape","id":"sh/gnq1sfmp","slide":1,"bbox":[90,465,10,10]}
+{"kind":"textbox","id":"sh/3q103u5g","slide":1,"text":"Production, screen reader, and real app/web back remain unresolved.","textPreview":"Production, screen reader, and real app/web back remain unresolved.","textChars":67,"textLines":1,"bbox":[114,458,546,34]}
+{"kind":"shape","id":"sh/2psjup4v","slide":1,"bbox":[88,526,176,32]}
+{"kind":"textbox","id":"sh/psj2543m","slide":1,"text":"Production BLOCKED","textPreview":"Production BLOCKED","textChars":18,"textLines":1,"bbox":[101,534,150,14]}
+{"kind":"image","id":"im/psri9gv2","slide":1,"name":"","geometry":"roundRect","alt":"Canonical normal high-fidelity screenshot","bbox":[820,64,270,584]}
+{"kind":"notes","id":"nt/1ybrz9","slide":1,"text":"[Sources]\ndocs/CURRENT_STATE.md\ndocs/DESIGN_QA.md\nartifacts/high-fidelity/visual-qa-report.json\nartifacts/high-fidelity/390x844-normal.png\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/2fghdy","slide":2,"title":"Portfolio-aware Event Triage · 02","textShapes":8}
+{"kind":"textbox","id":"sh/qx0jy9g3","slide":2,"text":"Portfolio-aware Event Triage · 02","textPreview":"Portfolio-aware Event Triage · 02","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/d0ri94ze","slide":2,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/czi10zy9","slide":2,"text":"02 · PROBLEM CONTEXT","textPreview":"02 · PROBLEM CONTEXT","textChars":20,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/zm90behk","slide":2,"text":"Mobile has to answer relevance before analysis.","textPreview":"Mobile has to answer relevance before analysis.","textChars":47,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"textbox","id":"sh/y10j29gz","slide":2,"text":"The key job is not to compress the web workspace. It is to help users understand what happened, what it touches, and whether the evidence is enough to inspect further.","textPreview":"The key job is not to compress the web workspace. It is to help users understand what happened, what it touches, and whether the evidence...","textChars":167,"textLines":1,"bbox":[64,194,620,68]}
+{"kind":"shape","id":"sh/0ni14jy5","slide":2,"bbox":[84,319,10,10]}
+{"kind":"textbox","id":"sh/nqt0fehw","slide":2,"text":"Market events are noisy unless tied to a specific asset relationship.","textPreview":"Market events are noisy unless tied to a specific asset relationship.","textChars":69,"textLines":1,"bbox":[108,312,596,34]}
+{"kind":"shape","id":"sh/mpkj6tgb","slide":2,"bbox":[84,381,10,10]}
+{"kind":"textbox","id":"sh/snupcj69","slide":2,"text":"Personal context must separate Holding, Watchlist, Related-only, and Unconnected.","textPreview":"Personal context must separate Holding, Watchlist, Related-only, and Unconnected.","textChars":81,"textLines":1,"bbox":[108,374,596,34]}
+{"kind":"shape","id":"sh/to365o7u","slide":2,"bbox":[84,443,10,10]}
+{"kind":"textbox","id":"sh/61c7a9oj","slide":2,"text":"Evidence and data limits appear before a check-status outcome.","textPreview":"Evidence and data limits appear before a check-status outcome.","textChars":62,"textLines":1,"bbox":[108,436,596,34]}
+{"kind":"image","id":"im/krqlgjyt","slide":2,"name":"","geometry":"roundRect","alt":"Normal state screenshot for event triage context","bbox":[820,86,246,548]}
+{"kind":"notes","id":"nt/2fghdy","slide":2,"text":"[Sources]\ndocs/DESIGN.md screen purpose\ndocs/PORTFOLIO_PRESENTATION_STRUCTURE.md\nartifacts/high-fidelity/360x800-normal.png\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/tlyi0r","slide":3,"title":"Portfolio-aware Event Triage · 03","textShapes":15}
+{"kind":"textbox","id":"sh/yps3mp4r","slide":3,"text":"Portfolio-aware Event Triage · 03","textPreview":"Portfolio-aware Event Triage · 03","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/ls32h4n2","slide":3,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/krulozmh","slide":3,"text":"03 · ROLE SPLIT","textPreview":"03 · ROLE SPLIT","textChars":15,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/7elkju58","slide":3,"text":"Mobile triages. Web analyzes.","textPreview":"Mobile triages. Web analyzes.","textChars":29,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"textbox","id":"sh/6dc3qp4n","slide":3,"text":"The mobile screen gives enough context to decide whether to continue; the web workspace remains responsible for deeper financial research.","textPreview":"The mobile screen gives enough context to decide whether to continue; the web workspace remains responsible for deeper financial research.","textChars":138,"textLines":1,"bbox":[64,194,620,68]}
+{"kind":"shape","id":"sh/tg32l4ne","slide":3,"bbox":[84,252,480,240]}
+{"kind":"shape","id":"sh/8fulszmt","slide":3,"bbox":[636,252,480,240]}
+{"kind":"textbox","id":"sh/nihk7a54","slide":3,"text":"Mobile · Triage Layer","textPreview":"Mobile · Triage Layer","textChars":21,"textLines":1,"bbox":[116,288,390,32]}
+{"kind":"shape","id":"sh/mx8je5oj","slide":3,"bbox":[120,357,10,10]}
+{"kind":"textbox","id":"sh/s7qp032l","slide":3,"text":"Event context","textPreview":"Event context","textChars":13,"textLines":1,"bbox":[144,350,346,34]}
+{"kind":"shape","id":"sh/d8z698j6","slide":3,"bbox":[120,391,10,10]}
+{"kind":"textbox","id":"sh/q587ytkv","slide":3,"text":"Asset relationship","textPreview":"Asset relationship","textChars":18,"textLines":1,"bbox":[144,384,346,34]}
+{"kind":"shape","id":"sh/r6ho7y10","slide":3,"bbox":[120,425,10,10]}
+{"kind":"textbox","id":"sh/0bqp4n2x","slide":3,"text":"Evidence and limits","textPreview":"Evidence and limits","textChars":19,"textLines":1,"bbox":[144,418,346,34]}
+{"kind":"shape","id":"sh/1wjqdsji","slide":3,"bbox":[120,459,10,10]}
+{"kind":"textbox","id":"sh/e9872dkr","slide":3,"text":"Concept handoff entry","textPreview":"Concept handoff entry","textChars":21,"textLines":1,"bbox":[144,452,346,34]}
+{"kind":"textbox","id":"sh/fahobi1c","slide":3,"text":"Web · Analysis Workspace","textPreview":"Web · Analysis Workspace","textChars":24,"textLines":1,"bbox":[668,288,390,32]}
+{"kind":"shape","id":"sh/gf6psj2d","slide":3,"bbox":[672,357,10,10]}
+{"kind":"textbox","id":"sh/hgf61ojy","slide":3,"text":"Deep research","textPreview":"Deep research","textChars":13,"textLines":1,"bbox":[696,350,346,34]}
+{"kind":"shape","id":"sh/xw7mpkv2","slide":3,"bbox":[672,391,10,10]}
+{"kind":"textbox","id":"sh/wvy5wfuh","slide":3,"text":"Financial tables","textPreview":"Financial tables","textChars":16,"textLines":1,"bbox":[696,384,346,34]}
+{"kind":"shape","id":"sh/bup43adw","slide":3,"bbox":[672,425,10,10]}
+{"kind":"textbox","id":"sh/a9gnu5cb","slide":3,"text":"Documents and transcripts","textPreview":"Documents and transcripts","textChars":25,"textLines":1,"bbox":[696,418,346,34]}
+{"kind":"shape","id":"sh/50rmtkvy","slide":3,"bbox":[672,459,10,10]}
+{"kind":"textbox","id":"sh/kzy50fud","slide":3,"text":"Advanced charting","textPreview":"Advanced charting","textChars":17,"textLines":1,"bbox":[696,452,346,34]}
+{"kind":"notes","id":"nt/tlyi0r","slide":3,"text":"[Sources]\ndocs/DESIGN.md mobile/web boundary\ndesign-system/patterns/investment-analysis-screen.md\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/5lr8au","slide":4,"title":"Portfolio-aware Event Triage · 04","textShapes":18}
+{"kind":"textbox","id":"sh/t4zy9g3m","slide":4,"text":"Portfolio-aware Event Triage · 04","textPreview":"Portfolio-aware Event Triage · 04","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/61ofel4b","slide":4,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/72xg76lw","slide":4,"text":"04 · LOCKED IA","textPreview":"04 · LOCKED IA","textChars":14,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/kf6xcbm5","slide":4,"text":"The screen reads evidence before outcome.","textPreview":"The screen reads evidence before outcome.","textChars":41,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"textbox","id":"sh/l0fy5g3q","slide":4,"text":"Visual emphasis follows the approved order so the outcome does not feel like an unsupported score.","textPreview":"Visual emphasis follows the approved order so the outcome does not feel like an unsupported score.","textChars":98,"textLines":1,"bbox":[64,194,620,68]}
+{"kind":"shape","id":"sh/jexg36lk","slide":4,"bbox":[94,240,32,32]}
+{"kind":"textbox","id":"sh/wbmx8rm9","slide":4,"text":"1","textPreview":"1","textChars":1,"textLines":1,"bbox":[94,247,32,16]}
+{"kind":"textbox","id":"sh/xcvy1w3u","slide":4,"text":"Event","textPreview":"Event","textChars":5,"textLines":1,"bbox":[146,241,360,28]}
+{"kind":"shape","id":"sh/d4juxszi","slide":4,"bbox":[94,288,32,32]}
+{"kind":"textbox","id":"sh/s3atonyx","slide":4,"text":"2","textPreview":"2","textChars":1,"textLines":1,"bbox":[94,295,32,16]}
+{"kind":"textbox","id":"sh/r21cvihc","slide":4,"text":"Asset","textPreview":"Asset","textChars":5,"textLines":1,"bbox":[146,289,360,28]}
+{"kind":"shape","id":"sh/q1sbmd07","slide":4,"bbox":[94,336,32,32]}
+{"kind":"textbox","id":"sh/50jut8zm","slide":4,"text":"3","textPreview":"3","textChars":1,"textLines":1,"bbox":[94,343,32,16]}
+{"kind":"textbox","id":"sh/4zatkni1","slide":4,"text":"Context","textPreview":"Context","textChars":7,"textLines":1,"bbox":[146,337,360,28]}
+{"kind":"shape","id":"sh/3y1crihg","slide":4,"bbox":[94,384,32,32]}
+{"kind":"textbox","id":"sh/ixsbid0v","slide":4,"text":"4","textPreview":"4","textChars":1,"textLines":1,"bbox":[94,391,32,16]}
+{"kind":"textbox","id":"sh/hwzup8za","slide":4,"text":"Evidence","textPreview":"Evidence","textChars":8,"textLines":1,"bbox":[146,385,360,28]}
+{"kind":"shape","id":"sh/gvqtg3ip","slide":4,"bbox":[94,432,32,32]}
+{"kind":"textbox","id":"sh/8futc3ql","slide":4,"text":"5","textPreview":"5","textChars":1,"textLines":1,"bbox":[94,439,32,16]}
+{"kind":"textbox","id":"sh/9g3u5876","slide":4,"text":"Outcome","textPreview":"Outcome","textChars":7,"textLines":1,"bbox":[146,433,360,28]}
+{"kind":"shape","id":"sh/mdcbad8v","slide":4,"bbox":[94,480,32,32]}
+{"kind":"textbox","id":"sh/7elc3yp0","slide":4,"text":"6","textPreview":"6","textChars":1,"textLines":1,"bbox":[94,487,32,16]}
+{"kind":"textbox","id":"sh/kbut83qp","slide":4,"text":"Handoff","textPreview":"Handoff","textChars":7,"textLines":1,"bbox":[146,481,360,28]}
+{"kind":"textbox","id":"sh/lc3u187a","slide":4,"text":"Outcome is visible, but it appears after relationship evidence and trust cues.","textPreview":"Outcome is visible, but it appears after relationship evidence and trust cues.","textChars":78,"textLines":1,"bbox":[94,560,560,48]}
+{"kind":"image","id":"im/7yhsz2tg","slide":4,"name":"","geometry":"roundRect","alt":"Annotated canonical state screenshot","bbox":[792,80,250,548]}
+{"kind":"notes","id":"nt/5lr8au","slide":4,"text":"[Sources]\ndocs/DESIGN.md locked information hierarchy\ndocs/FIGMA_DECK_DESIGN_EXTRACTION.md\nartifacts/high-fidelity/390x844-normal.png\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/1mgzgb","slide":5,"title":"Portfolio-aware Event Triage · 05","textShapes":18}
+{"kind":"textbox","id":"sh/gratgne5","slide":5,"text":"Portfolio-aware Event Triage · 05","textPreview":"Portfolio-aware Event Triage · 05","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/fq1s7ixk","slide":5,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/upsbedwf","slide":5,"text":"05 · SERVICE SCREEN ANATOMY","textPreview":"05 · SERVICE SCREEN ANATOMY","textChars":27,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/pw3udsf2","slide":5,"text":"A real service frame, not a QA screen.","textPreview":"A real service frame, not a QA screen.","textChars":38,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"shape","id":"sh/3ulcb2xw","slide":5,"bbox":[430,216,640,37]}
+{"kind":"textbox","id":"sh/2tcbixwb","slide":5,"text":"Section","textPreview":"Section","textChars":7,"textLines":1,"bbox":[448,227,250,20]}
+{"kind":"textbox","id":"sh/dknuhcfy","slide":5,"text":"Purpose","textPreview":"Purpose","textChars":7,"textLines":1,"bbox":[722,227,330,20]}
+{"kind":"shape","id":"sh/cjeto7ed","slide":5,"bbox":[430,261,640,37]}
+{"kind":"textbox","id":"sh/uhsnm9cb","slide":5,"text":"Event Context","textPreview":"Event Context","textChars":13,"textLines":1,"bbox":[448,272,250,20]}
+{"kind":"textbox","id":"sh/vi1ovetw","slide":5,"text":"What happened and when","textPreview":"What happened and when","textChars":22,"textLines":1,"bbox":[722,272,330,20]}
+{"kind":"shape","id":"sh/gja5ojuh","slide":5,"bbox":[430,306,640,37]}
+{"kind":"textbox","id":"sh/hkj6xob2","slide":5,"text":"Asset Relationship","textPreview":"Asset Relationship","textChars":18,"textLines":1,"bbox":[448,317,250,20]}
+{"kind":"textbox","id":"sh/ilcnq9c7","slide":5,"text":"Which asset is linked and how","textPreview":"Which asset is linked and how","textChars":29,"textLines":1,"bbox":[722,317,330,20]}
+{"kind":"shape","id":"sh/3mlozets","slide":5,"bbox":[430,351,640,37]}
+{"kind":"textbox","id":"sh/4nu5sjad","slide":5,"text":"Portfolio / Attention","textPreview":"Portfolio / Attention","textChars":21,"textLines":1,"bbox":[448,362,250,20]}
+{"kind":"textbox","id":"sh/5o361oby","slide":5,"text":"Holding, Watchlist, Related, or Unconnected","textPreview":"Holding, Watchlist, Related, or Unconnected","textChars":43,"textLines":1,"bbox":[722,362,330,20]}
+{"kind":"shape","id":"sh/yp8nepc3","slide":5,"bbox":[430,396,640,37]}
+{"kind":"textbox","id":"sh/zqh4nuto","slide":5,"text":"Evidence + Trust","textPreview":"Evidence + Trust","textChars":16,"textLines":1,"bbox":[448,407,250,20]}
+{"kind":"textbox","id":"sh/nuxkfq9g","slide":5,"text":"Summary, source, timestamp, data state","textPreview":"Summary, source, timestamp, data state","textChars":38,"textLines":1,"bbox":[722,407,330,20]}
+{"kind":"shape","id":"sh/2t4jmlsv","slide":5,"bbox":[430,441,640,37]}
+{"kind":"textbox","id":"sh/pwf2h0rm","slide":5,"text":"Outcome","textPreview":"Outcome","textChars":7,"textLines":1,"bbox":[448,452,250,20]}
+{"kind":"textbox","id":"sh/ov6lova1","slide":5,"text":"Non-advisory check-status","textPreview":"Non-advisory check-status","textChars":25,"textLines":1,"bbox":[722,452,330,20]}
+{"kind":"shape","id":"sh/f6dkb69k","slide":5,"bbox":[430,486,640,37]}
+{"kind":"textbox","id":"sh/e54jilsz","slide":5,"text":"Handoff","textPreview":"Handoff","textChars":7,"textLines":1,"bbox":[448,497,250,20]}
+{"kind":"textbox","id":"sh/1sv2dgra","slide":5,"text":"Concept path to deeper web analysis","textPreview":"Concept path to deeper web analysis","textChars":35,"textLines":1,"bbox":[722,497,330,20]}
+{"kind":"image","id":"im/1g3utoje","slide":5,"name":"","geometry":"roundRect","alt":"Final service phone frame screenshot","bbox":[106,206,196,436]}
+{"kind":"notes","id":"nt/1mgzgb","slide":5,"text":"[Sources]\nprototype/high-fidelity/index.html\ndocs/FIGMA_DECK_DESIGN_EXTRACTION.md\nartifacts/high-fidelity/360x800-normal.png\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/dfhml8","slide":6,"title":"Portfolio-aware Event Triage · 06","textShapes":10}
+{"kind":"textbox","id":"sh/9c3exozi","slide":6,"text":"Portfolio-aware Event Triage · 06","textPreview":"Portfolio-aware Event Triage · 06","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/m9cv2tgr","slide":6,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/nalwvyhc","slide":6,"text":"06 · OUTCOME MODEL","textPreview":"06 · OUTCOME MODEL","textChars":18,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/0nud0jy1","slide":6,"text":"Outcomes are check-statuses.","textPreview":"Outcomes are check-statuses.","textChars":28,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"shape","id":"sh/183etozm","slide":6,"bbox":[86,214,320,400]}
+{"kind":"shape","id":"sh/fm1crehg","slide":6,"bbox":[114,520,246,32]}
+{"kind":"textbox","id":"sh/k3edcny5","slide":6,"text":"CHECK_FURTHER","textPreview":"CHECK_FURTHER","textChars":13,"textLines":1,"bbox":[127,528,220,14]}
+{"kind":"textbox","id":"sh/l4ne58zq","slide":6,"text":"More information is worth checking based on visible relationship and evidence.","textPreview":"More information is worth checking based on visible relationship and evidence.","textChars":78,"textLines":1,"bbox":[114,562,262,42]}
+{"kind":"shape","id":"sh/l83ihw7i","slide":6,"bbox":[458,214,320,400]}
+{"kind":"shape","id":"sh/zml0fmpc","slide":6,"bbox":[486,520,246,32]}
+{"kind":"textbox","id":"sh/ylcj6ho7","slide":6,"text":"NO_IMMEDIATE_CHECK_NEEDED","textPreview":"NO_IMMEDIATE_CHECK_NEEDED","textChars":25,"textLines":1,"bbox":[499,528,220,14]}
+{"kind":"textbox","id":"sh/dk3idc7m","slide":6,"text":"Visible evidence does not raise immediate check priority.","textPreview":"Visible evidence does not raise immediate check priority.","textChars":57,"textLines":1,"bbox":[486,562,262,42]}
+{"kind":"shape","id":"sh/cjah4761","slide":6,"bbox":[830,214,320,400]}
+{"kind":"shape","id":"sh/qhsz2xov","slide":6,"bbox":[858,520,246,32]}
+{"kind":"textbox","id":"sh/hgnipgnq","slide":6,"text":"INSUFFICIENT_DATA","textPreview":"INSUFFICIENT_DATA","textChars":17,"textLines":1,"bbox":[871,528,220,14]}
+{"kind":"textbox","id":"sh/wfe1gb65","slide":6,"text":"Relationship or evidence data is insufficient for a check-status judgment.","textPreview":"Relationship or evidence data is insufficient for a check-status judgment.","textChars":74,"textLines":1,"bbox":[858,562,262,42]}
+{"kind":"image","id":"im/v2l4zqdg","slide":6,"name":"","geometry":"roundRect","alt":"CHECK_FURTHER screenshot","bbox":[144,236,118,262]}
+{"kind":"image","id":"im/rmhovqh8","slide":6,"name":"","geometry":"roundRect","alt":"NO_IMMEDIATE_CHECK_NEEDED screenshot","bbox":[516,236,118,262]}
+{"kind":"image","id":"im/4jq50bih","slide":6,"name":"","geometry":"roundRect","alt":"INSUFFICIENT_DATA screenshot","bbox":[888,236,118,262]}
+{"kind":"notes","id":"nt/dfhml8","slide":6,"text":"[Sources]\ndocs/DESIGN.md outcome semantic contract\ndocs/DESIGN_QA.md financial safety\nartifacts/high-fidelity/360x800-normal.png\nartifacts/high-fidelity/360x800-watchlist.png\nartifacts/high-fidelity/360x800-insufficient.png\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/g3wptt","slide":7,"title":"Portfolio-aware Event Triage · 07","textShapes":10}
+{"kind":"textbox","id":"sh/1obulg7a","slide":7,"text":"Portfolio-aware Event Triage · 07","textPreview":"Portfolio-aware Event Triage · 07","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/el0val8j","slide":7,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/fm9cj6p4","slide":7,"text":"07 · PORTFOLIO CONTEXT","textPreview":"07 · PORTFOLIO CONTEXT","textChars":22,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/ob2dgvql","slide":7,"text":"Portfolio contexts stay separate.","textPreview":"Portfolio contexts stay separate.","textChars":33,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"textbox","id":"sh/pcbep076","slide":7,"text":"The design avoids turning interest context into ownership or exposure.","textPreview":"The design avoids turning interest context into ownership or exposure.","textChars":70,"textLines":1,"bbox":[64,194,620,68]}
+{"kind":"shape","id":"sh/3atcnqp0","slide":7,"bbox":[88,540,128,32]}
+{"kind":"textbox","id":"sh/4fyd4rqh","slide":7,"text":"Holding","textPreview":"Holding","textChars":7,"textLines":1,"bbox":[101,548,102,14]}
+{"kind":"shape","id":"sh/9oru1gra","slide":7,"bbox":[360,540,128,32]}
+{"kind":"textbox","id":"sh/onid8bap","slide":7,"text":"Watchlist","textPreview":"Watchlist","textChars":9,"textLines":1,"bbox":[373,548,102,14]}
+{"kind":"shape","id":"sh/ml0v61sj","slide":7,"bbox":[632,540,128,32]}
+{"kind":"textbox","id":"sh/xsbe5gr6","slide":7,"text":"Related-only","textPreview":"Related-only","textChars":12,"textLines":1,"bbox":[645,548,102,14]}
+{"kind":"shape","id":"sh/bq9c369g","slide":7,"bbox":[904,540,128,32]}
+{"kind":"textbox","id":"sh/ap0valsv","slide":7,"text":"Unconnected","textPreview":"Unconnected","textChars":11,"textLines":1,"bbox":[917,548,102,14]}
+{"kind":"textbox","id":"sh/lgbe90ri","slide":7,"text":"No account amount, exposure metric, return claim, or personal-asset scoring is introduced.","textPreview":"No account amount, exposure metric, return claim, or personal-asset scoring is introduced.","textChars":90,"textLines":1,"bbox":[88,606,820,28]}
+{"kind":"image","id":"im/ji9ozi14","slide":7,"name":"","geometry":"roundRect","alt":"Holding context screenshot","bbox":[88,238,128,284]}
+{"kind":"image","id":"im/snipcn21","slide":7,"name":"","geometry":"roundRect","alt":"Watchlist context screenshot","bbox":[360,238,128,284]}
+{"kind":"image","id":"im/0rql4jep","slide":7,"name":"","geometry":"roundRect","alt":"Related-only context screenshot","bbox":[632,238,128,284]}
+{"kind":"image","id":"im/nuh4fydg","slide":7,"name":"","geometry":"roundRect","alt":"Unconnected context screenshot","bbox":[904,238,128,284]}
+{"kind":"notes","id":"nt/g3wptt","slide":7,"text":"[Sources]\ndocs/DESIGN.md portfolio context\ndocs/DESIGN_QA.md portfolio/watchlist separation\nartifacts/high-fidelity/360x800-normal.png\nartifacts/high-fidelity/360x800-watchlist.png\nartifacts/high-fidelity/360x800-related.png\nartifacts/high-fidelity/360x800-unconnected.png\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/d641cc","slide":8,"title":"Portfolio-aware Event Triage · 08","textShapes":12}
+{"kind":"textbox","id":"sh/f698jmdg","slide":8,"text":"Portfolio-aware Event Triage · 08","textPreview":"Portfolio-aware Event Triage · 08","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/g7ipsre1","slide":8,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/h8rqlwvm","slide":8,"text":"08 · TRUST STATES","textPreview":"08 · TRUST STATES","textChars":17,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/6hg7mhwz","slide":8,"text":"Uncertainty is visible.","textPreview":"Uncertainty is visible.","textChars":23,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"textbox","id":"sh/7ip8vmdk","slide":8,"text":"Partial, empty, stale, source unavailable, permission, and error states preserve trust by exposing the limitation.","textPreview":"Partial, empty, stale, source unavailable, permission, and error states preserve trust by exposing the limitation.","textChars":114,"textLines":1,"bbox":[64,194,620,68]}
+{"kind":"textbox","id":"sh/t47qhwvq","slide":8,"text":"Partial","textPreview":"Partial","textChars":7,"textLines":1,"bbox":[82,496,146,26]}
+{"kind":"textbox","id":"sh/jep8r2d8","slide":8,"text":"Empty","textPreview":"Empty","textChars":5,"textLines":1,"bbox":[266,496,146,26]}
+{"kind":"textbox","id":"sh/qd0nu94f","slide":8,"text":"Stale","textPreview":"Stale","textChars":5,"textLines":1,"bbox":[450,496,146,26]}
+{"kind":"textbox","id":"sh/cfi5wjm5","slide":8,"text":"Source unavailable","textPreview":"Source unavailable","textChars":18,"textLines":1,"bbox":[634,496,146,26]}
+{"kind":"textbox","id":"sh/yh0ny94b","slide":8,"text":"Permission","textPreview":"Permission","textChars":10,"textLines":1,"bbox":[818,496,146,26]}
+{"kind":"textbox","id":"sh/03250jmh","slide":8,"text":"Generic error","textPreview":"Generic error","textChars":13,"textLines":1,"bbox":[1002,496,146,26]}
+{"kind":"shape","id":"sh/fmp4fu5s","slide":8,"bbox":[86,558,760,58]}
+{"kind":"textbox","id":"sh/elgnmpo7","slide":8,"text":"Evidence cards keep source, timestamp, summary distinction, and data state visible before the outcome.","textPreview":"Evidence cards keep source, timestamp, summary distinction, and data state visible before the outcome.","textChars":102,"textLines":1,"bbox":[110,578,710,24]}
+{"kind":"image","id":"im/1w3ipsbq","slide":8,"name":"","geometry":"roundRect","alt":"Partial trust state screenshot","bbox":[82,248,104,232]}
+{"kind":"image","id":"im/jq5kzmt4","slide":8,"name":"","geometry":"roundRect","alt":"Empty trust state screenshot","bbox":[266,248,104,232]}
+{"kind":"image","id":"im/0ri14f65","slide":8,"name":"","geometry":"roundRect","alt":"Stale trust state screenshot","bbox":[450,248,104,232]}
+{"kind":"image","id":"im/ep0j2pof","slide":8,"name":"","geometry":"roundRect","alt":"Source unavailable trust state screenshot","bbox":[634,248,104,232]}
+{"kind":"image","id":"im/cni10f69","slide":8,"name":"","geometry":"roundRect","alt":"Permission trust state screenshot","bbox":[818,248,104,232]}
+{"kind":"image","id":"im/ql0jy5o3","slide":8,"name":"","geometry":"roundRect","alt":"Generic error trust state screenshot","bbox":[1002,248,104,232]}
+{"kind":"notes","id":"nt/d641cc","slide":8,"text":"[Sources]\ndocs/DESIGN.md state matrix\ndesign-system/patterns/trust-and-data-state.md\nartifacts/high-fidelity trust state screenshots\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/5s7sla","slide":9,"title":"Portfolio-aware Event Triage · 09","textShapes":7}
+{"kind":"textbox","id":"sh/d8r69ofm","slide":9,"text":"Portfolio-aware Event Triage · 09","textPreview":"Portfolio-aware Event Triage · 09","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/ql07etwv","slide":9,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/r69o7exg","slide":9,"text":"09 · RESPONSIVE QA","textPreview":"09 · RESPONSIVE QA","textChars":18,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/0b2pk3ex","slide":9,"text":"One implementation holds across widths.","textPreview":"One implementation holds across widths.","textChars":39,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"shape","id":"sh/e907itw7","slide":9,"bbox":[150,572,170,32]}
+{"kind":"textbox","id":"sh/fa9obyxc","slide":9,"text":"320 stress","textPreview":"320 stress","textChars":10,"textLines":1,"bbox":[163,580,144,14]}
+{"kind":"shape","id":"sh/hg7614fe","slide":9,"bbox":[470,572,170,32]}
+{"kind":"textbox","id":"sh/10fyd0fi","slide":9,"text":"360 full state set","textPreview":"360 full state set","textChars":18,"textLines":1,"bbox":[483,580,144,14]}
+{"kind":"shape","id":"sh/fyxgbqxc","slide":9,"bbox":[790,572,170,32]}
+{"kind":"textbox","id":"sh/exoz25wr","slide":9,"text":"390 full state set","textPreview":"390 full state set","textChars":18,"textLines":1,"bbox":[803,580,144,14]}
+{"kind":"image","id":"im/47atsri1","slide":9,"name":"","geometry":"roundRect","alt":"320 stress viewport screenshot","bbox":[150,172,170,378]}
+{"kind":"image","id":"im/94nad0zq","slide":9,"name":"","geometry":"roundRect","alt":"360 full state set viewport screenshot","bbox":[470,172,170,378]}
+{"kind":"image","id":"im/7qd03ax4","slide":9,"name":"","geometry":"roundRect","alt":"390 full state set viewport screenshot","bbox":[790,172,170,378]}
+{"kind":"notes","id":"nt/5s7sla","slide":9,"text":"[Sources]\nartifacts/high-fidelity/320x800-normal.png\nartifacts/high-fidelity/360x800-normal.png\nartifacts/high-fidelity/390x844-normal.png\nartifacts/high-fidelity/visual-qa-report.json\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/ffy61i","slide":10,"title":"Portfolio-aware Event Triage · 10","textShapes":19}
+{"kind":"textbox","id":"sh/p4j2t8za","slide":10,"text":"Portfolio-aware Event Triage · 10","textPreview":"Portfolio-aware Event Triage · 10","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/2183idgj","slide":10,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/n2hkrih4","slide":10,"text":"10 · VISUAL QA RESULT","textPreview":"10 · VISUAL QA RESULT","textChars":21,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/c7alonyl","slide":10,"text":"Chromium evidence supports high-fidelity PASS.","textPreview":"Chromium evidence supports high-fidelity PASS.","textChars":46,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"shape","id":"sh/xsj2xsz6","slide":10,"bbox":[112,214,760,42]}
+{"kind":"textbox","id":"sh/a5s3mdgv","slide":10,"text":"Check","textPreview":"Check","textChars":5,"textLines":1,"bbox":[130,225,250,20]}
+{"kind":"textbox","id":"sh/b61kvihg","slide":10,"text":"Result","textPreview":"Result","textChars":6,"textLines":1,"bbox":[404,225,450,20]}
+{"kind":"shape","id":"sh/sbq1c3yh","slide":10,"bbox":[112,264,760,42]}
+{"kind":"textbox","id":"sh/dwz2loz2","slide":10,"text":"Static QA","textPreview":"Static QA","textChars":9,"textLines":1,"bbox":[130,275,250,20]}
+{"kind":"textbox","id":"sh/xkfm1k7y","slide":10,"text":"PASS","textPreview":"PASS","textChars":4,"textLines":1,"bbox":[404,275,450,20]}
+{"kind":"shape","id":"sh/cj6l8fqd","slide":10,"bbox":[112,314,760,42]}
+{"kind":"textbox","id":"sh/bix4zaps","slide":10,"text":"Chromium screenshots","textPreview":"Chromium screenshots","textChars":20,"textLines":1,"bbox":[130,325,250,20]}
+{"kind":"textbox","id":"sh/aho3658n","slide":10,"text":"34 generated","textPreview":"34 generated","textChars":12,"textLines":1,"bbox":[404,325,450,20]}
+{"kind":"shape","id":"sh/l8zm5k7a","slide":10,"bbox":[112,364,760,42]}
+{"kind":"textbox","id":"sh/k7qlcfqp","slide":10,"text":"360x800","textPreview":"360x800","textChars":7,"textLines":1,"bbox":[130,375,250,20]}
+{"kind":"textbox","id":"sh/z6h43ap4","slide":10,"text":"15 states PASS","textPreview":"15 states PASS","textChars":14,"textLines":1,"bbox":[404,375,450,20]}
+{"kind":"shape","id":"sh/y583ap8j","slide":10,"bbox":[112,414,760,42]}
+{"kind":"textbox","id":"sh/9czm9476","slide":10,"text":"390x844","textPreview":"390x844","textChars":7,"textLines":1,"bbox":[130,425,250,20]}
+{"kind":"textbox","id":"sh/8bq5gz6l","slide":10,"text":"15 states PASS","textPreview":"15 states PASS","textChars":14,"textLines":1,"bbox":[404,425,450,20]}
+{"kind":"shape","id":"sh/sfy5c3ex","slide":10,"bbox":[112,464,760,42]}
+{"kind":"textbox","id":"sh/tg7658fi","slide":10,"text":"320x800 stress","textPreview":"320x800 stress","textChars":14,"textLines":1,"bbox":[130,475,250,20]}
+{"kind":"textbox","id":"sh/6dgnatwr","slide":10,"text":"4 states PASS","textPreview":"4 states PASS","textChars":13,"textLines":1,"bbox":[404,475,450,20]}
+{"kind":"shape","id":"sh/7epo3yxc","slide":10,"bbox":[112,514,760,42]}
+{"kind":"textbox","id":"sh/gjipgnet","slide":10,"text":"BLOCKER / MAJOR","textPreview":"BLOCKER / MAJOR","textChars":15,"textLines":1,"bbox":[130,525,250,20]}
+{"kind":"textbox","id":"sh/hkr698fe","slide":10,"text":"0 confirmed in visual review","textPreview":"0 confirmed in visual review","textChars":28,"textLines":1,"bbox":[404,525,450,20]}
+{"kind":"shape","id":"sh/fi9o7ix8","slide":10,"bbox":[930,548,210,32]}
+{"kind":"textbox","id":"sh/wne54jep","slide":10,"text":"Production remains BLOCKED","textPreview":"Production remains BLOCKED","textChars":26,"textLines":1,"bbox":[943,556,184,14]}
+{"kind":"image","id":"im/583il4fy","slide":10,"name":"","geometry":"roundRect","alt":"320 insufficient screenshot evidence","bbox":[946,166,154,344]}
+{"kind":"notes","id":"nt/ffy61i","slide":10,"text":"[Sources]\nartifacts/high-fidelity/visual-qa-report.json\nartifacts/high-fidelity/static-qa-report.json\ndocs/DESIGN_QA.md\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/dm0fks","slide":11,"title":"Portfolio-aware Event Triage · 11","textShapes":20}
+{"kind":"textbox","id":"sh/nitwr2dw","slide":11,"text":"Portfolio-aware Event Triage · 11","textPreview":"Portfolio-aware Event Triage · 11","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/ojmd07uh","slide":11,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/9kvetcv2","slide":11,"text":"11 · DESIGN-SYSTEM MAPPING","textPreview":"11 · DESIGN-SYSTEM MAPPING","textChars":26,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/etkvuxcf","slide":11,"text":"The deck follows the Git reference system.","textPreview":"The deck follows the Git reference system.","textChars":42,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"textbox","id":"sh/zutcn2d0","slide":11,"text":"Tokens and reference components provide visual continuity without changing Product policy.","textPreview":"Tokens and reference components provide visual continuity without changing Product policy.","textChars":90,"textLines":1,"bbox":[64,194,620,68]}
+{"kind":"shape","id":"sh/0f2dw7ul","slide":11,"bbox":[92,214,900,40]}
+{"kind":"textbox","id":"sh/1gbepcv6","slide":11,"text":"Area","textPreview":"Area","textChars":4,"textLines":1,"bbox":[110,225,250,20]}
+{"kind":"textbox","id":"sh/yp4v6hcj","slide":11,"text":"Design-system source","textPreview":"Design-system source","textChars":20,"textLines":1,"bbox":[384,225,590,20]}
+{"kind":"shape","id":"sh/jadwzmd4","slide":11,"bbox":[92,262,900,40]}
+{"kind":"textbox","id":"sh/fyh4n6t0","slide":11,"text":"Surface","textPreview":"Surface","textChars":7,"textLines":1,"bbox":[110,273,250,20]}
+{"kind":"textbox","id":"sh/ex83e1sf","slide":11,"text":"--nf-surface-dashboard-mobile, --nf-surface-card, --nf-surface-card-muted","textPreview":"--nf-surface-dashboard-mobile, --nf-surface-card, --nf-surface-card-muted","textChars":73,"textLines":1,"bbox":[384,273,590,20]}
+{"kind":"shape","id":"sh/10jmpwb6","slide":11,"bbox":[92,310,900,40]}
+{"kind":"textbox","id":"sh/0zqlgbal","slide":11,"text":"Text","textPreview":"Text","textChars":4,"textLines":1,"bbox":[110,321,250,20]}
+{"kind":"textbox","id":"sh/n214r6tc","slide":11,"text":"--nf-font-sans, --nf-text-* scale, --nf-weight-*","textPreview":"--nf-font-sans, --nf-text-* scale, --nf-weight-*","textChars":48,"textLines":1,"bbox":[384,321,590,20]}
+{"kind":"shape","id":"sh/21s3i1sr","slide":11,"bbox":[92,358,900,40]}
+{"kind":"textbox","id":"sh/p4jmtgb2","slide":11,"text":"Cards / badges","textPreview":"Cards / badges","textChars":14,"textLines":1,"bbox":[110,369,250,20]}
+{"kind":"textbox","id":"sh/o3a5kbah","slide":11,"text":"cards-and-surfaces.md, badges-tabs-filters.md","textPreview":"cards-and-surfaces.md, badges-tabs-filters.md","textChars":45,"textLines":1,"bbox":[384,369,590,20]}
+{"kind":"shape","id":"sh/b614vqt8","slide":11,"bbox":[92,406,900,40]}
+{"kind":"textbox","id":"sh/a5snmlsn","slide":11,"text":"Evidence / trust","textPreview":"Evidence / trust","textChars":16,"textLines":1,"bbox":[110,417,250,20]}
+{"kind":"textbox","id":"sh/mlw7epcv","slide":11,"text":"data-and-evidence.md, trust-and-data-state.md","textPreview":"data-and-evidence.md, trust-and-data-state.md","textChars":45,"textLines":1,"bbox":[384,417,590,20]}
+{"kind":"shape","id":"sh/7m5onudg","slide":11,"bbox":[92,454,900,40]}
+{"kind":"textbox","id":"sh/8nepgfu1","slide":11,"text":"Feedback / CTA","textPreview":"Feedback / CTA","textChars":14,"textLines":1,"bbox":[110,465,250,20]}
+{"kind":"textbox","id":"sh/9on6pkvm","slide":11,"text":"feedback-states.md, buttons-and-cta.md","textPreview":"feedback-states.md, buttons-and-cta.md","textChars":38,"textLines":1,"bbox":[384,465,590,20]}
+{"kind":"shape","id":"sh/yxc7a5cz","slide":11,"bbox":[92,502,900,40]}
+{"kind":"textbox","id":"sh/zylojadk","slide":11,"text":"Outcome surfaces","textPreview":"Outcome surfaces","textChars":16,"textLines":1,"bbox":[110,513,250,20]}
+{"kind":"textbox","id":"sh/kzepcfup","slide":11,"text":"--nf-outcome-* as secondary cue only","textPreview":"--nf-outcome-* as secondary cue only","textChars":36,"textLines":1,"bbox":[384,513,590,20]}
+{"kind":"shape","id":"sh/l0n6lkva","slide":11,"bbox":[92,582,190,32]}
+{"kind":"textbox","id":"sh/itg7m9c3","slide":11,"text":"New components: NONE","textPreview":"New components: NONE","textChars":20,"textLines":1,"bbox":[105,590,164,14]}
+{"kind":"notes","id":"nt/dm0fks","slide":11,"text":"[Sources]\ndesign-system/README.md\ndesign-system/tokens/valley-reference-tokens.css\ndesign-system/components/\ndesign-system/patterns/\ndocs/FIGMA_DECK_DESIGN_EXTRACTION.md\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}
+{"kind":"slide","id":"sl/7h4hca","slide":12,"title":"Portfolio-aware Event Triage · 12","textShapes":13}
+{"kind":"textbox","id":"sh/bedozut4","slide":12,"text":"Portfolio-aware Event Triage · 12","textPreview":"Portfolio-aware Event Triage · 12","textChars":33,"textLines":1,"bbox":[64,674,420,20]}
+{"kind":"textbox","id":"sh/wfm5szap","slide":12,"text":"High-fidelity concept · Production blocked","textPreview":"High-fidelity concept · Production blocked","textChars":42,"textLines":1,"bbox":[862,674,354,20]}
+{"kind":"textbox","id":"sh/xgv614ba","slide":12,"text":"12 · REMAINING LIMITS","textPreview":"12 · REMAINING LIMITS","textChars":21,"textLines":1,"bbox":[64,56,420,24]}
+{"kind":"textbox","id":"sh/mpknmpsn","slide":12,"text":"The case study ends with the work that is still unresolved.","textPreview":"The case study ends with the work that is still unresolved.","textChars":59,"textLines":1,"bbox":[64,90,720,92]}
+{"kind":"shape","id":"sh/nqt4vut8","slide":12,"bbox":[112,210,450,280]}
+{"kind":"textbox","id":"sh/or25ozad","slide":12,"text":"Still not tested","textPreview":"Still not tested","textChars":16,"textLines":1,"bbox":[144,246,280,32]}
+{"kind":"shape","id":"sh/9sv6xkby","slide":12,"bbox":[150,321,10,10]}
+{"kind":"textbox","id":"sh/elkni5sb","slide":12,"text":"Screen reader manual behavior","textPreview":"Screen reader manual behavior","textChars":29,"textLines":1,"bbox":[174,314,316,34]}
+{"kind":"shape","id":"sh/zmt4ratw","slide":12,"bbox":[150,365,10,10]}
+{"kind":"textbox","id":"sh/zi9kb21s","slide":12,"text":"Real App/Web back route","textPreview":"Real App/Web back route","textChars":23,"textLines":1,"bbox":[174,358,316,34]}
+{"kind":"shape","id":"sh/yxg32x07","slide":12,"bbox":[150,409,10,10]}
+{"kind":"textbox","id":"sh/lkr2dcji","slide":12,"text":"Real user validation","textPreview":"Real user validation","textChars":20,"textLines":1,"bbox":[174,402,316,34]}
+{"kind":"shape","id":"sh/0jil47ix","slide":12,"bbox":[626,210,450,280]}
+{"kind":"textbox","id":"sh/nm9kfm1o","slide":12,"text":"Production remains blocked","textPreview":"Production remains blocked","textChars":26,"textLines":1,"bbox":[658,246,340,32]}
+{"kind":"shape","id":"sh/ml036h03","slide":12,"bbox":[664,321,10,10]}
+{"kind":"textbox","id":"sh/9ormhwzu","slide":12,"text":"Data contract and fields","textPreview":"Data contract and fields","textChars":24,"textLines":1,"bbox":[688,314,326,34]}
+{"kind":"shape","id":"sh/8nil8ri9","slide":12,"bbox":[664,365,10,10]}
+{"kind":"textbox","id":"sh/3q5k3i1k","slide":12,"text":"Outcome logic and freshness SLA","textPreview":"Outcome logic and freshness SLA","textChars":31,"textLines":1,"bbox":[688,358,326,34]}
+{"kind":"shape","id":"sh/2pw3ud0z","slide":12,"bbox":[664,409,10,10]}
+{"kind":"textbox","id":"sh/6l4n2lkn","slide":12,"text":"Handoff payload and API integration","textPreview":"Handoff payload and API integration","textChars":35,"textLines":1,"bbox":[688,402,326,34]}
+{"kind":"textbox","id":"sh/7mdobqls","slide":12,"text":"Next: transfer these frames into Figma or a final portfolio platform, preserving the same claim boundary.","textPreview":"Next: transfer these frames into Figma or a final portfolio platform, preserving the same claim boundary.","textChars":105,"textLines":1,"bbox":[112,552,900,34]}
+{"kind":"notes","id":"nt/7h4hca","slide":12,"text":"[Sources]\ndocs/CURRENT_STATE.md\ndocs/DESIGN_QA.md\ndocs/PORTFOLIO_PRESENTATION_STRUCTURE.md\nBoundary: High-fidelity concept/mock fixture only. Screen Reader NOT_TESTED. Real App/Web Back NOT_TESTED. Production BLOCKED."}

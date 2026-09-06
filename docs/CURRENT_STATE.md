@@ -1,5 +1,5 @@
 # CURRENT PROJECT STATE
-Last Updated: 2026-09-06 01:54 KST
+Last Updated: 2026-09-06 13:01 KST
 Last Updated By: Codex / GPT-5
 
 ## Project
@@ -9,7 +9,7 @@ NeuroFusion / Valley AI Mobile Product Improvement Project
 Portfolio-aware Event Triage
 
 ## Current Phase
-High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository now includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus PASS QA reports. Portfolio/Figma presentation packaging now includes a structure document, a repository case-study page, and a Figma/deck design extraction document that maps Git design-system tokens/components/patterns to presentation frames. The high-fidelity prototype separates the final service screen from an external demo state selector, so the phone/service frame no longer contains QA/debug state tabs.
+High-fidelity HTML frame set created; static QA passed; browser visual QA completed through GitHub Actions after CI font and QA-script infrastructure fixes. The repository includes 34 Chromium-rendered PNG screenshots for 360x800, 390x844, and 320x800 stress coverage, plus PASS QA reports. Portfolio/Figma presentation packaging now includes a structure document, a repository case-study page, a Figma/deck design extraction document, and a native PowerPoint deck assembled from persisted screenshot evidence. The GitHub Actions visual QA path was rerun successfully after adding deck/case-study trigger paths.
 
 ## Current Gate
 - RECOVERY: PASS
@@ -24,7 +24,7 @@ High-fidelity HTML frame set created; static QA passed; browser visual QA comple
 - PRODUCTION: BLOCKED
 
 ## Current Task
-Prepare Figma/deck-ready design extraction from the Git design-system reference, high-fidelity service frame, case-study page, and persisted screenshot evidence while preserving concept/high-fidelity boundaries.
+Use the assembled portfolio deck and case-study page as the next presentation handoff package. Native Figma file creation remains a follow-up because no target Figma file was provided.
 
 ## Completed Since Previous Checkpoint
 - Created `prototype/high-fidelity/index.html`.
@@ -89,6 +89,10 @@ Prepare Figma/deck-ready design extraction from the Git design-system reference,
 - Added `docs/FIGMA_DECK_DESIGN_EXTRACTION.md` with source boundary, token/component extraction, 12-page Figma/deck frame plan, screenshot evidence mapping, visual treatment rules, and QA carryover.
 - Updated `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` to reference the extraction document and add a Design-system Mapping page.
 - Updated `portfolio/case-study/index.html` with a Design-system Mapping section that connects the case-study visuals to Git reference tokens/components/patterns.
+- Updated `.github/workflows/high-fidelity-visual-qa.yml` so case-study and Figma/deck extraction changes can trigger the Chromium QA workflow.
+- GitHub Actions run `34010094421` completed successfully at remote commit `6991749c2dc40591eaedf43dbc948ac1e4b8201c`; static QA, Chromium install, browser visual QA, and artifact upload all passed.
+- Created `portfolio/deck/portfolio-aware-event-triage-case-study.pptx` as a 12-slide portfolio-ready native deck.
+- Created rendered deck previews under `portfolio/deck/rendered/` for visual QA and handoff.
 
 ## Locked Decisions
 - Mobile role: `Triage Layer`.
@@ -115,9 +119,9 @@ Event Context
 ## Active Design Hypotheses
 - Exact Outcome visual prominence is acceptable for the current high-fidelity frame set based on Chromium screenshots; further polish can happen in Figma/portfolio composition.
 - Portfolio/Figma presentation composition can use annotated screenshots and state grids without changing Product policy or prototype HTML.
-- The repository case-study page can serve as the Figma/deck composition source, but it has not yet been manually re-rendered in a browser in this local environment.
-- `docs/FIGMA_DECK_DESIGN_EXTRACTION.md` can serve as the Figma/deck transfer map; actual Figma frame creation has not been performed because no target Figma file was provided.
-- The updated external-selector shell is expected to preserve capture-mode screenshot behavior because `body.capture` hides the external demo panel; browser visual QA has not been rerun locally because Chromium remains unavailable.
+- The repository case-study page and native PPTX deck can serve as the portfolio presentation package.
+- `docs/FIGMA_DECK_DESIGN_EXTRACTION.md` can serve as the Figma transfer map; actual native Figma frame creation has not been performed because no target Figma file was provided.
+- The updated external-selector shell is verified through GitHub Actions visual QA; local browser visual QA remains unavailable because Chromium is not installed in this container.
 - Long Korean/English event title wrapping passed 320/360/390 screenshot QA.
 - Sticky CTA overlap passed CI geometry checks and screenshot review.
 - Screen reader reading order remains `NOT_TESTED`.
@@ -135,8 +139,7 @@ Event Context
 
 ## Open Issues
 - NOTE: Local browser visual QA still cannot run because Playwright Chromium binary is unavailable in this container; CI remains the verified visual QA path.
-- OPEN: Browser visual QA has not been rerun after the external-selector shell update in this local environment.
-- OPEN: Browser visual QA has not been rerun after the Figma/deck extraction and case-study Design-system Mapping update in this local environment.
+- CLOSED: GitHub Actions visual QA rerun after external-selector shell/deck trigger update succeeded at run `34010094421`.
 - NOT_TESTED: Screen reader manual reading order.
 - NOT_TESTED: Real browser/app back navigation after Web handoff.
 - BLOCKED: Production route, payload, field, logic, and freshness contracts.
@@ -158,6 +161,9 @@ Event Context
 - `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`
 - `portfolio/case-study/index.html`
 - `prototype/high-fidelity/index.html`
+- `portfolio/deck/portfolio-aware-event-triage-case-study.pptx`
+- `portfolio/deck/rendered/*.png`
+- `portfolio/deck/rendered/contact-sheet.png`
 
 ## Files To Read Next
 Before continuing high-fidelity QA, read:
@@ -172,7 +178,7 @@ Before continuing high-fidelity QA, read:
 8. `scripts/high-fidelity-qa.js`
 
 ## Next Exact Action
-Run the GitHub Actions visual QA path for the updated external-selector shell and case-study mapping update, then use `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`, `portfolio/case-study/index.html`, `prototype/high-fidelity/index.html`, and persisted screenshots in `artifacts/high-fidelity/` to assemble the final Figma/deck or portfolio platform version. Do not upgrade Screen Reader, real App/Web Back, or Production gates without their own tests/contracts.
+Use `portfolio/deck/portfolio-aware-event-triage-case-study.pptx`, `portfolio/case-study/index.html`, `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`, and `artifacts/high-fidelity/*.png` to perform final portfolio review or transfer the presentation into a target Figma file. Do not upgrade Screen Reader, real App/Web Back, or Production gates without their own tests/contracts.
 
 ## Last Verification
 - `node scripts/high-fidelity-static-qa.js` returned `PASS`.
@@ -208,6 +214,12 @@ Run the GitHub Actions visual QA path for the updated external-selector shell an
 - `portfolio/case-study/index.html` now includes a Design-system Mapping section and continues to reference 18 existing screenshots with no missing files.
 - `node scripts/high-fidelity-static-qa.js` returned `PASS` after the Figma/deck extraction update.
 - Forbidden production/trading/score claim search on `prototype/high-fidelity/index.html`, `portfolio/case-study/index.html`, `docs/FIGMA_DECK_DESIGN_EXTRACTION.md`, and `docs/PORTFOLIO_PRESENTATION_STRUCTURE.md` returned no matches.
+- GitHub Actions run `34010094421` completed successfully after `.github/workflows/high-fidelity-visual-qa.yml` trigger paths were expanded.
+- New artifact `9982193560` was uploaded for the rerun.
+- `portfolio/deck/portfolio-aware-event-triage-case-study.pptx` was generated with 12 slides matching the approved Figma/deck extraction structure.
+- Rendered slide previews were inspected; screenshot embedding and slide spacing issues were fixed in the deck builder before final export.
+- `slides_test.py` returned `PASS`; no deck overflow was detected.
+- Final forbidden production/trading/score claim search on prototype, case-study, extraction, presentation structure, and deck outputs returned no matches.
 
 ## Recovery Note
 If a new chat starts, read this file first, then `WORKLOG.md`, then `docs/DESIGN.md`, `docs/DESIGN_QA.md`, and `prototype/high-fidelity/index.html`.

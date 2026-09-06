@@ -599,3 +599,59 @@ PRODUCTION: BLOCKED
 | Screen reader manual test | NOT_TESTED | Run with assistive tech only when that validation track starts. |
 | Real App/Web Back | NOT_TESTED | Requires integrated route environment. |
 | Production contracts | BLOCKED | Requires separate owner-approved data/logic/handoff work. |
+
+---
+
+## Figma / Deck Assembly QA Addendum
+
+Date: 2026-09-06 13:01 KST
+
+### Scope
+
+This addendum verifies the GitHub Actions visual QA rerun path and the native deck assembled from the approved high-fidelity screenshots and Git design-system extraction.
+
+This does not reopen Product strategy, `docs/DESIGN.md`, IA, outcome semantics, or Production scope.
+
+### GitHub Actions Visual QA Rerun
+
+| Check | Result | Evidence |
+|---|---|---|
+| Workflow run | PASS | GitHub Actions run `34010094421`. |
+| Remote commit | PASS | `6991749c2dc40591eaedf43dbc948ac1e4b8201c`. |
+| Static QA step | PASS | `Run static high-fidelity QA` completed successfully. |
+| Chromium install | PASS | `Install Playwright Chromium shell` completed successfully. |
+| Browser visual QA step | PASS | `Run browser high-fidelity QA` completed successfully. |
+| Artifact upload | PASS | Artifact `9982193560`, `high-fidelity-visual-qa`. |
+
+### Deck Assembly Result
+
+| Check | Result | Evidence / Note |
+|---|---|---|
+| Deck file | PASS | `portfolio/deck/portfolio-aware-event-triage-case-study.pptx`. |
+| Required 12-section structure | PASS | Cover, Problem Context, Mobile vs Web, Locked IA, Service Anatomy, Outcome Model, Portfolio Variants, Trust States, Responsive QA, Visual QA Result, Design-system Mapping, Remaining Limits. |
+| Screenshot evidence use | PASS | Slides use persisted Chromium screenshots as evidence for state, viewport, hierarchy, and QA results. |
+| Product boundary | PASS | Deck preserves concept/high-fidelity scope and keeps Production blocked. |
+| Outcome model | PASS | Deck uses only the three approved non-advisory check-status outcomes. |
+| Portfolio/Watchlist boundary | PASS | Holding, Watchlist, Related-only, and Unconnected are separated. |
+| Design-system usage | PASS | Deck follows Git reference surface, text, border, card, badge, evidence, feedback, CTA, and outcome surface treatment. |
+| Slide overflow | PASS | `slides_test.py` returned `PASS`; no overflow detected. |
+| Forbidden claim search | PASS | Search on prototype, case-study, extraction, presentation structure, and deck outputs returned no forbidden production/trading/score claim matches. |
+
+### Fixes Applied During Deck QA
+
+- Replaced path-based screenshot insertion with byte-backed PNG embedding so rendered previews show actual screenshots instead of placeholders.
+- Removed subtitle overlaps on dense deck slides.
+- Reworded a negative safety statement to avoid forbidden-claim search false positives.
+
+### Gate Impact
+
+```text
+HIGH-FIDELITY DESIGN: PASS
+STATIC QA: PASS
+RESPONSIVE / VISUAL QA: PASS based on existing Chromium evidence; updated shell/deck-trigger rerun passed in GitHub Actions
+FIGMA / DECK ASSEMBLY: PASS FOR NATIVE DECK
+ACCESSIBILITY VISUAL QA: PASS FOR VISUAL REQUIREMENTS
+SCREEN READER: NOT_TESTED
+REAL APP/WEB BACK: NOT_TESTED
+PRODUCTION: BLOCKED
+```
